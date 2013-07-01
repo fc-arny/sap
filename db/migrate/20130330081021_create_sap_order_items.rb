@@ -9,6 +9,6 @@ class CreateSapOrderItems < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :'sap.order_items', [:order_id, :good_item_id], :unique => true
+    add_index :sap_order_items, [:order_id, :good_item_id], :unique => true
   end
 end
