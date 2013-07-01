@@ -11,7 +11,7 @@ class CreateSapGoods < ActiveRecord::Migration
       t.integer :measure_step, null: false, default: 1
 			t.text :description
 			t.boolean :is_approved, default: false
-			t.integer :order_por, default: 0
+			t.integer :order_pos, default: 0
 
 			t.timestamps
 		end

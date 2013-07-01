@@ -8,8 +8,8 @@ class CreateSapMeasures < ActiveRecord::Migration
       t.integer :parent_id
     end
 
-    add_foreign_key :'sap.measures', :'sap.measures', column: :parent_id
-    add_foreign_key :'sap.goods', :'sap.measures', column: :measure_id
+    add_foreign_key :sap_measures, :sap_measures, column: :parent_id
+    add_foreign_key :sap_goods, :sap_measures, column: :measure_id
 
     Sap::Measure.create :id => 1, :name => 'gram', :step => 100
     Sap::Measure.create :id => 2, :name => 'kilo', :step => 1, :value_in_parent => 1000, :parent_id => 1
@@ -17,6 +17,6 @@ class CreateSapMeasures < ActiveRecord::Migration
   end
 
   def down
-    drop_table :'sap.measures'
+    drop_table :sap_measures
   end
 end
