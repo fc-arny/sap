@@ -4,7 +4,7 @@
 class CreateSapGoods < ActiveRecord::Migration
 	def change
 		create_table :sap_goods do |t|
-			t.integer :id
+
 			t.string :name, null: false
       t.integer :measure_id, null: false
       t.integer :measure_value, null: false

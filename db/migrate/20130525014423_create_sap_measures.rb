@@ -1,7 +1,7 @@
 class CreateSapMeasures < ActiveRecord::Migration
   def up
     create_table :sap_measures do |t|
-      t.integer :id
+
       t.string  :name, null: false
       t.integer :step, null: false
       t.integer :value_in_parent
