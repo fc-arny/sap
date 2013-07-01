@@ -4,7 +4,7 @@
 
 class CreateSapUsers < ActiveRecord::Migration
   def change
-    create_table :"sap.users" do |t|
+    create_table :sap_users do |t|
       t.integer :id
       t.string :login, null:false, comment: 'secret key = md5(md5(password) + salt)'
       t.string :password, null:false

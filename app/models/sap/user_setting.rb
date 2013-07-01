@@ -11,7 +11,7 @@
 # -------------------------------------------------------------
 # Model for saving pair kay:value
 # -------------------------------------------------------------
-class Sap::UserSetting < SapModel
+class Sap::UserSetting < ActiveRecord::Base
   attr_accessible :key, :user_id, :value
 
   class << self

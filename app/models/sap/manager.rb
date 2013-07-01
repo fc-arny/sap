@@ -17,7 +17,7 @@
 # store_id - reference to store
 # user_id  - reference to base user model
 # -------------------------------------------------------------
-class Sap::Manager < SapModel
+class Sap::Manager < ActiveRecord::Base
   # Fields
 	attr_accessible :first_name, :last_name, :store_id, :user_id
 

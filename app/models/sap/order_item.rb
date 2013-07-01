@@ -18,7 +18,7 @@
 # :good_id  - link to good list item
 # :order_id - link to total order
 # -------------------------------------------------------------
-class Sap::OrderItem < SapModel
+class Sap::OrderItem < ActiveRecord::Base
   # Fields
   attr_accessible :id, :count, :good_item_id, :order_id
 

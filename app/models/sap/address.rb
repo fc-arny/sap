@@ -1,2 +1,2 @@
-class Sap::Address < SapModel
+class Sap::Address < ActiveRecord::Base
 end

@@ -8,7 +8,7 @@
 # -------------------------------------------------------------
 class CreateSapCategoryGood < ActiveRecord::Migration
   def change
-    create_table :"sap.category_good" do |t|
+    create_table :sap_category_good do |t|
       t.integer :category_id
       t.integer :good_id
     end

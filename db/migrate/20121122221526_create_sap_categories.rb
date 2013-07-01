@@ -3,7 +3,7 @@
 # -------------------------------------------------------------
 class CreateSapCategories < ActiveRecord::Migration
 	def change
-		create_table :"sap.categories" do |t|
+		create_table :sap_categories do |t|
 			t.integer :id
 			t.string  :name, null: false
       t.string  :url, null: false

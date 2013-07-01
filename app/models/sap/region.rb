@@ -19,6 +19,6 @@
 # description - some notes
 # -------------------------------------------------------------
 
-class Sap::Region < SapModel
+class Sap::Region < ActiveRecord::Base
   attr_accessible :id, :name, :state, :description
 end

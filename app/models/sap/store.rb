@@ -21,7 +21,8 @@
 #  region_id    - link to region
 #  work_time_from, work_time_to - work period, ex.: 10.00 - 23.00, if null then round-the-clock
 # -------------------------------------------------------------
-class Sap::Store < SapModel
+class Sap::Store < ActiveRecord::Base
+
   # Fields
 	attr_accessible :id, :name, :url, :order_pos, :region_id
 

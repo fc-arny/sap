@@ -21,7 +21,7 @@
 # price                   - product's price
 # store_id                - link to store
 # -------------------------------------------------------------
-class Sap::GoodItem < SapModel
+class Sap::GoodItem < ActiveRecord::Base
   # Fields
   attr_accessible :good_id, :id, :order_pos, :price, :store_id
 

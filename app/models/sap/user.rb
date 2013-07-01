@@ -26,7 +26,7 @@
 # token           - hash for restore token
 # valid_token_to  - expire token
 # -------------------------------------------------------------
-class Sap::User < SapModel
+class Sap::User < ActiveRecord::Base
 
   include Perms::Model
   include ApplicationHelper

@@ -1,6 +1,6 @@
 class CreateSapMeasures < ActiveRecord::Migration
   def up
-    create_table :'sap.measures' do |t|
+    create_table :sap_measures do |t|
       t.integer :id
       t.string  :name, null: false
       t.integer :step, null: false

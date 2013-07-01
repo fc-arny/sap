@@ -20,7 +20,7 @@
 # status      - state of object (:deleted, :fake and etc)
 # vendor_id   - product vendor
 # -------------------------------------------------------------
-class Sap::Good < SapModel
+class Sap::Good < ActiveRecord::Base
 
   # Fields
   attr_accessible :description, :id, :is_approved, :name, :status

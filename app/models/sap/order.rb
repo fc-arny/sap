@@ -20,7 +20,7 @@
 # :sum      - total order sum
 # :user_id  - user ID
 # -------------------------------------------------------------
-class Sap::Order < SapModel
+class Sap::Order < ActiveRecord::Base
   # Constants
   STATES = {STATE_NEW: 'new', STATE_PAID: 'paid', STATE_PACK: 'pack', SATE_DELIVERY: 'delivery', STATE_FINISHED: 'finished'}
 

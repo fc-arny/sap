@@ -13,7 +13,7 @@
 # -------------------------------------------------------------
 # Buyer model referenced to user
 # -------------------------------------------------------------
-class Sap::Customer < SapModel
+class Sap::Customer < ActiveRecord::Base
   # Fields
   attr_accessible :phone, :name, :role
 

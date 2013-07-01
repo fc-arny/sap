@@ -9,6 +9,6 @@
 #  parent_id       :integer
 #
 
-class Sap::Measure < SapModel
+class Sap::Measure < ActiveRecord::Base
   attr_accessible :id, :name, :parent_id, :step, :value_in_parent
 end

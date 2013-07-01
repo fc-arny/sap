@@ -29,7 +29,7 @@
 # url       - category url
 # -------------------------------------------------------------
 
-class Sap::Category < SapModel
+class Sap::Category < ActiveRecord::Base
   # Fields
   attr_accessible :id, :name, :url, :order_pos, :parent_id
 
