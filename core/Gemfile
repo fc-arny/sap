@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+
+gem 'annotate', :path => '../sap_annoate'
+
+# Specify your gem's dependencies in sap_core.gemspec
+gemspec
