@@ -1,2 +1,2 @@
-require "sap/core"
+require 'sap/core'
 

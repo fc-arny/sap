@@ -1,9 +1,8 @@
 # -------------------------------------------------------------
 # API controller for working with Order and OrderList models
 # -------------------------------------------------------------
-class Sap::Api::V1::OrdersController < Sap::ApiController
+class Sap::Api::V1::OrdersController < Sap::Api::BaseController
 
-  after_action :foo
   # -------------------------------------------------------------
   # Get order list
   # -------------------------------------------------------------
@@ -27,7 +26,7 @@ class Sap::Api::V1::OrdersController < Sap::ApiController
       order = Sap::Order.new
       order.state = 'new'
       order.user_id   = current_user ? current_user.id : nil
-      order.hash_str  = get_random_string(6)
+      order.hash_str  = Sap::Tools.get_random_string(6)
       order.save
 
       # Save order id in session
@@ -42,7 +41,6 @@ class Sap::Api::V1::OrdersController < Sap::ApiController
   # -------------------------------------------------------------
   def update
     @order = Sap::Order.get_by_hash(params[:id]) or raise ActiveRecord::RecordNotFound
-    t = 1
   rescue ActiveRecord::RecordNotFound
     render_jsend :error => t('No this good in your basket')
   end
@@ -59,15 +57,5 @@ class Sap::Api::V1::OrdersController < Sap::ApiController
   # -------------------------------------------------------------
   def show
     render :json => 1
-  end
-
-  private
-
-  def to_json(options)
-     t = 1
-  end
-
-  def foo
-    t = 1
   end
 end

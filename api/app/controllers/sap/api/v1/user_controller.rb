@@ -1,7 +1,7 @@
 # -------------------------------------------------------------
 # User controller - register, login
 # -------------------------------------------------------------
-class Sap::Api::V1::UserController < Sap::ApiController
+class Sap::Api::V1::UserController < Sap::Api::BaseController
 
   # -------------------------------------------------------------
   # Try auth user

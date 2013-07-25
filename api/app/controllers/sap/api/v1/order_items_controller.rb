@@ -1,7 +1,7 @@
 # -------------------------------------------------------------
 # Order's goods
 # -------------------------------------------------------------
-class Sap::Api::V1::OrderItemsController < Sap::ApiController
+class Sap::Api::V1::OrderItemsController < Sap::Api::BaseController
 
   # Group params
   wrap_parameters :item, :include => [:count,:good_item_id]

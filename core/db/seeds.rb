@@ -58,7 +58,7 @@ Sap::Good.create([
     {id:16,name:'Коктель отвертка, 1л.', description: 'Тогда мыы идем к Вам', is_approved: true},
     {id:17,name:'Ягуар, 0.5л.', description: 'Тогда мыы идем к Вам', is_approved: true},
 ])
-connection.execute('ALTER SEQUENCE sap.goods_id_seq MINVALUE 10000 START 10000 RESTART 10000;')
+connection.execute('ALTER SEQUENCE sap_goods_id_seq MINVALUE 10000 START 10000 RESTART 10000;')
 
 # Good -> Category
 Sap::CategoryGood.create([

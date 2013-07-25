@@ -34,7 +34,7 @@ class Sap::Category < ActiveRecord::Base
   attr_accessible :id, :name, :url, :order_pos, :parent_id
 
   # Association
-  has_and_belongs_to_many :goods, :join_table => 'sap.category_good'
+  has_and_belongs_to_many :goods, :join_table => 'sap_category_good'
 
 
   class << self

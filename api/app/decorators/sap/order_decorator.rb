@@ -1,12 +1,14 @@
 # -------------------------------------------------------------
-# Category API
+# Order model decorator
 # -------------------------------------------------------------
-class Sap::Api::V1::CategoriesController < Sap::Api::BaseController
+class Sap::OrderDecorator < ApplicationDecorator
+  decorates Sap::Order
+
   # -------------------------------------------------------------
-  # Tree of categories
+  #
   # -------------------------------------------------------------
-  def index
-    categories = Sap::Category.get_category_tree
-    respond_with categories
+  def index_set(json)
+    json.(model, :id, :state)
   end
 end
+

@@ -9,8 +9,8 @@ class CreateSapOrders < ActiveRecord::Migration
       t.string :hash_str, null: false,  comment: 'Hash for order access'
       t.decimal :sum
       t.references :user,               comment: 'Customer.user_id - link to user'
-      t.string :phone, null: false,     comment: 'Phone string'
-      t.string :address, null: false,   comment: 'Address string'
+      t.string :phone,                  comment: 'Phone string'
+      t.string :address,                comment: 'Address string'
       t.string :comment,                comment: 'Order comment'
       t.timestamps
     end

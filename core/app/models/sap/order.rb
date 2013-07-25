@@ -11,25 +11,16 @@
 #  address    :string(255)                            # Address string: area, street, house number and etc
 #  created_at :datetime
 #  updated_at :datetime
-#
-
-# -------------------------------------------------------------
-# Total order
-# == Fields:
-# :id       - order ID
-# :hash_str - for identification
-# :state    - new, paid etx state of order
-# :sum      - total order sum
-# :user_id  - user ID
 # -------------------------------------------------------------
 class Sap::Order < ActiveRecord::Base
+  # TODO: Обдумать статусы заказа
   # Constants
   STATES = {STATE_NEW: 'new', STATE_PAID: 'paid', STATE_PACK: 'pack', SATE_DELIVERY: 'delivery', STATE_FINISHED: 'finished'}
 
   # Fields
   attr_accessible :id, :state, :sum, :user_id, :hash_str, :created_at, :updated_at
 
-  # Reletionships
+  # Relationships
   has_many :order_items, :class_name => 'Sap::OrderItem'
 
 

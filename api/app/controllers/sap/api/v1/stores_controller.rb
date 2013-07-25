@@ -1,5 +1,5 @@
 
-class Sap::Api::V1::StoresController < ApplicationController
+class Sap::Api::V1::StoresController < Sap::Api::BaseController
   # -------------------------------------------------------------
   #
   # -------------------------------------------------------------
