@@ -4,7 +4,7 @@
 class Sap::Api::V1::OrderItemsController < Sap::Api::BaseController
 
   # Group params
-  wrap_parameters :item, :include => [:count,:good_item_id]
+  wrap_parameters :item, :include => [:id,:value,:good_item_id, :order_id]
 
   # -------------------------------------------------------------
   # Update order item
@@ -12,8 +12,10 @@ class Sap::Api::V1::OrderItemsController < Sap::Api::BaseController
   def update
     order = Sap::Order.get_by_hash(params[:order_id]) or raise ActiveRecord::RecordNotFound
 
-    order_item = Sap::OrderItem.where("order_id = :order_id AND id = :id", {:id => params[:id], :order_id => order.id}).first!
-    order_item.update_attributes(params[:item])
+    params[:item][:order_id] = order.id
+
+    order_item = Sap::OrderItem.where('order_id = :order_id AND id = :id', order_item_params).first!
+    order_item.update_attributes(order_item_params)
 
     render_jsend :success => order_item
   rescue ActiveRecord::RecordNotFound
@@ -29,9 +31,17 @@ class Sap::Api::V1::OrderItemsController < Sap::Api::BaseController
 
     params[:item][:order_id] = order.id
 
-    order_item = Sap::OrderItem.where(params[:item]).first_or_initialize
+    order_item = Sap::OrderItem.where(order_item_params).first_or_initialize
     order_item.save()
 
     render_jsend :success => order_item
   end
+
+  private
+    # -------------------------------------------------------------
+    # Params for mass-assignment
+    # -------------------------------------------------------------
+    def order_item_params
+      params.require(:item).permit(:id, :value,:good_item_id, :order_id)
+    end
 end

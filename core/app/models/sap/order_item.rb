@@ -20,7 +20,7 @@
 # -------------------------------------------------------------
 class Sap::OrderItem < ActiveRecord::Base
   # Fields
-  attr_accessible :id, :count, :good_item_id, :order_id
+  attr_accessible :id, :value, :good_item_id, :order_id
 
   # Accociations
   belongs_to :order, :class_name => 'Sap::Order'

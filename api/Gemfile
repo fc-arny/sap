@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'sap_core', :path => "../core"
 
+
 # Specify your gem's dependencies in sap_api.gemspec
 gemspec

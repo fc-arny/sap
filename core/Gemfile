@@ -1,6 +1,4 @@
-source 'https://rubygems.org'
-
-gem 'annotate', :path => '../sap_annoate'
+eval(File.read(File.dirname(__FILE__) + '/../common_spree_dependencies.rb'))
 
 # Specify your gem's dependencies in sap_core.gemspec
 gemspec

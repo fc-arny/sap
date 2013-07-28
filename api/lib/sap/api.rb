@@ -1,4 +1,5 @@
 require 'sap/core'
+require 'draper'
 
 module Sap
   module Api

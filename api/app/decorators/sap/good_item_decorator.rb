@@ -9,19 +9,15 @@ class Sap::GoodItemDecorator < ApplicationDecorator
     json.(model, :id, :price, :store_id)
 
     # Order
-    if model.order_items.count > 0
-      json.order do
-        json.(model.order_items, :id, :order_id, :value)
-      end
-    end
+    #if model.order_items.count > 0
+    #  json.order do
+    #    json.(model.order_items, :id, :order_id, :value)
+    #  end
+    #end
 
     # Good fields
-    json.good do
-      json.(model.good, :id, :name, :description, :measure_value)
-    end
-
-
-
+    json.(model.good, :name, :description, :measure_value)
+    json.good_id model.good.id
   end
 
   # -------------------------------------------------------------
