@@ -1,5 +1,5 @@
 # -------------------------------------------------------------
-# API for goods
+# API for goods   s
 # -------------------------------------------------------------
 class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
   DEFAULT_LIMIT = 3
