@@ -30,5 +30,40 @@ class Sap::GoodItem < ActiveRecord::Base
   # Relationships
   belongs_to :good, :class_name => 'Sap::Good'
   belongs_to :store, :class_name => 'Sap::Store'
-  has_many   :order_items, :class_name => 'Sap::OrderItem'
+
+  # -------------------------------------------------------------
+  # Geting filtred, sorted, ordered goods
+  # -------------------------------------------------------------
+  def self.filter(attributes, sort = nil, order = nil)
+    # Query for know what goods in basket
+    order_id = attributes[:order] || nil
+    order_item_sql  = Sap::OrderItem.where('order_id = ?', order_id).to_sql
+
+    relation = self.joins(:good => :categories).
+      joins("LEFT OUTER JOIN  (#{order_item_sql}) sap_order_items on sap_order_items.good_item_id = sap_good_items.id"  ).
+      select('sap_good_items.*', 'sap_order_items.*', 'sap_goods.*').
+      distinct!
+
+    # Filter
+    attributes.inject(relation) do |scope,(key,value)|
+
+      return scope if value.blank?
+      case key.to_sym
+        when :store
+          scope.where(:store_id => value)
+        when :category
+          scope.where(:sap_category_good => {category_id: value})
+        else
+          scope
+      end
+
+    end
+  end
+
+  # -------------------------------------------------------------
+  #
+  # -------------------------------------------------------------
+  def self.sort
+
+  end
 end

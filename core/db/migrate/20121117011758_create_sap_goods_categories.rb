@@ -12,9 +12,11 @@ class CreateSapGoodsCategories < ActiveRecord::Migration
 			t.boolean :is_approved, default: true,    comment: 'Is good blocked by admin'
 			t.integer :order_pos, default: 0,         comment: 'Sorting value'
 
-      t.integer :measure_id, null: false
-      t.integer :measure_value, null: false
-      t.integer :measure_step, null: false, default: 1
+      t.integer :measure_id,                    comment: 'Fields measure_* for good\'s measure: kilo, pack, bar etc'
+      t.integer :measure_value
+      t.integer :measure_step, default: 1
+
+      t.integer :parent_id, default: null,      comment: 'Parent good. For ex.: one product may have defferent packs'
 			t.timestamps
     end
 
@@ -30,13 +32,14 @@ class CreateSapGoodsCategories < ActiveRecord::Migration
 
     end
 
-    # Intervening table
-    create_table :sap_category_good, comment: 'Intervening table' do |t|
+    # Joining table
+    create_table :sap_category_good, id: false, comment: 'Joining table' do |t|
       t.belongs_to :category
       t.belongs_to :good
     end
 
     # Parent category
+    add_foreign_key :sap_goods, :sap_goods, :column => :parent_id
     add_foreign_key :sap_categories, :sap_categories, :column => :parent_id
 
     # Indexes for categories table
@@ -46,5 +49,8 @@ class CreateSapGoodsCategories < ActiveRecord::Migration
     # Indexes for goods table
     add_index :sap_goods, :id
     add_index :sap_goods, :order_pos
+
+    # JOining table
+    add_index :sap_category_good, [:category_id, :good_id], :unique => true
 	end
 end

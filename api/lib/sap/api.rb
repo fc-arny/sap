@@ -1,4 +1,7 @@
 require 'sap/core'
+
+# For creating views
+require 'jbuilder'
 require 'draper'
 
 module Sap
