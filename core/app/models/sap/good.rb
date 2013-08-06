@@ -25,7 +25,7 @@
 class Sap::Good < ActiveRecord::Base
 
   # Fields
-  attr_accessible :description, :id, :is_approved, :name, :status, :measure_id, :measure_value
+  attr_accessible :description, :id, :is_approved, :name, :status, :measure_id, :value
 
   # Associations
   has_many :good_items, :class_name => 'Sap::GoodItem'

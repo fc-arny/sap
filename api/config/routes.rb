@@ -1,12 +1,22 @@
 Sap::Core::Engine.routes.draw do
     # API
-    namespace 'api' do
+    namespace :api do
       # API v1.0
-      namespace 'v1' do
+      namespace :v1 do
 
-        resources :goods          # Goods
+
         resources :stores         # Stores
         resources :categories     # Categories
+
+        # Goods
+        scope shallow_path: 'good' do
+          resources :goods do
+            resources :items, :shallow => true, :controller => 'good_items'
+            collection do
+              get 'list', :action => :list
+            end
+          end
+        end
 
         # Order
         resources :orders do

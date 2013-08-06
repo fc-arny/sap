@@ -5,19 +5,15 @@ class CreateSapGoodsCategories < ActiveRecord::Migration
 	def change
 
     # Create goods table
-		create_table :sap_goods, comment: 'All goods from all stores' do |t|
+    create_table :sap_goods, comment: 'All goods from all stores' do |t|
 
-			t.string  :name, null: false,             comment: 'Goods name'
-			t.text    :description,                   comment: 'Goods\'s description'
-			t.boolean :is_approved, default: true,    comment: 'Is good blocked by admin'
-			t.integer :order_pos, default: 0,         comment: 'Sorting value'
-
-      t.integer :measure_id,                    comment: 'Fields measure_* for good\'s measure: kilo, pack, bar etc'
-      t.integer :measure_value
-      t.integer :measure_step, default: 1
-
-      t.integer :parent_id, default: null,      comment: 'Parent good. For ex.: one product may have defferent packs'
-			t.timestamps
+      t.string  :name, null: false,             comment: 'Goods name'
+      t.text    :description,                   comment: 'Goods\'s description'
+      t.boolean :is_approved, default: true,    comment: 'Is good blocked by admin'
+      t.integer :value, null: false,            comment: 'How many gram or priece in one item'
+      t.integer :measure_id,                    comment: 'Good\'s measure: kilo, pack, bar etc'
+      t.integer :parent_id, default: nil,      comment: 'Parent good. For ex.: one product may have defferent packs'
+      t.timestamps
     end
 
     # Create category table
@@ -48,7 +44,6 @@ class CreateSapGoodsCategories < ActiveRecord::Migration
 
     # Indexes for goods table
     add_index :sap_goods, :id
-    add_index :sap_goods, :order_pos
 
     # JOining table
     add_index :sap_category_good, [:category_id, :good_id], :unique => true

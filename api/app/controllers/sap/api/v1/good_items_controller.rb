@@ -1,5 +1,5 @@
 # -------------------------------------------------------------
-# API for goods   s
+# API for goods
 # -------------------------------------------------------------
 class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
   DEFAULT_LIMIT = 3
@@ -36,7 +36,7 @@ class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
     #@limit  = DEFAULT_LIMIT
     #@offset = params[:page].to_i * DEFAULT_LIMIT || 0
     #
-    @goods = @goods.limit( 10 )
+    #@goods = @goods.limit( 10 )
   end
 
   # -------------------------------------------------------------

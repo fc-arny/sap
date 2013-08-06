@@ -25,7 +25,7 @@
 # -------------------------------------------------------------
 class Sap::GoodItem < ActiveRecord::Base
   # Fields
-  attr_accessible :good_id, :id, :order_pos, :price, :store_id, :good_id_in_store
+  attr_accessible :good_id, :id, :order_pos, :price, :store_id, :store_gid
 
   # Relationships
   belongs_to :good, :class_name => 'Sap::Good'
@@ -41,7 +41,7 @@ class Sap::GoodItem < ActiveRecord::Base
 
     relation = self.joins(:good => :categories).
       joins("LEFT OUTER JOIN  (#{order_item_sql}) sap_order_items on sap_order_items.good_item_id = sap_good_items.id"  ).
-      select('sap_good_items.*', 'sap_order_items.*', 'sap_goods.*').
+      select('sap_good_items.*', 'sap_order_items.value as value').
       distinct!
 
     # Filter

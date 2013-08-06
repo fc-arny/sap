@@ -4,28 +4,19 @@
 class Sap::GoodItemDecorator < ApplicationDecorator
   decorate Sap::GoodItem
 
-  def index_set(json)
+  def list_set(json)
     # GoodItem fields
-    json.(model, :id, :price, :store_id)
-
-    # Order
-    #if model.order_items.value > 0
-    #  json.value model.order_items.value
-    #  #json.order do
-    #  #  json.(model.order_items, :id, :order_id, :value)
-    #  #end
-    #end
+    json.(model, :id, :price, :store_id, :good_id)
 
     # Good fields
     json.(model.good, :name, :description, :measure_value)
-    json.good_id model.good.id
-  end
 
-  # -------------------------------------------------------------
-  #
-  # -------------------------------------------------------------
-  def list_set(json)
-    json.(model, :id, :price, :store_id)
-    json.name model.good.name
+    # How much in basket
+    json.value model.value
+
+    # Cost
+    unless model.value.nil?
+      json.cost
+    end
   end
 end
