@@ -7,7 +7,7 @@ class CreateSapOrderItems < ActiveRecord::Migration
 
       t.references :order, null: false,                       comment: 'Order ID'
       t.references :good_item, null: false,                   comment: 'GoodItem ID'
-      t.decimal :value, null: false, precision: 10, scale: 3, comment: 'Good value. Ex.: 100 packs or 1500 gram'
+      t.integer :value, null: false,                          comment: 'Good value. Ex.: 100 packs or 1500 gram'
 
       t.timestamps
     end

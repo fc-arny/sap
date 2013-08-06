@@ -9,14 +9,14 @@ class Sap::GoodItemDecorator < ApplicationDecorator
     json.(model, :id, :price, :store_id, :good_id)
 
     # Good fields
-    json.(model.good, :name, :description, :measure_value)
+    json.(model.good, :name, :description, :value)
 
     # How much in basket
     json.value model.value
 
     # Cost
     unless model.value.nil?
-      json.cost
+      json.cost (model.value/model.good.value)*model.price
     end
   end
 end

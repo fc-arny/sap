@@ -255,4 +255,5 @@ Sap::OrderItem.create([
     {id: 2, order_id: 1, value: 3500, good_item_id:19},
     {id: 3, order_id: 1, value: 10,   good_item_id:1},
     {id: 4, order_id: 1, value: 5,    good_item_id:13},
+    {id: 5, order_id: 1, value: 5,    good_item_id:12},
   ])
