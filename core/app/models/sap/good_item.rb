@@ -22,8 +22,13 @@ class Sap::GoodItem < ActiveRecord::Base
   # -------------------------------------------------------------
   # Geting filtred
   # -------------------------------------------------------------
-  def self.filter(attributes)
+  def self.filter(attributes, sort = nil)
     relation = self.includes(:good => :categories)
+
+    unless sort.nil?
+      relation.order! sprintf('sap_%<col>s %<dir>s', col: sort[:col], dir: sort[:dir])
+    end
+
 
     attributes.inject(relation) do |scope,(key,value)|
       return scope if value.empty?
