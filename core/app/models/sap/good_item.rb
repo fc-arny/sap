@@ -10,60 +10,37 @@
 #  order_pos        :integer
 #  created_at       :datetime
 #  updated_at       :datetime
-#
-
-
-# -------------------------------------------------------------
-# Stores' goods
-# -------------------------------------------------------------
-# ==Fields:
-# good_id                 - link to Sap::Good
-# good_id_in_store        - identificator in store system
-# order_pos               - for sorting
-# price                   - product's price
-# store_id                - link to store
 # -------------------------------------------------------------
 class Sap::GoodItem < ActiveRecord::Base
   # Fields
-  attr_accessible :good_id, :id, :order_pos, :price, :store_id, :store_gid
+  attr_accessible :id, :good_id, :price, :store_id, :store_gid, :order_pos
 
   # Relationships
   belongs_to :good, :class_name => 'Sap::Good'
   belongs_to :store, :class_name => 'Sap::Store'
 
   # -------------------------------------------------------------
-  # Geting filtred, sorted, ordered goods
+  # Geting filtred
   # -------------------------------------------------------------
-  def self.filter(attributes, sort = nil, order = nil)
-    # Query for know what goods in basket
-    order_id = attributes[:order] || nil
-    order_item_sql  = Sap::OrderItem.where('order_id = ?', order_id).to_sql
+  def self.filter(attributes)
+    relation = self.includes(:good => :categories)
 
-    relation = self.joins(:good => :categories).
-      joins("LEFT OUTER JOIN  (#{order_item_sql}) sap_order_items on sap_order_items.good_item_id = sap_good_items.id"  ).
-      select('sap_good_items.*', 'sap_order_items.value as value').
-      distinct!
-
-    # Filter
     attributes.inject(relation) do |scope,(key,value)|
+      return scope if value.empty?
 
-      return scope if value.blank?
       case key.to_sym
         when :store
           scope.where(:store_id => value)
         when :category
+          # Find good that belogs to many categories at sametime
           scope.where(:sap_category_good => {category_id: value})
+        when :order
+          # Get only goods from basket
+          scope.includes(:order_items).where(:sap_order_items => {order_id: value})
         else
           scope
       end
-
     end
   end
 
-  # -------------------------------------------------------------
-  #
-  # -------------------------------------------------------------
-  def self.sort
-
-  end
 end

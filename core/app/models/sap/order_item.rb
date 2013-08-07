@@ -8,19 +8,10 @@
 #  count        :integer
 #  created_at   :datetime
 #  updated_at   :datetime
-#
-
 # -------------------------------------------------------------
-# Like a "BASKET"
-# -------------------------------------------------------------
-# ==Fields
-# :count    - just count
-# :good_id  - link to good list item
-# :order_id - link to total order
-# -------------------------------------------------------------
-class Sap::OrderItem < ActiveRecord::Base
+class Sap::OrderItem < ActiveRecord::Base   # TODO: move this table to redis or delete id column
   # Fields
-  attr_accessible :id, :value, :good_item_id, :order_id
+  attr_accessible :good_id, :store_id, :value, :price, :order_id
 
   # Accociations
   belongs_to :order, :class_name => 'Sap::Order'
