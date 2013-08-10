@@ -1,7 +1,20 @@
 # -------------------------------------------------------------
 # API for good_items
 # -------------------------------------------------------------
-class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
+class Sap::Api::V1::Good::ItemsController < Sap::Api::BaseController
+
+  # -------------------------------------------------------------
+  # List of good items
+  # -------------------------------------------------------------
+  def index
+    @goods = Sap::GoodItem.filter(params[:filter], params[:sort])
+
+    @count  = @goods.count.to_i
+    @offset = (params[:offset] || 0).to_i
+    @limit  = (params[:limit] || @count - @offset).to_i
+
+    @goods = @goods.limit(@limit).offset(@offset)
+  end
 
   # -------------------------------------------------------------
   # GET /api/v1/good/items/:id

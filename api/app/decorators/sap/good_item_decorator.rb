@@ -28,8 +28,8 @@ class Sap::GoodItemDecorator < ApplicationDecorator
         json.(model.good, :id, :name, :description, :value)
       end
 
+      # Price for this good at other stores
       prices = args[:prices] || {}
-
       json.prices prices do |price|
         json.(price, :store_id, :price)
       end

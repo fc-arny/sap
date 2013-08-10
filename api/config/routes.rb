@@ -9,14 +9,16 @@ Sap::Core::Engine.routes.draw do
         resources :categories     # Categories
 
         # Goods
-        scope shallow_path: 'good' do
-          resources :goods do
-            resources :items, :shallow => true, :controller => 'good_items'
-            collection do
-              get 'list', :action => :list
-            end
-          end
+        resources :goods
+        namespace :good  do
+          resources :items, :controller => :items
         end
+        #scope shallow_path: 'good' do
+        #  resources :goods do
+        #    resources :items, only: [:index], :shallow => true
+        #
+        #  end
+        #end
 
         # Order
         resources :orders do
