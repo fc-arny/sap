@@ -18,7 +18,7 @@ class Sap::GoodItemDecorator < ApplicationDecorator
   end
 
   # Detailed view
-  def view_set
+  def view_set(args)
     #list_set
     Jbuilder.new do |json|
       json.(model, :id, :price, :store_id)
@@ -27,17 +27,20 @@ class Sap::GoodItemDecorator < ApplicationDecorator
       json.good do
         json.(model.good, :id, :name, :description, :value)
       end
+
+      prices = args[:prices] || {}
+
+      json.prices prices do |price|
+        json.(price, :store_id, :price)
+      end
+
+      reviews = [{author: 'Arthur', text: 'Cool'},{author: 'Nick', text: 'So bad ;-('}]
+      json.reviews reviews do |review|
+        json.author review[:author]
+        json.text review[:text]
+      end
     end
 
-
-    #data
     # TODO: Add reviews, prices and other info about good
-    #reviews = [{author: 'Arthur', text: 'Cool'},{author: 'Nick', text: 'So bad ;-('}]
-    #
-    #json.reviews reviews do |review|
-    #  json.author review[:author]
-    #  json.text review[:text]
-    #end
-
   end
 end
