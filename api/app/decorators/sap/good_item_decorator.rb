@@ -6,7 +6,7 @@ class Sap::GoodItemDecorator < ApplicationDecorator
 
   # Good list
   def list_set
-    lambda do |json|
+    Jbuilder.new do |json|
       # GoodItem fields
       json.(model, :id, :price, :store_id)
 
@@ -20,7 +20,7 @@ class Sap::GoodItemDecorator < ApplicationDecorator
   # Detailed view
   def view_set
     #list_set
-    lambda do |json|
+    Jbuilder.new do |json|
       json.(model, :id, :price, :store_id)
 
       # Good fields
