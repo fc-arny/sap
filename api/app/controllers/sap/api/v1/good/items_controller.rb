@@ -4,6 +4,7 @@
 class Sap::Api::V1::Good::ItemsController < Sap::Api::BaseController
 
   # -------------------------------------------------------------
+  # GET /api/v1/good/items
   # List of good items
   # -------------------------------------------------------------
   def index

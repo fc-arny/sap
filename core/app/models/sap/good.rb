@@ -33,17 +33,8 @@ class Sap::Good < ActiveRecord::Base
 
   #belongs_to :vandor, :class_name => 'Sap::Vendor'
 
-  # -------------------------------------------------------------
   # Get list of goods by store
-  # -------------------------------------------------------------
   def get_good_list(store = nil, category = nil)
      self.find_all
-  end
-
-  # -------------------------------------------------------------
-  #
-  # -------------------------------------------------------------
-  def as_json(options = { })
-    super(options.merge(:only => [:id, :name, :price]))
   end
 end

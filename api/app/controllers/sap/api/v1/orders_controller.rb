@@ -17,6 +17,7 @@ class Sap::Api::V1::OrdersController < Sap::Api::BaseController
   end
 
   # -------------------------------------------------------------
+  # POST /api/v1/orders
   # Create order
   # -------------------------------------------------------------
   def create
@@ -37,6 +38,7 @@ class Sap::Api::V1::OrdersController < Sap::Api::BaseController
   end
 
   # -------------------------------------------------------------
+  # PATCH/PUT /api/v1/orders/:id
   # Update order model
   # -------------------------------------------------------------
   def update
@@ -53,9 +55,14 @@ class Sap::Api::V1::OrdersController < Sap::Api::BaseController
   end
 
   # -------------------------------------------------------------
-  #
+  # Show
   # -------------------------------------------------------------
   def show
-    render :json => 1
+    @order = Sap::Order.find(params[:id])
+
+    filter = params[:filter] || {}
+    filter[:order] = params[:id]
+
+    @order_items = Sap::OrderItem.filter(filter)
   end
 end
