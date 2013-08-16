@@ -3,60 +3,38 @@
 # -------------------------------------------------------------
 class Sap::Api::V1::OrdersController < Sap::Api::BaseController
 
-  # -------------------------------------------------------------
-  # Get order list
-  # -------------------------------------------------------------
+  # Get list of orders
+  # GET /api/v1/orders
   def index
     # Fetch order by Id and Hash
-    order = Sap::Order.get_by_hash( params[:hash])
-
-    ## Fetch order list
-    #goods = Sap::OrderList.get_by_order_id order.id
-
-    respond_with order
+    @orders = Sap::Order.all()
   end
 
-  # -------------------------------------------------------------
   # POST /api/v1/orders
   # Create order
-  # -------------------------------------------------------------
   def create
-    if session[:order_id]
-      order = Sap::Order.find(session[:order_id])
-    else
-      order = Sap::Order.new
-      order.state = 'new'
-      order.user_id   = current_user ? current_user.id : nil
-      order.hash_str  = Sap::Tools.get_random_string(6)
-      order.save
+    order = Sap::Order.new
+    order.state = Sap::Order::ST_NEW
+    # TODO: определять текущего пользователя
+    # TODO: вместо хеша к каждой таблице, будет одна таблца с хешами
+    order.hash_str  = Sap::Tools.get_random_string(6)
+    order.save
 
-      # Save order id in session
-      session[:order_id] = order.id
-    end
-
-    render_jsend :success => order
+    @id = order.id
   end
 
-  # -------------------------------------------------------------
   # PATCH/PUT /api/v1/orders/:id
   # Update order model
-  # -------------------------------------------------------------
   def update
-    @order = Sap::Order.get_by_hash(params[:id]) or raise ActiveRecord::RecordNotFound
+    @order = Sap::Order.find(params[:id]) or raise ActiveRecord::RecordNotFound
   rescue ActiveRecord::RecordNotFound
-    render_jsend :error => t('No this good in your basket')
+    @message  = t('No this good in your basket')
+    @status   = :error
   end
 
-  # -------------------------------------------------------------
-  # Add good to order
-  # -------------------------------------------------------------
-  def add_good
 
-  end
-
-  # -------------------------------------------------------------
-  # Show
-  # -------------------------------------------------------------
+  # Show order
+  # GET /api/v1/order/:id
   def show
     @order = Sap::Order.find(params[:id])
 

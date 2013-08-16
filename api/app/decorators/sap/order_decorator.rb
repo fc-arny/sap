@@ -3,7 +3,7 @@ class Sap::OrderDecorator < ApplicationDecorator
   decorates Sap::Order
 
   # Index set of fields
-  def index_set(order_items)
+  def index_set(order_items = [])
     Jbuilder.new do |json|
       json.(model, :id, :state, :sum, :user_id, :phone, :address, :comment)
 
@@ -11,7 +11,7 @@ class Sap::OrderDecorator < ApplicationDecorator
       json.items items do |item|
 
         # Culculate price at this time
-        json.current_price (item.value/item.good_item.good.value) * item.good_item.price
+        json.sum (item.value/item.good_item.good.value) * item.good_item.price
 
         # Store
         json.store_id item.good_item.store_id

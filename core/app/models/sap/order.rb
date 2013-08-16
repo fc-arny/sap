@@ -14,8 +14,12 @@
 # -------------------------------------------------------------
 class Sap::Order < ActiveRecord::Base
   # TODO: Обдумать статусы заказа
-  # Constants
-  STATES = {STATE_NEW: 'new', STATE_PAID: 'paid', STATE_PACK: 'pack', SATE_DELIVERY: 'delivery', STATE_FINISHED: 'finished'}
+  # Order states
+  ST_NEW       = 'new'
+  ST_PAID      = 'paid'
+  ST_PACK      = 'pack'
+  ST_DELIVERY   = 'delivery'
+  ST_FINISHED  = 'finished'
 
   # Fields
   attr_accessible :id, :state, :sum, :user_id, :hash_str, :created_at, :updated_at
