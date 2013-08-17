@@ -22,6 +22,7 @@ class CreateSapGoodsCategories < ActiveRecord::Migration
       t.string  :name, null: false,         comment: 'Category name'
       t.string  :url, null: false,          comment: 'Category url segment'
       t.integer :order_pos, default: 0,     comment: 'Sorting value'
+      t.boolean :show_in_menu, default: true, comment: 'Category like tag. If show_in menu os true'
       t.integer :parent_id, default: nil,   comment: 'Parent category'
 
       t.timestamps

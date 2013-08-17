@@ -9,91 +9,37 @@
 #  parent_id  :integer
 #  created_at :datetime
 #  updated_at :datetime
-#
-
 # -------------------------------------------------------------
-# Categories for goods. We have two-level categorization!
-#
-# @example
-#   Alcohol
-#     |_ Bear
-#     |_ Wine
-#     |_Cocktail
-#     |...
-#     - no more subcategory for Bear, Wine or Cocktail
-# -------------------------------------------------------------
-# ==Fields:
-# name      - category name
-# order_pos - sort for categories
-# parent_id - parent category
-# url       - category url
-# -------------------------------------------------------------
-
 class Sap::Category < ActiveRecord::Base
+  # Scopes
+  scope :menu, -> { where(show_in_menu: true)}
+
   # Fields
   attr_accessible :id, :name, :url, :order_pos, :parent_id
 
   # Association
   has_and_belongs_to_many :goods, :join_table => 'sap_category_good'
 
+  # Fetch categories by parent_id and deep
+  def self.get_children_categories(parent_id = nil, deep = 0, show_in_menu = true)
+    categories = []
 
-  class << self
+    begin
+      children = self.where(parent_id: parent_id, show_in_menu: show_in_menu).to_a
 
-    # -------------------------------------------------------------
-    # Find child in deep
-    # -------------------------------------------------------------
-    def find_child_in_deep(categories, deep = 0, parent = nil)
+      # If no categories then break
+      break if children.empty?
 
-      _deep = 0
-      _parent = parent
-      _categories = categories
-      cur_category = nil
-
-      # Cycle while current deep >= finding deep
-      while _deep <= deep do
-
-        # Break if parent not fount
-        if _categories.size == 1
-          cur_category = _categories[0]
-          break
-        end
-
-        # Search category with parent_id = current parent category
-        cur_category = _categories.select do |cat|
-          # Set current parent category = found category and current deep = current deep + 1
-          cat.parent_id == _parent
-        end
-
-        # Unset found category
-        _categories.delete(cur_category)
-
-        # Increment deep and change parent to found category
-        _deep += 1
-        _parent = cur_category.first ? cur_category.first.id : nil
+      parent_id = []
+      # Put children to result array and fetch their children
+      children.each do |category|
+        categories << category
+        parent_id << category.id
       end
 
-      # Return round category
-      cur_category
-    end
+      deep -= 1
+    end while deep >= 0
 
-    # -------------------------------------------------------------
-    # Getting category tree ordered by order_pos
-    # -------------------------------------------------------------
-    def get_category_tree
-      # TODO: Cache it!
-      tree = []
-      parent = self.where("parent_id is null").order("order_pos ASC")
-      parent.each do |cat|
-        # Get children
-        children = self.where("parent_id = :pid", {pid: cat.id}).order("order_pos ASC")
-
-        childrenTree = []
-        children.each do |child|
-          childrenTree << {id: child.id, name: child.name, url: child.url}
-        end
-        tree << { id: cat.id,name: cat.name, url: cat.url,children: childrenTree}
-      end
-      tree
-    end
+    categories
   end
 end
