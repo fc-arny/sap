@@ -3,10 +3,8 @@
 # -------------------------------------------------------------
 class Sap::Api::V1::Good::ItemsController < Sap::Api::BaseController
 
-  # -------------------------------------------------------------
-  # GET /api/v1/good/items
   # List of good items
-  # -------------------------------------------------------------
+  # GET /api/v1/good/items
   def index
     @goods = Sap::GoodItem.filter(params[:filter], params[:sort])
 
@@ -17,35 +15,14 @@ class Sap::Api::V1::Good::ItemsController < Sap::Api::BaseController
     @goods = @goods.limit(@limit).offset(@offset)
   end
 
-  # -------------------------------------------------------------
-  # GET /api/v1/good/items/:id
   # View good item
-  # -------------------------------------------------------------
+  # GET /api/v1/good/items/:id
   def show
     @good_item = Sap::GoodItem.
       includes(:good).
       find(params[:id])
 
     @prices = Sap::GoodItem.where(:good_id => @good_item.good_id)
-  end
-
-  # -------------------------------------------------------------
-  # Search goods by params
-  # -------------------------------------------------------------
-  def search
-
-  end
-
-  # -------------------------------------------------------------
-  # Create goods
-  # -------------------------------------------------------------
-  def create
-    #if @task.save
-    #  respond_with(@task)
-    #else
-    #  respond_with(@task, :status => :unprocessable_entity)
-    #end
-
   end
 end
 

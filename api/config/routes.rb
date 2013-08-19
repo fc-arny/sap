@@ -22,7 +22,7 @@ Sap::Core::Engine.routes.draw do
 
         # Order
         resources :orders do
-          resource :items, :controller => 'order_items'
+          resources :items, :controller => 'order_items'
         end
 
         # User

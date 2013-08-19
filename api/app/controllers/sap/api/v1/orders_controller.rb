@@ -23,8 +23,8 @@ class Sap::Api::V1::OrdersController < Sap::Api::BaseController
     @id = order.id
   end
 
-  # PATCH/PUT /api/v1/orders/:id
   # Update order model
+  # PATCH/PUT /api/v1/orders/:id
   def update
     @order = Sap::Order.find(params[:id]) or raise ActiveRecord::RecordNotFound
   rescue ActiveRecord::RecordNotFound

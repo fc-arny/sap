@@ -16,6 +16,7 @@ class Sap::Api::V1::OrderItemsController < Sap::Api::BaseController
   end
 
   # Add good to order
+  # POST /api/v1/order/items/
   def create
     @order_item = Sap::OrderItem.
       where('good_item_id = :gi_id AND order_id = :order_id', gi_id: params[:good_item_id], order_id: params[:order_id]).
