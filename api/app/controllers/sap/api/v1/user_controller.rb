@@ -3,9 +3,7 @@
 # -------------------------------------------------------------
 class Sap::Api::V1::UserController < Sap::Api::BaseController
 
-  # -------------------------------------------------------------
   # Try auth user
-  # -------------------------------------------------------------
   def auth
     form = LoginForm.new params[:login_form]
 
@@ -27,11 +25,9 @@ class Sap::Api::V1::UserController < Sap::Api::BaseController
     end
   end
 
-  # -------------------------------------------------------------
-  #  POST: Create new user
-  # -------------------------------------------------------------
+  # Create new user
+  # POST
   def create
-
     customer_form = NewCustomerForm.new
 
     if customer_form.submit(params[:customer])

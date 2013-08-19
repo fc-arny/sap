@@ -3,7 +3,7 @@
 # -------------------------------------------------------------
 class Sap::Api::BaseController < ActionController::Base
 
-  layout 'application'
+  layout '/sap/layouts/api'
 
   # Only JSON response
   respond_to :json
