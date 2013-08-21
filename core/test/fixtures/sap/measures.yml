@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  name: MyString
+  step: 1
+  value_inrent: 1
+  parent_idinteger: MyString
+
+two:
+  id: 1
+  name: MyString
+  step: 1
+  value_inrent: 1
+  parent_idinteger: MyString

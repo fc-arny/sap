@@ -9,10 +9,15 @@ class CreateSapGoodsCategories < ActiveRecord::Migration
 
       t.string  :name, null: false,             comment: 'Goods name'
       t.text    :description,                   comment: 'Goods\'s description'
-      t.boolean :is_approved, default: true,    comment: 'Is good blocked by admin'
+
       t.integer :value, null: false,            comment: 'How many gram or priece in one item'
       t.integer :measure_id,                    comment: 'Good\'s measure: kilo, pack, bar etc'
-      t.integer :parent_id, default: nil,      comment: 'Parent good. For ex.: one product may have defferent packs'
+
+      t.boolean :is_approved, default: true,    comment: 'Is good blocked by admin'
+      t.boolean :is_group, default: false,      comment: 'Group of same product in defferent packs'
+
+      t.integer :group_id, default: nil,       comment: 'Reference to group'
+
       t.timestamps
     end
 
@@ -36,7 +41,7 @@ class CreateSapGoodsCategories < ActiveRecord::Migration
     end
 
     # Parent category
-    add_foreign_key :sap_goods, :sap_goods, :column => :parent_id
+    add_foreign_key :sap_goods, :sap_goods, :column => :group_id
     add_foreign_key :sap_categories, :sap_categories, :column => :parent_id
 
     # Indexes for categories table
