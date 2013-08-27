@@ -11,15 +11,15 @@ class Sap::Api::BaseController < ActionController::Base
   # Only JSON response
   respond_to :json
 
+
   prepend_before_filter :fetch_auth_token
+  before_filter :authenticate_user
   before_filter :skip_trackable
 
 
 
   # Catch all exceptions
   rescue_from Exception, :with => :render_error
-
-
 
   protected
     # Error handler
@@ -31,15 +31,25 @@ class Sap::Api::BaseController < ActionController::Base
 
     # Fetch auth token value from header
     def fetch_auth_token
-      if auth_token = request.headers["X-AUTH-TOKEN"]
-        params[:auth_token] = auth_token
-      end
+      request.params[:auth_token] = auth_token
     end
 
     # Auth every request
     def skip_trackable
       request.env['devise.skip_trackable'] = true
     end
+
+    # Authenticate user
+    def authenticate_user
+
+    end
+
+  # Get auth token
+    def auth_token
+      request.headers['X-SAP-AUTH-TOKEN'] || params[:auth_token]
+    end
+
+    helper_method :auth_token
 
 
 end
