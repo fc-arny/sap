@@ -1,12 +1,20 @@
+require_dependency 'sap/api/controller_setup'
 # -------------------------------------------------------------
 # Controller for api request
 # -------------------------------------------------------------
 class Sap::Api::BaseController < ActionController::Base
 
+  include Sap::Api::ControllerSetup
+
   layout '/sap/layouts/api'
 
   # Only JSON response
   respond_to :json
+
+  prepend_before_filter :fetch_auth_token
+  before_filter :skip_trackable
+
+
 
   # Catch all exceptions
   rescue_from Exception, :with => :render_error
@@ -20,4 +28,18 @@ class Sap::Api::BaseController < ActionController::Base
       logger.error(exception)
       #notify_airbrake(exception)
     end
+
+    # Fetch auth token value from header
+    def fetch_auth_token
+      if auth_token = request.headers["X-AUTH-TOKEN"]
+        params[:auth_token] = auth_token
+      end
+    end
+
+    # Auth every request
+    def skip_trackable
+      request.env['devise.skip_trackable'] = true
+    end
+
+
 end

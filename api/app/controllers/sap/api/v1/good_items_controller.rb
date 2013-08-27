@@ -6,6 +6,7 @@ class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
   # List of good items
   # GET /api/v1/good/items
   def index
+
     @goods = Sap::GoodItem.filter(params[:filter], params[:sort])
 
     @count  = @goods.count.to_i
@@ -18,6 +19,7 @@ class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
   # View good item
   # GET /api/v1/good/items/:id
   def show
+    t = user_signed_in?
     @good_item = Sap::GoodItem.
       includes(:good).
       find(params[:id])

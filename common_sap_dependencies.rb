@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'devise'
+
 group :development do
   # Annotate models
   gem 'migration_comments'

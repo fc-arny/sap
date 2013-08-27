@@ -14,10 +14,13 @@ Sap::Core::Engine.routes.draw do
         #resources :items, :controller => :items
 
 
+        resources :goods
 
-        resources :goods do
-          resource :items
+        scope :good do
+          resources :items, :controller => :good_items, :as => 'good_items'
         end
+
+
 
 
         # Order
@@ -26,9 +29,27 @@ Sap::Core::Engine.routes.draw do
         end
 
         # User
-        resources :user do
-          post 'auth', :on => :collection
-        end
+        resource :sessions, :only => [:creaate, :destroy]
+        #namespace :user do
+        #  post :auth, :action => :auth
+        #end
+
+
       end
     end
+
+    devise_for :users,
+
+     :class_name => 'Sap::User',
+     :controllers => {
+       sessions: 'sap/api/v1/sessions',
+       registrations: 'sap/api/v1/user',
+       passwords: 'sap/passwords'
+     },
+     :skip => [:unlocks, :omniauth_callbacks],
+     :path_names => { sign_out: 'logout' },
+     :path_prefix => 'api/v1'
+
+
+
 end

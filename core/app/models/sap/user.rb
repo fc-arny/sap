@@ -13,63 +13,17 @@
 #  role_type      :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
-#
-
 # -------------------------------------------------------------
 # Base model for users
 # -------------------------------------------------------------
-# ==Fields:
-# login           - login string (email or phone for customer)
-# password        - secret key = md5(md5(password) + salt)
-# salt            - increase secure for password
-# role_id         - role type: Admin, Manager and Customer
-# token           - hash for restore token
-# valid_token_to  - expire token
-# -------------------------------------------------------------
 class Sap::User < ActiveRecord::Base
 
-  include Perms::Model
-  include ApplicationHelper
-
   # Fields
-  attr_accessible :id, :login, :password, :salt, :token, :valid_token_to, :name, :is_temporary
+  attr_accessible :id, :login, :encrypted_password, :name, :is_temporary, :authentication_token
 
   # Relationships
   belongs_to :role, :polymorphic => true
 
-  # Restrict
-  restrict do |user, record|
-    scope :fetch, -> { where('id IN (30,31)') }
-    scope :delete, -> { where('id IN (30,31)') }
-    can [:view, :create, :update]
-  end
-
-
-
-  # -------------------------------------------------------------
-  # Auth user by password
-  # -------------------------------------------------------------
-  def auth_by_password(password)
-    hash = hash_password(password, self.salt)
-    result = ( hash == self.password )
-  end
-
-
-
-  class << self
-
-    # -------------------------------------------------------------
-    # Generate token
-    # -------------------------------------------------------------
-    def generate_token(user)
-      Digest::SHA1.hexdigest( user.name + user.salt + user.password )
-    end
-
-    # -------------------------------------------------------------
-    # Find user by valid token
-    # -------------------------------------------------------------
-    def get_user_by_valid_token(token)
-      self.where('token = ? AND (valid_token_to < ? OR valid_token_to IS NULL)', token).first
-    end
-  end
+  # Auth
+  devise :database_authenticatable, :registerable, :token_authenticatable
 end
