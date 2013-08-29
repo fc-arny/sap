@@ -17,7 +17,6 @@ class Sap::Api::BaseController < ActionController::Base
   before_filter :skip_trackable
 
 
-
   # Catch all exceptions
   rescue_from Exception, :with => :render_error
 
@@ -51,5 +50,9 @@ class Sap::Api::BaseController < ActionController::Base
 
     helper_method :auth_token
 
+    # Render empty
+    def render_empty
+      render :file => '/sap/api/common/empty'
+    end
 
 end

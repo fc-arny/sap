@@ -38,8 +38,7 @@ Sap::Core::Engine.routes.draw do
       end
     end
 
-    devise_for :users,
-
+    devise_for :user,
      :class_name => 'Sap::User',
      :controllers => {
        sessions: 'sap/api/v1/sessions',
@@ -47,7 +46,7 @@ Sap::Core::Engine.routes.draw do
        passwords: 'sap/passwords'
      },
      :skip => [:unlocks, :omniauth_callbacks],
-     :path_names => { sign_out: 'logout' },
+     :path_names => { sign_out: 'logout', sign_in: 'auth', sign_up: 'register' },
      :path_prefix => 'api/v1'
 
 
