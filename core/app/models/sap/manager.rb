@@ -19,7 +19,7 @@
 # -------------------------------------------------------------
 class Sap::Manager < ActiveRecord::Base
   # Fields
-	attr_accessible :first_name, :last_name, :store_id, :user_id
+	#attr_accessible :first_name, :last_name, :store_id, :user_id
 
   # Relationships
   has_one :user, :class_name => 'Sap::User', :as => :role

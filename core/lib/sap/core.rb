@@ -3,6 +3,8 @@ require 'devise'
 
 module Sap
 
+  autoload :UserParameterSanitizer, 'user_parameter_sanitizer'
+
   # Used to configure Sap.
   #
   # Example:

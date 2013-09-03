@@ -55,4 +55,9 @@ class Sap::Api::BaseController < ActionController::Base
       render :file => '/sap/api/common/empty'
     end
 
+    # Sanitiser params for devise controllers
+    def devise_parameter_sanitizer
+      Sap::User::ParameterSanitizer.new( Sap::User, :user, params)
+    end
+
 end

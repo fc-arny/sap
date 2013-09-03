@@ -7,8 +7,6 @@ class CreateSapAdmins < ActiveRecord::Migration
       t.string :fist_name, null:false,   comment: 'Admin name'
       t.string :last_name, null:false,   comment: 'Admin surname'
       t.string :email, null:false,  comment: 'Every admin user must have email'
-
-      t.timestamps
     end
 
     # Indexes

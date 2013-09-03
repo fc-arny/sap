@@ -20,5 +20,5 @@
 # -------------------------------------------------------------
 
 class Sap::Region < ActiveRecord::Base
-  attr_accessible :id, :name, :state, :description
+  #attr_accessible :id, :name, :state, :description
 end

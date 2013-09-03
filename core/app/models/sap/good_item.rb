@@ -13,7 +13,7 @@
 # -------------------------------------------------------------
 class Sap::GoodItem < ActiveRecord::Base
   # Fields
-  attr_accessible :id, :good_id, :price, :store_id, :store_gid, :order_pos
+  #attr_accessible :id, :good_id, :price, :store_id, :store_gid, :order_pos
 
   # Relationships
   belongs_to :good, :class_name => 'Sap::Good'

@@ -15,7 +15,7 @@ class Sap::Category < ActiveRecord::Base
   scope :menu, -> { where(show_in_menu: true)}
 
   # Fields
-  attr_accessible :id, :name, :url, :order_pos, :parent_id
+  #attr_accessible :id, :name, :url, :order_pos, :parent_id
 
   # Association
   has_and_belongs_to_many :goods, :join_table => 'sap_category_good'

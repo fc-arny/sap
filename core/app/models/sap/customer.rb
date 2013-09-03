@@ -15,7 +15,7 @@
 # -------------------------------------------------------------
 class Sap::Customer < ActiveRecord::Base
   # Fields
-  attr_accessible :phone, :name, :role
+  #attr_accessible :phone, :name, :role
 
   # Relationships
   has_one :user, :class_name => 'Sap::User', :as => :role

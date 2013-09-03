@@ -8,8 +8,6 @@ class CreateSapCustomers < ActiveRecord::Migration
       t.string :phone, :null => false,        comment: 'Customer phone'
       t.string :email,                        comment: 'Customer email'
       t.boolean :is_approved, default: false, comment: 'Is customer approved'
-
-      t.timestamps
     end
 
     # Indexes

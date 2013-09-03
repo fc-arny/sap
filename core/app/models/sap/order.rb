@@ -22,7 +22,7 @@ class Sap::Order < ActiveRecord::Base
   ST_FINISHED  = 'finished'
 
   # Fields
-  attr_accessible :id, :state, :sum, :user_id, :hash_str, :created_at, :updated_at
+  #attr_accessible :id, :state, :sum, :user_id, :hash_str, :created_at, :updated_at
 
   # Relationships
   has_many :order_items, :class_name => 'Sap::OrderItem'

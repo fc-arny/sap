@@ -26,7 +26,7 @@
 class Sap::Store < ActiveRecord::Base
 
   # Fields
-	attr_accessible :id, :name, :url, :order_pos, :region_id
+	#attr_accessible :id, :name, :url, :order_pos, :region_id
 
   # -------------------------------------------------------------
   # Get actual store list

@@ -18,9 +18,6 @@
 # -------------------------------------------------------------
 class Sap::User < ActiveRecord::Base
 
-  # Fields
-  attr_accessible :id, :login, :encrypted_password, :name, :is_temporary, :authentication_token
-
   # Relationships
   belongs_to :role, :polymorphic => true
 

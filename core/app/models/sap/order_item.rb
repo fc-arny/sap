@@ -11,7 +11,7 @@
 # -------------------------------------------------------------
 class Sap::OrderItem < ActiveRecord::Base   # TODO: move this table to redis or delete id column
   # Fields
-  attr_accessible :good_item_id, :store_id, :value, :price, :order_id
+  #attr_accessible :good_item_id, :store_id, :value, :price, :order_id
 
   # Accociations
   belongs_to :order, :class_name => 'Sap::Order'
