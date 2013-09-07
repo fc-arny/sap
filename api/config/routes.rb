@@ -3,8 +3,6 @@ Sap::Core::Engine.routes.draw do
     namespace :api do
       # API v1.0
       namespace :v1 do
-
-
         resources :stores         # Stores
         resources :categories     # Categories
 
@@ -13,15 +11,11 @@ Sap::Core::Engine.routes.draw do
         #
         #resources :items, :controller => :items
 
-
         resources :goods
 
         scope :good do
           resources :items, :controller => :good_items, :as => 'good_items'
         end
-
-
-
 
         # Order
         resources :orders do
@@ -33,8 +27,6 @@ Sap::Core::Engine.routes.draw do
         #namespace :user do
         #  post :auth, :action => :auth
         #end
-
-
       end
     end
 

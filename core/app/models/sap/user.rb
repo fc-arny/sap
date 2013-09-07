@@ -22,5 +22,10 @@ class Sap::User < ActiveRecord::Base
   belongs_to :role, :polymorphic => true
 
   # Auth
-  devise :database_authenticatable, :registerable, :token_authenticatable
+  devise :database_authenticatable, :registerable, :token_authenticatable, :rememberable
+
+  before_save do
+    self.login.downcase! if self.login
+    self.email.downcase! if self.email
+  end
 end

@@ -4,9 +4,9 @@
 class CreateSapCustomers < ActiveRecord::Migration
   def change
     create_table :sap_customers, comment: 'Customers' do |t|
-      t.string :name, :null => false,         comment: 'Customer name'
+      t.string :first_name,                   comment: 'Customer name'
+      t.string :last_name,                    comment: 'Customer surname'
       t.string :phone, :null => false,        comment: 'Customer phone'
-      t.string :email,                        comment: 'Customer email'
       t.boolean :is_approved, default: false, comment: 'Is customer approved'
     end
 
