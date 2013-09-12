@@ -1,8 +1,6 @@
-# encoding: UTF-8
+## encoding: UTF-8
 
-connection = ActiveRecord::Base.connection
-
-# Clear DB
+## Clear DB
 Sap::OrderItem.delete_all
 Sap::Order.delete_all
 Sap::GoodItem.delete_all
@@ -22,8 +20,8 @@ Sap::Manager.delete_all
 # Regions
 Sap::Region.delete_all
 Sap::Region.create([
-    {id:1, name: 'Москва',  state: 'active',    description: 'Работа идет полным ходом'},
-    {id:2, name: 'Киев',    state: 'progress',  description: 'Пока в планах'}
+    {id:1, name: 'Москва',  description: 'Работа идет полным ходом'},
+    {id:2, name: 'Киев',    description: 'Пока в планах'}
 ])
 
 # Stores
@@ -86,7 +84,7 @@ Sap::Good.create([
 
 
 ])
-connection.execute('ALTER SEQUENCE sap_goods_id_seq MINVALUE 10000 START 10000 RESTART 10000;')
+#connection.execute('ALTER SEQUENCE sap_goods_id_seq MINVALUE 10000 START 10000 RESTART 10000;')
 
 # Good -> Category
 Sap::CategoryGood.create([
@@ -139,46 +137,46 @@ Sap::CategoryGood.create([
 # GoodLists
 Sap::GoodItem.create([
   # Azbuka Vkusa
-    {good_id: 1,  price: 30.00, store_id: 2},
-    {good_id: 2,  price: 29.80, store_id: 2},
-    {good_id: 3,  price: 31.50, store_id: 2},
-    {good_id: 4,  price: 50.00, store_id: 2},
-    {good_id: 5,  price: 60.00, store_id: 2},
-    {good_id: 6,  price: 550.0, store_id: 2},
-    {good_id: 7,  price: 250.0, store_id: 2},
-    {good_id: 8,  price: 900.0, store_id: 2},
-    {good_id: 9,  price: 37.00, store_id: 2},
-    {good_id: 10, price: 36.00, store_id: 2},
-    {good_id: 11, price: 33.50, store_id: 2},
-    {good_id: 12, price: 35.00, store_id: 2},
-    {good_id: 13, price: 850.0, store_id: 2},
-    {good_id: 14, price: 500.0, store_id: 2},
-    {good_id: 15, price: 990.0, store_id: 2},
-    {good_id: 16, price: 150.0, store_id: 2},
-    {good_id: 17, price: 50.00, store_id: 2},
-    {good_id: 18, price: 250.0, store_id: 2},
-    {good_id: 19, price: 90.00, store_id: 2},
+    {good_id: 1,  price: 30.00, store_id: 2, store_gid: 1},
+    {good_id: 2,  price: 29.80, store_id: 2, store_gid: 2},
+    {good_id: 3,  price: 31.50, store_id: 2, store_gid: 3},
+    {good_id: 4,  price: 50.00, store_id: 2, store_gid: 4},
+    {good_id: 5,  price: 60.00, store_id: 2, store_gid: 5},
+    {good_id: 6,  price: 550.0, store_id: 2, store_gid: 6},
+    {good_id: 7,  price: 250.0, store_id: 2, store_gid: 7},
+    {good_id: 8,  price: 900.0, store_id: 2, store_gid: 8},
+    {good_id: 9,  price: 37.00, store_id: 2, store_gid: 9},
+    {good_id: 10, price: 36.00, store_id: 2, store_gid: 10},
+    {good_id: 11, price: 33.50, store_id: 2, store_gid: 11},
+    {good_id: 12, price: 35.00, store_id: 2, store_gid: 12},
+    {good_id: 13, price: 850.0, store_id: 2, store_gid: 13},
+    {good_id: 14, price: 500.0, store_id: 2, store_gid: 14},
+    {good_id: 15, price: 990.0, store_id: 2, store_gid: 15},
+    {good_id: 16, price: 150.0, store_id: 2, store_gid: 16},
+    {good_id: 17, price: 50.00, store_id: 2, store_gid: 17},
+    {good_id: 18, price: 250.0, store_id: 2, store_gid: 18},
+    {good_id: 19, price: 90.00, store_id: 2, store_gid: 19},
 
   # Allye Parusa
-    {good_id: 1,  price: 31.00, store_id: 2},
-    {good_id: 2,  price: 29.80, store_id: 2},
-    {good_id: 3,  price: 35.50, store_id: 2},
-    {good_id: 4,  price: 54.00, store_id: 2},
-    {good_id: 5,  price: 61.00, store_id: 2},
-    {good_id: 6,  price: 559.0, store_id: 2},
-    {good_id: 7,  price: 251.0, store_id: 2},
-    {good_id: 8,  price: 700.0, store_id: 2},
-    {good_id: 9,  price: 47.00, store_id: 2},
-    {good_id: 10, price: 46.00, store_id: 2},
-    {good_id: 11, price: 43.50, store_id: 2},
-    {good_id: 12, price: 45.00, store_id: 2},
-    {good_id: 13, price: 950.0, store_id: 2},
-    {good_id: 14, price: 600.0, store_id: 2},
-    {good_id: 15, price: 900.0, store_id: 2},
-    {good_id: 16, price: 170.0, store_id: 2},
-    {good_id: 17, price: 55.00, store_id: 2},
-    {good_id: 18, price: 230.0, store_id: 2},
-    {good_id: 19, price: 91.00, store_id: 2},
+    {good_id: 1,  price: 31.00, store_id: 2, store_gid: 1},
+    {good_id: 2,  price: 29.80, store_id: 2, store_gid: 2},
+    {good_id: 3,  price: 35.50, store_id: 2, store_gid: 3},
+    {good_id: 4,  price: 54.00, store_id: 2, store_gid: 4},
+    {good_id: 5,  price: 61.00, store_id: 2, store_gid: 5},
+    {good_id: 6,  price: 559.0, store_id: 2, store_gid: 6},
+    {good_id: 7,  price: 251.0, store_id: 2, store_gid: 7},
+    {good_id: 8,  price: 700.0, store_id: 2, store_gid: 8},
+    {good_id: 9,  price: 47.00, store_id: 2, store_gid: 9},
+    {good_id: 10, price: 46.00, store_id: 2, store_gid: 10},
+    {good_id: 11, price: 43.50, store_id: 2, store_gid: 11},
+    {good_id: 12, price: 45.00, store_id: 2, store_gid: 12},
+    {good_id: 13, price: 950.0, store_id: 2, store_gid: 13},
+    {good_id: 14, price: 600.0, store_id: 2, store_gid: 14},
+    {good_id: 15, price: 900.0, store_id: 2, store_gid: 15},
+    {good_id: 16, price: 170.0, store_id: 2, store_gid: 16},
+    {good_id: 17, price: 55.00, store_id: 2, store_gid: 17},
+    {good_id: 18, price: 230.0, store_id: 2, store_gid: 18},
+    {good_id: 19, price: 91.00, store_id: 2, store_gid: 19},
 ])
 
 #------------------------------------------------------------------------------
