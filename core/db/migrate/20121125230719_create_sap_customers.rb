@@ -13,7 +13,5 @@ class CreateSapCustomers < ActiveRecord::Migration
     # Indexes
     add_index :sap_customers, :id
     add_index :sap_customers, :phone
-    add_index :sap_customers, :email
-
   end
 end

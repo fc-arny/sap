@@ -14,7 +14,7 @@ class CreateSapOrderItems < ActiveRecord::Migration
     end
 
     # Indexes
-    add_index :sap_order_items, [:order_id, :good_item], :unique => true
+    add_index :sap_order_items, [:order_id, :good_item_id], :unique => true
     add_index :sap_order_items, :order_id
 
     # Foreign keys
