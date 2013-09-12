@@ -8,22 +8,33 @@ class Sap::Api::V1::UserController < Devise::RegistrationsController
   # Create new user
   # POST
   def create
-    build_resource(sign_up_params)
+    form = Sap::NewCustomerForm.new(params[:user])
 
-    # Create customer
-    customer = Sap::Customer.new do |customer|
-      customer.user = resource
-      customer.name = resource.name
-      customer.phone = resource.login
-    end
+    if form.valid?
+      build_resource(login: form.login, password: form.password, name: form.name)
 
-    if customer.save
-      sign_up(resource_name, resource)
+      if resource.save
+        # Create customer
+        customer = Sap::Customer.new do |c|
+          c.user       = resource
+          c.first_name = resource.name
+          c.phone      = form.phone
+        end
+        customer.save
+
+        sign_up(resource_name, resource)
+        resource.ensure_authentication_token!
+
+      else
+        @errors = resource.errors.messages
+        @status = :fail
+
+        clean_up_passwords resource
+      end
     else
-      @message = t('Registration failed. Try again.')
+      @errors = form.errors.messages
       @status = :fail
     end
-
   end
 
   private

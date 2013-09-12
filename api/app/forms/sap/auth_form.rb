@@ -2,17 +2,12 @@
 # Form model for user login
 # -------------------------------------------------------------
 class Sap::AuthForm < ActiveForm
-  PHONE_LENGTH_MIN = 7
-  PHONE_LENGHT_MAX = 14
 
   attr_accessor :login, :password, :remember_me
 
   # Validators
-  validates :login, :presence => true
-  #validates :login, :length => {minimum: 3, maximum: 80}
-
-  validates :password, :presence => true
-  #alidates :password, :length => {minimum: 3, maximum: 80}
+  validates :login,     :presence => true
+  validates :password,  :presence => true
 
   before_validation :prepare
 

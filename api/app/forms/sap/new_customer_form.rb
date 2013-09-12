@@ -1,80 +1,36 @@
+require 'sap/core/validators/phone'
 # -------------------------------------------------------------
 # Registration form for customer
 # -------------------------------------------------------------
 class Sap::NewCustomerForm < ActiveForm
 
-  include ApplicationHelper
+  attr_accessor :login, :password, :name, :is_temporary, :phone
 
   # Validators
-  validate :verify_user
-  validates_presence_of :phone
-  validates_presence_of :name
-  validates_presence_of :password
+  validates :login, presence: true
+  validates :phone, phone: true
+  validates :phone, format: {with: /\A\+?[\d|\s|\-|\(|\)]*\z/}         #TODO: Move to phone validator
+  validates :password,  length: 3..80, presence: true
+  validates :name,      length: 2..80, presence: true
+  validates :is_temporary, exclusion: { in: [true, false] }
 
-
-  delegate :phone, :name, :password, to: :customer
-  delegate :password, :login, :is_temporary, to: :user
-
-  # Callbacks
-  before_validation :filter_params
-
-  # Get customer model
-  def customer
-    @customer ||= Sap::Customer.new
-  end
-
-  #  Get user model
-  def user
-    @user ||= customer.build_user
-  end
-
-  # -------------------------------------------------------------
-  # Create new customer
-  # -------------------------------------------------------------
-  def submit(params)
-    customer.attributes = params.slice(:name, :phone)
-    user.attributes = params.slice(:is_temporary, :password)
-
-    # Create user
-    user.login    = customer.phone
-    user.salt     = get_random_string()
-
-    # if w/o sign up
-    if user.is_temporary
-      user.login    = "#{customer.phone.to_s}_#{Time.now.to_i.to_s}@#{TEMP_USET_SUFFIX}"
-      user.password = get_random_string(TEMP_USET_PASSWORD_LENGTH)
-
-      customer.name = I18n.t('Customer')
-    end
-
-    user.password = hash_password(user.password, user.salt)
-
-
-    if valid?
-      customer.save!
-      return true
-    end
-
-    false
-  end
+  before_validation :on_before_validation
+  after_validation  :on_after_validation
 
   private
-
-  # -------------------------------------------------------------
-  # Filter params
-  # -------------------------------------------------------------
-  def filter_params
-    user.login.gsub!(/[^0-9]/,'')
-    customer.phone.gsub!(/[^0-9]/,'')
-  end
-
-
-  # -------------------------------------------------------------
-  # Exist user or not
-  # -------------------------------------------------------------
-  def verify_user
-    if Sap::User.exists?(:login => user.login) || Sap::Customer.exists?(:phone => customer.phone)
-      errors.add  :phone, I18n.t('User with such phone already exists.')
+    # Prepare params
+    def on_before_validation
+      @login = @phone = @phone.strip
+      @name.strip!
+      @password.strip!
     end
-  end
+
+    # Run after validation
+    def on_after_validation
+      if @is_temporary
+        @name     = t('Customer')
+        @login    = sprintf('%<phone>s+%<time>s@gmarket.fm',{phone: @phone.to_s, time: Time.now.to_i})
+        @password = Devise.friendly_token.first(10)
+      end
+    end
 end

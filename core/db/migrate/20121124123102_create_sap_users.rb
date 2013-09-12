@@ -21,6 +21,8 @@ class CreateSapUsers < ActiveRecord::Migration
 
     # Indexes
     add_index :sap_users, :id
-    add_index :sap_users, :login
+    add_index :sap_users, :login,                 :unique => true
+    add_index :sap_users, :email,                 :unique => true
+    add_index :sap_users, :authentication_token,  :unique => true
   end
 end

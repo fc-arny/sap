@@ -21,6 +21,10 @@ class Sap::User < ActiveRecord::Base
   # Relationships
   belongs_to :role, :polymorphic => true
 
+  # Validators
+  validates :login, uniqueness: { case_sensitive: false }
+  validates :email, uniqueness: { case_sensitive: false }, unless: "email.nil?"
+
   # Auth
   devise :database_authenticatable, :registerable, :token_authenticatable, :rememberable
 

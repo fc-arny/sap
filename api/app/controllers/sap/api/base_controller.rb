@@ -15,7 +15,7 @@ class Sap::Api::BaseController < ActionController::Base
   prepend_before_filter :fetch_auth_token
   before_filter :authenticate_user
   before_filter :skip_trackable
-
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # Catch all exceptions
   rescue_from Exception, :with => :render_error
@@ -56,8 +56,8 @@ class Sap::Api::BaseController < ActionController::Base
     end
 
     # Sanitiser params for devise controllers
-    def devise_parameter_sanitizer
-      Sap::User::ParameterSanitizer.new( Sap::User, :user, params)
-    end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:user) { |u| u.permit(:name, :is_temporary) }
+  end
 
 end
