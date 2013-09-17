@@ -8,10 +8,17 @@ class Sap::Api::V1::UserController < Devise::RegistrationsController
   # Create new user
   # POST
   def create
-    form = Sap::NewCustomerForm.new(params[:user])
+    form = Sap::NewCustomer.new(params[:user])
 
     if form.valid?
-      build_resource(login: form.login, password: form.password, name: form.name)
+      form_data = {
+        name:         form.name,
+        login:        form.login,
+        password:     form.password,
+        is_temporary: form.is_temporary
+      }
+
+      build_resource form_data
 
       if resource.save
         # Create customer

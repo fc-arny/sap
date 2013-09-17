@@ -1,6 +1,8 @@
 if @status == :fail
   json.errors @errors
 else
-  json.auth_token @user.authentication_token
-  json.login @user.login
+  json.name         @user.name
+  json.login        @user.login
+  json.auth_token   @user.authentication_token
+  json.is_temporary @user.is_temporary
 end

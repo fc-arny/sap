@@ -9,7 +9,7 @@ class PhoneValidator < ActiveModel::EachValidator
     number_count = value.strip.gsub(/[^0-9]/,'').length
 
     unless number_count.between?(PHONE_LENGTH_MIN, PHONE_LENGHT_MAX)
-      record.errors[attribute] << (options[:message] || Sap.t('Wrong phone length') )
+      record.errors[attribute] << (options[:message] || I18n.t('Wrong phone length'))
     end
 
   end
