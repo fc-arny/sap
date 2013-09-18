@@ -3,10 +3,8 @@
 # -------------------------------------------------------------
 class Sap::Api::V1::UserController < Devise::RegistrationsController
 
-  wrap_parameters :user => [:login, :password, :name]
-
   # Create new user
-  # POST
+  # POST /user
   def create
     form = Sap::NewCustomer.new(params[:user])
 
@@ -44,9 +42,29 @@ class Sap::Api::V1::UserController < Devise::RegistrationsController
     end
   end
 
-  private
-  #
-  def register_params
+  # Update user
+  # PATCH/PUT /user
+  def update
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_conformation)
+    end
+
+    @user = Sap::User.find(current_user.id)
+
+    if @user
+
+    else
+      @status = :fail
+      @message = t('Вы не авторизованы. Авторизуйтесь, чтобы отредактировать Ваш профиль.')
+    end
 
   end
+
+  private
+    # Permetted params
+    def permetted_params
+      params.require(:user).permit(:name)
+    end
+
 end

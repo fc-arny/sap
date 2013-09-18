@@ -1,46 +1,44 @@
 Sap::Core::Engine.routes.draw do
-    # API
-    namespace :api do
-      # API v1.0
-      namespace :v1 do
-        resources :stores         # Stores
-        resources :categories     # Categories
+  # Devise
+  devise_for :user,
+    :class_name => 'Sap::User',
+    :controllers => {
+     registrations: 'sap/api/v1/user',
+     sessions: 'sap/api/v1/user_sessions',
+     passwords: 'sap/api/v1/user_passwords'
+    },
+    :skip => [:unlocks, :omniauth_callbacks],
+    :path_names => { sign_out: 'logout', sign_in: 'auth', sign_up: 'register' },
+    :path_prefix => 'api/v1'
 
-        # Goods
-        #resources :goods
-        #
-        #resources :items, :controller => :items
+  # API
+  namespace :api do
+    # API v1.0
+    namespace :v1 do
+      resources :stores         # Stores
+      resources :categories     # Categories
 
-        resources :goods
+      # Goods
+      #resources :goods
+      #
+      #resources :items, :controller => :items
 
-        scope :good do
-          resources :items, :controller => :good_items, :as => 'good_items'
-        end
+      resources :goods
 
-        # Order
-        resources :orders do
-          resources :items, :controller => 'order_items'
-        end
-
-        # User
-        resource :sessions, :only => [:creaate, :destroy]
-        #namespace :user do
-        #  post :auth, :action => :auth
-        #end
+      scope :good do
+        resources :items, :controller => :good_items, :as => 'good_items'
       end
+
+      # Order
+      resources :orders do
+        resources :items, :controller => 'order_items'
+      end
+
+      #devise_scope :user do
+      #  post '/password/recover' => 'user_passwords#create', :as => :reset_password
+      #  put '/password/change' => 'user_passwords#update', :as => :update_password
+      #end
+
     end
-
-    devise_for :user,
-     :class_name => 'Sap::User',
-     :controllers => {
-       sessions: 'sap/api/v1/sessions',
-       registrations: 'sap/api/v1/user',
-       passwords: 'sap/passwords'
-     },
-     :skip => [:unlocks, :omniauth_callbacks],
-     :path_names => { sign_out: 'logout', sign_in: 'auth', sign_up: 'register' },
-     :path_prefix => 'api/v1'
-
-
-
+  end
 end

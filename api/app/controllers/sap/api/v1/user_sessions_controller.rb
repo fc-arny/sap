@@ -1,7 +1,7 @@
 # -------------------------------------------------------------
 # Login/Logout user
 # -------------------------------------------------------------
-class Sap::Api::V1::SessionsController <  Devise::SessionsController
+class Sap::Api::V1::UserSessionsController <  Devise::SessionsController
 
   # Login user
   # Logic:
