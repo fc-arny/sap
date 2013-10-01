@@ -1,5 +1,5 @@
 # -------------------------------------------------------------
-# User register
+# User controller create/update/list
 # -------------------------------------------------------------
 class Sap::Api::V1::UserController < Devise::RegistrationsController
 
@@ -45,26 +45,31 @@ class Sap::Api::V1::UserController < Devise::RegistrationsController
   # Update user
   # PATCH/PUT /user
   def update
-    if params[:user][:password].blank?
-      params[:user].delete(:password)
-      params[:user].delete(:password_conformation)
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+
+    user_params = update_user_params
+
+    # If password blank, we can't update password
+    is_updated = if user_params[:current_password].blank?
+      resource.update_without_password(user_params)
+    else
+      resource.update_with_password(user_params)
     end
 
-    @user = Sap::User.find(current_user.id)
-
-    if @user
-
+    if is_updated
+      @message = t('sap.message.changes_saved')
     else
       @status = :fail
-      @message = t('Вы не авторизованы. Авторизуйтесь, чтобы отредактировать Ваш профиль.')
+      @data = {:errors => resource.errors.messages }
     end
 
+    render_empty
   end
 
-  private
-    # Permetted params
-    def permetted_params
-      params.require(:user).permit(:name)
-    end
+  protected
 
+    # Params permit
+    def update_user_params
+      params.require(:user).permit(:current_password, :password, :password_confirmation, :name)
+    end
 end

@@ -1,6 +1,6 @@
 # -------------------------------------------------------------
-# User phones
+# User addresses
 # -------------------------------------------------------------
-class Sap::Api::V1::PhoneController
+class Sap::Api::V1::AddressesController
 
 end

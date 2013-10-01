@@ -43,7 +43,7 @@ class Sap::Api::BaseController < ActionController::Base
 
     end
 
-  # Get auth token
+    # Get auth token
     def auth_token
       request.headers['X-SAP-AUTH-TOKEN'] || params[:auth_token]
     end
@@ -56,8 +56,16 @@ class Sap::Api::BaseController < ActionController::Base
     end
 
     # Sanitiser params for devise controllers
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:user) { |u| u.permit(:name, :is_temporary) }
-  end
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.for(:user) { |u| u.permit(:name, :is_temporary) }
+      devise_parameter_sanitizer.for(:user_update) { |u| u.permit(:name, :password) }
+    end
+
+    # Set response params: message, status and data
+    def set_response_params(*params)
+      @message = params[:message] || ''
+      @status  = params[:status]  || :success
+      @data    = params[:data]    || nil
+    end
 
 end

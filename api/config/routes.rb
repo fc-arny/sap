@@ -17,11 +17,9 @@ Sap::Core::Engine.routes.draw do
     namespace :v1 do
       resources :stores         # Stores
       resources :categories     # Categories
+      resources :phones         # User phones
+      resources :addresses      # User addresses
 
-      # Goods
-      #resources :goods
-      #
-      #resources :items, :controller => :items
 
       resources :goods
 
