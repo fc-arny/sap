@@ -15,6 +15,14 @@
 #  updated_at     :datetime
 # -------------------------------------------------------------
 # Base model for users
+# Auth by login.
+# If login has only digits
+#   login -> phone
+# elsif login has '@'
+#   login -> email
+# else
+#   login -> just string
+# end
 # -------------------------------------------------------------
 class Sap::User < ActiveRecord::Base
 

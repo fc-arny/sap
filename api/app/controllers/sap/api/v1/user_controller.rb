@@ -57,10 +57,10 @@ class Sap::Api::V1::UserController < Devise::RegistrationsController
     end
 
     if is_updated
-      @message = t('sap.message.changes_saved')
+      @message = t('sap.messages.changes_saved')
     else
       @status = :fail
-      @data = {:errors => resource.errors.messages }
+      @data = {errors: resource.errors.messages }
     end
 
     render_empty

@@ -11,9 +11,8 @@ class Sap::Api::BaseController < ActionController::Base
   # Only JSON response
   respond_to :json
 
-
   prepend_before_filter :fetch_auth_token
-  before_filter :authenticate_user
+  #before_filter :authenticate_user
   before_filter :skip_trackable
   before_filter :configure_permitted_parameters, if: :devise_controller?
 

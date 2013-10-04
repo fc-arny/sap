@@ -13,8 +13,12 @@ class CreateSapUsers < ActiveRecord::Migration
       t.references :role, :polymorphic => true,     comment: 'User role - admin, manager or customer'
 
       # Devise
-      t.string :authentication_token,               comment: 'Auth by tocken'
-      t.datetime :remember_created_at,              comment: 'Remember me'
+      t.string    :authentication_token,             comment: 'Auth by token'
+      t.datetime  :remember_created_at,              comment: 'Remember me'
+
+      t.string    :reset_password_token,             comment: 'Token for reseting password'
+      t.string    :reset_password_code,              comment: 'Sms with code for reset'
+      t.datetime  :reset_password_sent_at,           comment: 'When token created'
 
       t.timestamps
     end

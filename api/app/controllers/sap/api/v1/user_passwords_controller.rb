@@ -7,8 +7,8 @@ class Sap::Api::V1::UserPasswordsController < Devise::PasswordsController
   # Create password
   # POST /
   def create
-    set_response_params(:status => :error)
-    t = 1
+    self.resource = resource_class.find_or_initialize_with_errors(reset_password_keys, resource_params, :not_found)
+    resource.ensure_reset_password_token!
   end
 
   # Reset password by token
@@ -19,7 +19,7 @@ class Sap::Api::V1::UserPasswordsController < Devise::PasswordsController
     if resource.errors.empty?
       sign_in(resource_name, resource)
     else
-      @mesage = t('Wrong current password')
+      @message = t('Wrong current password')
     end
   end
   
