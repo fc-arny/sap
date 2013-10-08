@@ -24,14 +24,5 @@
 #  work_time_from, work_time_to - work period, ex.: 10.00 - 23.00, if null then round-the-clock
 # -------------------------------------------------------------
 class Sap::Store < ActiveRecord::Base
-
-  # Fields
-	#attr_accessible :id, :name, :url, :order_pos, :region_id
-
-  # -------------------------------------------------------------
-  # Get actual store list
-  # -------------------------------------------------------------
-  def self.get_store_list
-    self.all
-  end
+  scope :active, -> {where(active: true).order('order_pos')}
 end

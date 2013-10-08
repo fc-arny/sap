@@ -35,7 +35,7 @@ class CreateSapGoodsCategories < ActiveRecord::Migration
     end
 
     # Joining table
-    create_table :'sap.category_good', id: false, comment: 'Joining table' do |t|
+    create_table :'sap.category_goods', id: false, comment: 'Joining table' do |t|
       t.references :category
       t.references :good
     end
