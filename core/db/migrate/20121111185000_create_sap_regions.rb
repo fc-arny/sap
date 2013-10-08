@@ -3,7 +3,7 @@
 # -------------------------------------------------------------
 class CreateSapRegions < ActiveRecord::Migration
   def change
-    create_table :sap_regions, comment: 'Regions.ex Moscow(chld: Reutov, Rublevo, Lyubertsy etc)' do |t|
+    create_table :'sap.regions', comment: 'Regions.ex Moscow(chld: Reutov, Rublevo, Lyubertsy etc)' do |t|
 
       t.string  :name, null: false,         comment: 'Region name'
       t.string  :description,               comment: 'Description for region'
@@ -12,9 +12,6 @@ class CreateSapRegions < ActiveRecord::Migration
     end
 
     # Parent region
-    add_foreign_key :sap_regions, :sap_regions, :column => :parent_id
-
-    # Indexes
-    add_index :sap_regions, :id
+    add_foreign_key :'sap.regions', :'sap.regions', :column => :parent_id
   end
 end

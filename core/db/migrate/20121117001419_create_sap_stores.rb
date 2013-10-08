@@ -3,7 +3,7 @@
 # -------------------------------------------------------------
 class CreateSapStores < ActiveRecord::Migration
   def change
-    create_table :sap_stores,               comment: 'List of stores' do |t|
+    create_table :'sap.stores' do |t|
       t.string      :name, null: false,     comment: 'Store\'s name'
       t.integer     :order_pos, default: 0, comment: 'Value for sorting stores'
       t.string      :url, null: false,      comment: 'Url segment'
@@ -13,11 +13,8 @@ class CreateSapStores < ActiveRecord::Migration
       t.timestamps
     end
 
-    # Indexes
-    add_index :sap_stores, :id
-
     # Foreign keys
-    add_foreign_key :sap_stores, :sap_regions, :column => :region_id
+    add_foreign_key 'sap.stores', 'sap.regions', :column => :region_id
   end
 end
 

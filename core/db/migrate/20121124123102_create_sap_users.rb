@@ -4,7 +4,7 @@
 
 class CreateSapUsers < ActiveRecord::Migration
   def change
-    create_table :sap_users, :comment => 'Base model for all users' do |t|
+    create_table :'sap.users', :comment => 'Base model for all users' do |t|
       t.string     :name,                           comment: 'All users should have name. Generated name'
       t.string     :login, null:false,              comment: 'User login'
       t.string     :email,                          comment: 'User email'
@@ -24,9 +24,8 @@ class CreateSapUsers < ActiveRecord::Migration
     end
 
     # Indexes
-    add_index :sap_users, :id
-    add_index :sap_users, :login,                 :unique => true
-    add_index :sap_users, :email,                 :unique => true
-    add_index :sap_users, :authentication_token,  :unique => true
+    add_index :'sap.users', :login,                 :unique => true
+    add_index :'sap.users', :email,                 :unique => true
+    add_index :'sap.users', :authentication_token,  :unique => true
   end
 end

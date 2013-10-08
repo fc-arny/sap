@@ -1,6 +1,6 @@
 class CreateSapSms < ActiveRecord::Migration
   def change
-    create_table :sap_sms do |t|
+    create_table 'sap.sms' do |t|
       t.integer :number
       t.string :message
       t.datetime :created

@@ -1,7 +1,7 @@
 # TODO: create vendor model
 class CreateSapVendors < ActiveRecord::Migration
   def change
-    create_table :sap_vendors do |t|
+    create_table 'sap.vendors' do |t|
 
       t.string :name
 

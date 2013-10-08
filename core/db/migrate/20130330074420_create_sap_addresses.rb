@@ -3,7 +3,7 @@
 # -------------------------------------------------------------
 class CreateSapAddresses < ActiveRecord::Migration
   def change
-    create_table :sap_addresses, comment: 'Addresses table' do |t|
+    create_table 'sap.addresses', comment: 'Addresses table' do |t|
 
       t.references  :region, null:false,          comment: 'Link to region. Ex.: Moscow'
       t.string      :street, null: false,         comment: 'Street, house number etc'
@@ -15,9 +15,8 @@ class CreateSapAddresses < ActiveRecord::Migration
     end
 
     # Indexes
-    add_index :sap_addresses, :id
 
     # Foreign keys
-    add_foreign_key :sap_addresses, :sap_regions, :column => :region_id
+    add_foreign_key 'sap.addresses', 'sap.regions', :column => :region_id
   end
 end
