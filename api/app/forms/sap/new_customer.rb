@@ -7,7 +7,6 @@ class Sap::NewCustomer < ActiveForm
   attr_accessor :login, :password, :name, :is_temporary, :phone
 
   # Validators
-  validates :login, presence: true
   validates :phone, phone: true
   validates :password,  length: 3..80, presence: true
   validates :name,      length: 2..80, presence: true
@@ -19,7 +18,7 @@ class Sap::NewCustomer < ActiveForm
   private
     # Prepare params
     def on_before_validation
-      @login = @phone = @phone.strip
+      @phone = @phone.strip
       @name.strip!
       @password.strip!
       @is_temporary = @is_temporary.to_i
