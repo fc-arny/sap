@@ -45,6 +45,6 @@ class CreateSapGoodsCategories < ActiveRecord::Migration
     add_foreign_key :'sap.categories', :'sap.categories', :column => :parent_id
 
     # Joining table
-    add_index :'sap.category_good', [:category_id, :good_id], :unique => true
+    add_index :'sap.category_goods', [:category_id, :good_id], :unique => true
 	end
 end
