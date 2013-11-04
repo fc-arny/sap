@@ -2,7 +2,7 @@ require_dependency 'sap/api/controller_setup'
 # -------------------------------------------------------------
 # Controller for api request
 # -------------------------------------------------------------
-class Sap::Api::BaseController < ActionController::Base
+class Sap::Api::BaseController < ApplicationController
 
   include Sap::Api::ControllerSetup
 

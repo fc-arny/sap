@@ -5,7 +5,7 @@ class Sap::BaseController < ApplicationController
 
   private
 
-  #def miniprofiler
-  #  Rack::MiniProfiler.authorize_request # if user.admin?
-  #end
+  def miniprofiler
+    Rack::MiniProfiler.authorize_request # if user.admin?
+  end
 end

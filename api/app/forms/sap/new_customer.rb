@@ -8,7 +8,9 @@ class Sap::NewCustomer < ActiveForm
 
   # Validators
   validates :phone, phone: true
-  validates :password,  length: 3..80, presence: true
+  validates :password,
+            length: {minimum: 3, maximum: 80, message: I18n.t('api.user.validator.password_min_max_length') },
+            presence: true
   validates :name,      length: 2..80, presence: true
   validates :is_temporary, exclusion: { in: [true, false] }
 
@@ -18,7 +20,7 @@ class Sap::NewCustomer < ActiveForm
   private
     # Prepare params
     def on_before_validation
-      @phone = @phone.strip
+      @phone = @login = @phone.strip
       @name.strip!
       @password.strip!
       @is_temporary = @is_temporary.to_i
