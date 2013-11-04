@@ -1,0 +1,11 @@
+ru:
+  sap:
+    api:
+      user:
+        validator:
+          password_min_max_length: Пароль должен быть не менее 3-х и не более 80-ти символов
+        message:
+          success_register: Вы успешно вошли в Глобо! Удачных покупок!
+          success_login: Вы успешно вошли в Глобо! Удачных покупок!
+          wrong_login_or_password: Неверный логин и/или пароль
+          log_out: Вы вышли из Глобо! Хорошего дня!

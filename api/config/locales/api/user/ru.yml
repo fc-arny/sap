@@ -1,5 +1,0 @@
-ru:
-  api:
-    user:
-      validator:
-        password_min_max_length: Пароль должен быть не менее 3-х и не более 80-ти символов

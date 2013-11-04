@@ -14,10 +14,10 @@ class Sap::Api::V1::UserSessionsController <  Devise::SessionsController
       sign_in :user, @user
 
       @user.ensure_authentication_token!
-      @message = t('You are succesfully logged in!')
+      @message = flash[:success] = t('sap.api.user.message.success_login')
     else
       # Default error
-      form.errors.add(:password, t('Wrong login or password')) if form.errors.empty?
+      form.errors.add(:password, t('sap.api.user.message.wrong_login_or_password')) if form.errors.empty?
 
       @errors   = form.errors.messages
       @status   = :fail
@@ -28,7 +28,7 @@ class Sap::Api::V1::UserSessionsController <  Devise::SessionsController
   def destroy
     sign_out :user
 
-    @message = t('You are logged out!')
+    @message = t('sap.api.user.message.log_out')
     render_empty
   end
 
