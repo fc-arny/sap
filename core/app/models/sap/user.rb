@@ -34,7 +34,7 @@ class Sap::User < ActiveRecord::Base
   validates :email, uniqueness: { case_sensitive: false }, unless: "email.nil?"
 
   # Auth
-  devise :database_authenticatable, :registerable, :token_authenticatable, :rememberable, :recoverable
+  devise :database_authenticatable, :registerable, :rememberable, :recoverable
 
   before_save do
     self.login.downcase! if self.login

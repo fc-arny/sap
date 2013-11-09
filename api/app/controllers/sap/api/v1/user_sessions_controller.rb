@@ -10,15 +10,20 @@ class Sap::Api::V1::UserSessionsController <  Devise::SessionsController
   def create
     form = Sap::AuthForm.new(params[:user])
 
-    if form.valid? && @user = Sap::User.find_for_database_authentication(:login => form.login)
-      sign_in :user, @user
+    if form.valid?
+      @user = Sap::User.find_for_database_authentication(:login => form.login)
 
-      @user.ensure_authentication_token!
-      @message = flash[:success] = t('sap.api.user.message.success_login')
-    else
-      # Default error
-      form.errors.add(:password, t('sap.api.user.message.wrong_login_or_password')) if form.errors.empty?
+      if @user && @user.valid_password?(form.password)
+        sign_in :user, @user
 
+        flash[:success] = t('sap.api.user.message.success_login')
+      else
+        form.errors.add(:password, t('sap.api.user.message.wrong_login_or_password'))
+      end
+    end
+
+    unless  form.errors.empty?
+      flash[:error] = t('sap.api.user.message.failed_login')
       @errors   = form.errors.messages
       @status   = :fail
     end

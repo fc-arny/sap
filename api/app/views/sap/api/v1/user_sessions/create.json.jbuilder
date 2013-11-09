@@ -1,4 +1,4 @@
-if @status == :fail
+unless @user
   json.errors @errors
 else
   json.auth_token @user.authentication_token
