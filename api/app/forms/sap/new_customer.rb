@@ -6,8 +6,10 @@ class Sap::NewCustomer < ActiveForm
 
   attr_accessor :login, :password, :name, :is_temporary, :phone
 
+  PHONE_FORMAT = /\A+?7([0-9]{5,12})\z/
+
   # Validators
-  validates :phone, phone: true
+  validates :phone, format: {with: PHONE_FORMAT, message: I18n.t('api.user.validator.wrong_phone_format') }
   validates :password,
             length: {minimum: 3, maximum: 80, message: I18n.t('api.user.validator.password_min_max_length') },
             presence: true
@@ -20,7 +22,8 @@ class Sap::NewCustomer < ActiveForm
   private
     # Prepare params
     def on_before_validation
-      @phone = @login = @phone.strip
+      @phone = @login = @phone.gsub(/\D/, '')
+
       @name.strip!
       @password.strip!
       @is_temporary = @is_temporary.to_i

@@ -12,13 +12,9 @@ class Sap::AuthForm < ActiveForm
   before_validation :prepare
 
   private
-    # Prepare login: by phone or by login
+    # Prepare login: by phone
     def prepare
-      phone = @login.gsub(/[^0-9]/,'')
-
-      #if phone.length.between?(PHONE_LENGTH_MIN, PHONE_LENGHT_MAX)
-      #  @login = phone
-      #end
+      @login.gsub(/\D/,'')
 
       # Always remeber
       @remember_me = true

@@ -1,4 +1,4 @@
-unless @user
+unless @errors && @errors.empty?
   json.errors @errors
 else
   json.auth_token @user.authentication_token

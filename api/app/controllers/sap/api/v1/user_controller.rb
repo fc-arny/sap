@@ -28,7 +28,6 @@ class Sap::Api::V1::UserController < Devise::RegistrationsController
         customer.save
 
         sign_up(resource_name, resource)
-        resource.ensure_authentication_token!
         flash[:success] = t('sap.api.user.message.success_register')
       else
         @errors = resource.errors.messages
