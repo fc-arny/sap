@@ -1,4 +1,5 @@
 ## encoding: UTF-8
+require File.expand_path('../../app/models/sap', __FILE__)
 
 ## Clear DB
 Sap::OrderItem.delete_all
