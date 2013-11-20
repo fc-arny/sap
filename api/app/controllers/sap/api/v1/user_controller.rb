@@ -19,14 +19,6 @@ class Sap::Api::V1::UserController < Devise::RegistrationsController
       build_resource form_data
 
       if resource.save
-        # Create customer
-        customer = Sap::Customer.new do |c|
-          c.user       = resource
-          c.first_name = resource.name
-          c.phone      = form.phone
-        end
-        customer.save
-
         sign_up(resource_name, resource)
         flash[:success] = t('sap.api.user.message.success_register')
       else

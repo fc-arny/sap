@@ -27,7 +27,7 @@
 class Sap::User < ActiveRecord::Base
 
   # Relationships
-  belongs_to :role, :polymorphic => true
+  ROLES = %w[admin customer]
 
   # Validators
   validates :login, uniqueness: { case_sensitive: false }

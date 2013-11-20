@@ -14,7 +14,7 @@ class Sap::AuthForm < ActiveForm
   private
     # Prepare login: by phone
     def prepare
-      @login.gsub(/\D/,'')
+      @login.gsub!(/\D/,'')
 
       # Always remeber
       @remember_me = true
