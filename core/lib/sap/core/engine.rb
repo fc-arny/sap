@@ -5,6 +5,7 @@ module Sap
       engine_name 'sap'
 
       config.autoload_paths += %W(#{config.root}/lib)
+      config.autoload_paths += %W(#{config.root}/app/models/concerns)
 
       initializer :append_migrations do |app|
         unless app.root.to_s.match root.to_s

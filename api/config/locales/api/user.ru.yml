@@ -10,3 +10,7 @@ ru:
           failed_login: Ошибка при входе. Проверьте еще раз Ваш логин/пароль.
           wrong_login_or_password: Неверный логин и/или пароль
           log_out: Вы вышли из Глобо! Удачи! :-)
+          success_new_password: Пароль успешно обновлен
+          error_new_password: Ошибка при изменении пароля
+          changes_saved_success: Изменения успешно сохранены
+          changes_saved_error: Произошка ошибка. Изменения не сохранены

@@ -3,20 +3,14 @@
 # -------------------------------------------------------------
 class Sap::AuthForm < ActiveForm
 
-  attr_accessor :login, :password, :remember_me
+  attr_accessor :login, :password
 
   # Validators
   validates :login,     :presence => true
   validates :password,  :presence => true
 
-  before_validation :prepare
+  before_validation do
+    @login.gsub!(/\D/, '') unless @login.blank?
+  end
 
-  private
-    # Prepare login: by phone
-    def prepare
-      @login.gsub!(/\D/,'')
-
-      # Always remeber
-      @remember_me = true
-    end
 end

@@ -1,8 +1,6 @@
 # -------------------------------------------------------------
-# Adresses for any entity
+# Join table Subject -> Address
 # -------------------------------------------------------------
-class Sap::Address < ActiveRecord::Base
+class Sap::Address::Subject < ActiveRecord::Base
 
-  # Relationships
-  belongs_to :owner, polymorphic: true
 end
