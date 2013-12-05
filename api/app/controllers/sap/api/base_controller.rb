@@ -12,7 +12,7 @@ class Sap::Api::BaseController < ApplicationController
   respond_to :json
 
   prepend_before_filter :fetch_auth_token
-  #before_filter :authenticate_user
+
   before_filter :skip_trackable
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
@@ -58,6 +58,7 @@ class Sap::Api::BaseController < ApplicationController
 
     # Sanitiser params for devise controllers
     def configure_permitted_parameters
+      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :login, :password, :phone) }
       devise_parameter_sanitizer.for(:user) { |u| u.permit(:name, :is_temporary) }
       devise_parameter_sanitizer.for(:user_update) { |u| u.permit(:name, :password) }
     end

@@ -9,14 +9,7 @@ class Sap::Api::V1::UserController < Devise::RegistrationsController
     form = Sap::NewCustomer.new(params[:user])
 
     if form.valid?
-      form_data = {
-        name:         form.name,
-        login:        form.login,
-        password:     form.password,
-        is_temporary: form.is_temporary
-      }
-
-      build_resource form_data
+      build_resource form.to_hash
 
       if resource.save
         sign_up(resource_name, resource)
