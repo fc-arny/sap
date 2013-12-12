@@ -91,6 +91,10 @@ class InitDb < ActiveRecord::Migration
       t.string    :reset_password_code,              comment: 'Sms with code for reset'
       t.datetime  :reset_password_sent_at,           comment: 'When token created'
 
+      t.string    :reset_phone_new,               comment: 'New user phone'
+      t.string    :reset_phone_code,              comment: 'Code sent by sms'
+      t.datetime  :reset_phone_sent_at,           comment: 'When code created'
+
       t.timestamps
     end
 

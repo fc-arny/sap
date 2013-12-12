@@ -17,11 +17,15 @@ Sap::Core::Engine.routes.draw do
     namespace :v1 do
       resources :stores         # Stores
       resources :categories     # Categories
-      resources :phones         # User phones
       resources :addresses      # User addresses
 
 
       resources :goods
+
+      # User phones
+      resources :phones do
+        post :reset, on: :collection
+      end
 
       scope :good do
         resources :items, :controller => :good_items, :as => 'good_items'
