@@ -15,15 +15,19 @@ class Sap::Api::V1::PhonesController < Sap::Api::BaseController
     reset_phone = PhoneReset.new(current_user)
     reset_form = Sap::ResetPhoneForm.new(reset_params)
 
-    case reset_form.current_action
-      when Sap::ResetPhoneForm::ACT_RESET
-        reset_phone.create_code reset_form.phone
-      when Sap::ResetPhoneForm::ACT_CHECK
-        if reset_phone.valid?(reset_form.to_hash)
-          reset_phone.reset(reset_form.phone)
-        else
-          @errors = reset_phone.errors
-        end
+    if reset_form.valid?
+      case reset_params[:act]
+        when Sap::ResetPhoneForm::ACT_RESET
+          reset_phone.create_code reset_form.phone
+        when Sap::ResetPhoneForm::ACT_CHECK
+          if reset_phone.valid?(reset_form.to_hash)
+            reset_phone.reset(reset_form.phone)
+          else
+            @errors = reset_phone.errors
+          end
+      end
+    else
+      @errors = reset_form.errors
     end
   end
 
