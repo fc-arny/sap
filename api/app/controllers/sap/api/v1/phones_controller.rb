@@ -23,11 +23,11 @@ class Sap::Api::V1::PhonesController < Sap::Api::BaseController
           if reset_phone.valid?(reset_form.to_hash)
             reset_phone.reset(reset_form.phone)
           else
-            @errors = reset_phone.errors
+            set_form_error(reset_phone.errors, :phone)
           end
       end
     else
-      @errors = reset_form.errors
+      set_form_error(reset_phone.errors, :phone)
     end
   end
 

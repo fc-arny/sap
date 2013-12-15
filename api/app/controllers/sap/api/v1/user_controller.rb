@@ -29,43 +29,56 @@ class Sap::Api::V1::UserController < Devise::RegistrationsController
   # Update user
   # PATCH/PUT /user
   def update
-    message_type = :account
-    messages = {
-      password: {success: t('sap.api.user.message.success_new_password'), error: t('sap.api.user.message.error_new_password')},
-      account: {success: t('sap.api.user.message.changes_saved_success'), error: t('sap.api.user.message.changes_saved_success')},
-    }
-
+    #message_type = :account
+    #messages = {
+    #  password: {success: t('sap.api.user.message.success_new_password'), error: t('sap.api.user.message.error_new_password')},
+    #  account: {success: t('sap.api.user.message.changes_saved_success'), error: t('sap.api.user.message.changes_saved_success')},
+    #}
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-    user_params = update_user_params
 
-    # If password blank, we can't update password
-    is_updated = if user_params[:current_password].blank?
-      resource.update_without_password(user_params)
-    else
-      message_type = :password
-      result = resource.update_with_password(user_params)
+    @forms = {}
+    @errors = {}
 
-      if result
-        sign_in :user, resource
+    if params[:private]
+      @forms[:private] = Sap::Account::PrivateForm.new(update_user_params)
+
+      if @forms[:private].valid?
+        result = resource.update_without_password(update_user_params)
+
+        if result
+          flash[:success] = 'Profile updates success'
+        else
+          @errors[:private] = resource.errors
+        end
+
       end
+    elsif params[:password]
+      @forms[:password] = Sap::Account::ChangePasswordForm.new(change_password_params)
 
-      result
+      if @forms[:password].valid?
+        result = resource.update_with_password(change_password_params)
+
+        if result
+          sign_in(resource, :bypass => true)
+          flash[:success] = 'Password updates success'
+        else
+          @errors[:password] = resource.errors
+        end
+      end
     end
 
-    if is_updated
-      flash[:success] = messages[message_type][:success]
-    else
-      @status = :fail
-      @errors = resource.errors.messages
-
-      flash[:error] = messages[message_type][:error]
-    end
+    @forms.each{ |name, form| @errors[name] = form.errors if form.errors } if @errors.empty?
   end
 
   protected
 
-    # Params permit
-    def update_user_params
-      params.require(:user).permit(:current_password, :password, :password_confirmation, :name, :phone)
-    end
+  # Params permit
+  def update_user_params
+    params.require(:private).permit(:name, :email)
+  end
+
+  # Change password params
+  def change_password_params
+    params.require(:password).permit(:current_password, :password, :password_confirmation)
+  end
 end
