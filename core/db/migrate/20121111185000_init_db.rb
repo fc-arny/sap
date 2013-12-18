@@ -104,8 +104,6 @@ class InitDb < ActiveRecord::Migration
     add_index :'sap.users', :authentication_token,  :unique => true
     add_index :'sap.users', :phone,                 :unique => true
 
-
-
     # Goods of store
     create_table 'sap.good_items', comment: 'Goods of store' do |t|
 
@@ -209,6 +207,28 @@ class InitDb < ActiveRecord::Migration
       t.string :message
       t.datetime :created
       t.string :provider
+
+      t.timestamps
+    end
+
+    # Blog
+
+    create_table :'sap.blog_categories', comment: 'Blog categories' do |t|
+      t.string :name, null: false
+      t.string :url, null: false
+
+      t.timestamps
+    end
+
+    add_index :'sap.blog_categories', :url, unique: true
+
+    create_table :'sap.blog_posts', comment: 'Blog posts' do |t|
+      t.string :title, null: false
+      t.text :body, null: false
+      t.references :category, null: false
+
+      t.boolean :published, default: false,   comment: 'Show or not this post in the feed'
+      t.datetime :publish_date,               comment: 'Posted date for users'
 
       t.timestamps
     end
