@@ -1,5 +1,6 @@
-# Switching Gemfile
-function set_gemfile(){
+#!/bin/sh
+
+set_gemfile(){
   echo "Switching Gemfile..."
   export BUNDLE_GEMFILE="`pwd`/Gemfile"
 }

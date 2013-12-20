@@ -225,12 +225,14 @@ class InitDb < ActiveRecord::Migration
     create_table :'sap.blog_posts', comment: 'Blog posts' do |t|
       t.string :title, null: false
       t.text :body, null: false
-      t.references :category, null: false
+      t.references :category
 
       t.boolean :published, default: false,   comment: 'Show or not this post in the feed'
-      t.datetime :publish_date,               comment: 'Posted date for users'
+      t.datetime :published_date,             comment: 'Posted date for users'
 
       t.timestamps
     end
+
+    add_foreign_key 'sap.blog_posts', 'sap.blog_categories', :column => :category_id
   end
 end
