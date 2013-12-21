@@ -7,10 +7,10 @@ class Sap::BlogPost < ActiveRecord::Base
   belongs_to :category, class_name: 'Sap::BlogCategory'
 
   # Scopes
-  scope :recent, ->{ order('published_date DESC') }
+  scope :recent, ->{ published.order('published_date DESC') }
   scope :published, ->{ where(published: true) }
   scope :last_posts, ->(category){
-    published.joins(:category).where('sap.blog_categories.url = :url', url: category)
+    joins(:category).where('sap.blog_categories.url = :url', url: category)
   }
 
   # Triggers
