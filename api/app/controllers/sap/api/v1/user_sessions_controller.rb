@@ -25,7 +25,7 @@ class Sap::Api::V1::UserSessionsController <  Devise::SessionsController
 
     unless  form.errors.empty?
       flash[:error] = t('sap.api.user.message.failed_login')
-      @errors   = form.errors.messages
+      @errors   = {user: form.errors.messages}
       @status   = :fail
     end
   end

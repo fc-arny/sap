@@ -21,7 +21,7 @@ class Sap::Api::V1::UserController < Devise::RegistrationsController
         clean_up_passwords resource
       end
     else
-      @errors = form.errors.messages
+      @errors = {user: form.errors.messages}
       @status = :fail
     end
   end
