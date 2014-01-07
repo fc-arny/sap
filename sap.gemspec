@@ -18,4 +18,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'sap_core', version
   spec.add_dependency 'sap_api', version
+  spec.add_dependency 'sap_backend', version
 end

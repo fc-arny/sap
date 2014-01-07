@@ -20,3 +20,7 @@ cd api; set_gemfile; bundle update;
 # Set Core
 echo "Setup Sap Core"
 cd ../core; set_gemfile; bundle update;
+
+# Set Backend
+echo "Setup Sap Backend"
+cd ../backend; set_gemfile; bundle update;

@@ -1,2 +1,4 @@
 Gemfile.lock
 config/unicorn.rb
+# Ignore project files
+.idea
