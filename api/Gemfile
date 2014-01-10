@@ -1,5 +1,0 @@
-eval(File.read(File.dirname(__FILE__) + '/../common_sap_dependencies.rb'))
-gem 'sap_core', :path => '../core'
-
-# Specify your gem's dependencies in sap_api.gemspec
-gemspec

@@ -12,7 +12,7 @@ class Sap::Api::V1::UserSessionsController <  Devise::SessionsController
     form = Sap::AuthForm.new(params[:user])
 
     if form.valid?
-      @user = Sap::User.find_for_database_authentication(:login => form.login)
+      @user = Sap::User.where('login = :value OR email = :value', value: form.login).first
 
       if @user && @user.valid_password?(form.password)
         sign_in :user, @user

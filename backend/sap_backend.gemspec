@@ -4,7 +4,7 @@ version = File.read(File.expand_path('../../SAP_VERSION', __FILE__)).strip
 Gem::Specification.new do |spec|
   spec.name          = 'sap_backend'
   spec.version       = version
-  spec.authors       = ['fc_arny']
+  spec.authors       = ['Arthur Shcheglov']
   spec.email         = ['arthur.shcheglov@gmail.com']
   spec.description   = 'The bare bones necessary for Sap'
   spec.summary       = 'The bare bones necessary for Sap'
@@ -17,10 +17,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'sap_core', version
-  spec.add_development_dependency 'bundler', '~> 1.3'
-  spec.add_development_dependency 'rake'
+  spec.add_dependency 'sap_api', version
 
-
-  spec.add_dependency 'rails'
-  spec.add_dependency 'devise'
 end

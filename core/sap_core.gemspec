@@ -11,15 +11,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'http://martsoft.ru'
   spec.license       = 'MIT'
 
-  spec.files         = Dir['LICENSE', 'README.md', 'app/**/*', 'config/**/*', 'lib/**/*', 'db/**/*', 'vendor/**/*']
+  spec.files         = Dir['LICENSE', 'README.md', 'app/**/*', 'config/**/*', 'l\ib/**/*', 'db/**/*', 'vendor/**/*']
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
-
-  spec.add_development_dependency 'bundler', '~> 1.3'
-  spec.add_development_dependency 'rake'
-
-
-  spec.add_dependency 'rails'
-  spec.add_dependency 'devise'
 end

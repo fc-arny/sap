@@ -10,7 +10,7 @@
 # end
 # -------------------------------------------------------------
 class Sap::User < ActiveRecord::Base
-  ROLES = %w[admin customer]
+  ROLES = %w[admin saleman]
 
   # Relationships
   include Sap::Addressable

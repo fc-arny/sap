@@ -2,7 +2,7 @@ require_dependency 'sap/api/controller_setup'
 # -------------------------------------------------------------
 # Controller for api request
 # -------------------------------------------------------------
-class Sap::Api::BaseController < ApplicationController
+class Sap::Api::BaseController < Sap::BaseController
 
   include Sap::Api::ControllerSetup
 
@@ -14,7 +14,7 @@ class Sap::Api::BaseController < ApplicationController
   prepend_before_filter :fetch_auth_token
 
   before_filter :skip_trackable
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+
 
   # Catch all exceptions
   rescue_from Exception, :with => :render_error
@@ -55,13 +55,6 @@ class Sap::Api::BaseController < ApplicationController
   # Render empty
   def render_empty
     render :file => '/sap/api/common/empty'
-  end
-
-  # Sanitiser params for devise controllers
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :login, :password, :phone) }
-    devise_parameter_sanitizer.for(:user) { |u| u.permit(:name, :is_temporary) }
-    devise_parameter_sanitizer.for(:user_update) { |u| u.permit(:name, :password) }
   end
 
   # Set response params: message, status and data

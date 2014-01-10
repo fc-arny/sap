@@ -10,7 +10,7 @@ class Sap::AuthForm < ActiveForm
   validates :password,  :presence => true
 
   before_validation do
-    @login.gsub!(/\D/, '') unless @login.blank?
+    login.gsub!(/\D/, '') unless login.blank? && !login.start_with?('admin:')
   end
 
 end

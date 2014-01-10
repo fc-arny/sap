@@ -1,5 +1,8 @@
 Sap::Core::Engine.routes.draw do
-  namespace :admin do
-    resources :stores
+  scope module: 'backend' do
+    namespace :admin do
+      get '/' => 'index#index'
+      resources :stores
+    end
   end
 end

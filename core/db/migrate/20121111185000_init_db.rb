@@ -80,6 +80,7 @@ class InitDb < ActiveRecord::Migration
       t.string     :login, null:false,              comment: 'User login'
       t.string     :email,                          comment: 'User email'
       t.string     :phone, :null => false,          comment: 'Customer phone'
+      t.string     :role,                           comment: 'User role in backend'
       t.string     :encrypted_password, null:false, comment: 'Password hash'
       t.boolean    :is_temporary, default: false,   comment: 'Is temporary user(create temp customers)'
 
