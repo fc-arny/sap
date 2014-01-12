@@ -1,0 +1,19 @@
+/ Sidebar
+#sidebar
+  .mainNav
+    .user
+      %a.leftUserDrop
+        %img{src: '/assets/sap/backend/user.png'}/
+        %span
+          %strong 666
+      %span= current_user.login
+      %ul.leftUser
+        %li
+          %a.sProfile My profile
+        %li
+          %a.sMessages Messages
+        %li
+          %a.sSettings Settings
+        %li
+          %a.sLogout Logout
+    = backend_sidebar('common')

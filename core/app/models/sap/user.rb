@@ -10,7 +10,7 @@
 # end
 # -------------------------------------------------------------
 class Sap::User < ActiveRecord::Base
-  ROLES = %w[admin saleman]
+  ROLES = %w[admin salesman developer]
 
   # Relationships
   include Sap::Addressable
@@ -18,13 +18,13 @@ class Sap::User < ActiveRecord::Base
 
   # Validators
   validates :login, uniqueness: { case_sensitive: false }
-  validates :email, uniqueness: { case_sensitive: false }, unless: "email.nil?"
+  validates :email, uniqueness: { case_sensitive: false }, unless: 'email.nil?'
 
   # Auth
   devise :database_authenticatable, :registerable, :rememberable, :recoverable
 
   before_save do
-    self.login.downcase! if self.login
-    self.email.downcase! if self.email
+    login.downcase! if login
+    email.downcase! if email
   end
 end

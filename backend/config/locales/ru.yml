@@ -1,0 +1,10 @@
+ru:
+  sap:
+    backend:
+      common:
+        menu:
+          dashboard: Доска
+          orders: Заказы
+          users: Пользователи
+          stat: Статистика
+          other: Остальное

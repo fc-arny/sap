@@ -3,16 +3,16 @@
 # -------------------------------------------------------------
 class Sap::Api::V1::UserSessionsController <  Devise::SessionsController
 
+
   # Login user
   # Logic:
   #  * Delete all non-numeric symbols, if 13 >= lenght >= 8 then auth by phone
   #  * Else auth by login. It's need for admin.
   def create
-    @data = {}
     form = Sap::AuthForm.new(params[:user])
 
     if form.valid?
-      @user = Sap::User.where('login = :value OR email = :value', value: form.login).first
+      @user = Sap::User.where('login = :value OR phone = :phone', value: form.login, phone: form.phone).first
 
       if @user && @user.valid_password?(form.password)
         sign_in :user, @user

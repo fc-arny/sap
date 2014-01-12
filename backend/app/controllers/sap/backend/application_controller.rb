@@ -8,6 +8,6 @@ class Sap::Backend::ApplicationController < Sap::BaseController
 
   # Restrict access
   def restrict_access
-    #raise ActionController::RoutingError, 'Page not Found'  unless current_user.role
+    raise ActionController::RoutingError, 'Page not found'  unless current_user.role
   end
 end

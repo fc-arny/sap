@@ -3,14 +3,19 @@
 # -------------------------------------------------------------
 class Sap::AuthForm < ActiveForm
 
-  attr_accessor :login, :password
+  attr_accessor :phone, :login, :password
 
   # Validators
   validates :login,     :presence => true
   validates :password,  :presence => true
 
   before_validation do
-    login.gsub!(/\D/, '') unless login.blank? && !login.start_with?('admin:')
+    login.strip!
+    @phone = login
+
+    if !@phone.blank? && !@phone.gsub(/\D/, '').empty?
+      @phone.gsub!(/\D/, '')
+    end
   end
 
 end

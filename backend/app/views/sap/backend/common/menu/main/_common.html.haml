@@ -1,0 +1,26 @@
+/ Main nav
+%ul.nav
+  %li
+    %a.active{href: admin_path}
+      %span= t('sap.backend.common.menu.dashboard')
+  %li
+    %a{href: admin_orders_path}
+      %span= t('sap.backend.common.menu.orders')
+  %li
+    %a{href: admin_users_path}
+      %span= t('sap.backend.common.menu.users')
+  %li
+    %a{href: '/stat'}
+      %span= t('sap.backend.common.menu.stat')
+  %li
+    %a{href: '#'}
+      %span= t('sap.backend.common.menu.other')
+    %ul
+      %li
+        %a{}
+          %span.icol-frames
+          One
+      %li
+        %a{}
+          %span.icol-frames
+          Two
