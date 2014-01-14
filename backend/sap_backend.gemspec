@@ -19,4 +19,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'sap_core', version
   spec.add_dependency 'sap_api', version
 
+  spec.add_dependency 'rails-backbone'
+  spec.add_dependency 'marionette-rails'
+  spec.add_dependency 'haml_coffee_assets'
 end

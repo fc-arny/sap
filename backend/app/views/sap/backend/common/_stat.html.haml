@@ -1,20 +1,14 @@
 / Today statistic
 %ul.quickStats
   %li
-    %a.blueImg{:href => ""}
-      %img{:alt => "", :src => "/assets/icons/quickstats/plus.png"}/
-    .floatR
-      %strong.blue 5489
-      %span visits
-  %li
-    %a.redImg{:href => ""}
-      %img{:alt => "", :src => "/assets/icons/quickstats/user.png"}/
+    %a.redImg{href: admin_users_path}
+      %img{src:'/assets/sap/backend/icons/quickstats/user.png'}/
     .floatR
       %strong.blue 4658
-      %span users
+      %span= t('sap.backend.views.layout.stat.users')
   %li
-    %a.greenImg{:href => ""}
-      %img{:alt => "", :src => "/assets/icons/quickstats/money.png"}/
+    %a.greenImg{href: admin_orders_path}
+      %img{src: '/assets/sap/backend/icons/quickstats/money.png'}/
     .floatR
       %strong.blue 1289
-      %span orders
+      %span= t('sap.backend.views.layout.stat.orders')

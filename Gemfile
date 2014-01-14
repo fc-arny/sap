@@ -1,10 +1,3 @@
-source 'https://rubygems.org'
-source 'http://gems.github.com'
+eval(File.read(File.dirname(__FILE__) + '/common_sap_dependencies.rb'))
 
 gemspec
-
-#group :development do
-#  # Annotate models
-#  gem 'migration_comments'
-#  gem 'annotate', ">=2.5.0" # Generate model annotation
-#end

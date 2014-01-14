@@ -16,12 +16,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.requirements << 'none'
 
+  # Sap
   spec.add_dependency 'sap_core', version
   spec.add_dependency 'sap_api', version
   spec.add_dependency 'sap_backend', version
-
-  spec.add_dependency 'rails'
-  spec.add_dependency 'jbuilder'
-  spec.add_dependency 'devise'
-  spec.add_dependency 'cancan'
 end

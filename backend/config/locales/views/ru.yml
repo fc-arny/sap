@@ -1,0 +1,8 @@
+ru:
+  sap:
+    backend:
+      views:
+        layout:
+          stat:
+            users: пользователи
+            orders: заказы
