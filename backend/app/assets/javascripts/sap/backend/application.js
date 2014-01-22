@@ -1,24 +1,25 @@
 // jQuery -------------------------
 //---------------------------------
-//= require jquery
+//= require lib/jquery
 //= require jquery_ujs
-//= require jquery.remotipart
-
-// Bootstrap ----------------------
-//---------------------------------
-
+//= //require jquery.remotipart
 
 // Backbone -----------------------
 //---------------------------------
-//= require underscore
-//= require vendor/json2.js
-//= require backbone
-//= require backbone.marionette
+//= require hamlcoffee
+//= require lib/underscore
+//= require lib/backbone
+//= require lib/backbone/backbone.marionette
 
 // Backbone Application -----------
 //---------------------------------
-//= require_tree ./app/models
-//= require_tree ./app/collections
-//= require_tree ./app/views
-//= require_tree ./app/routers
-//= require_tree ../../../templates/sap/backend
+//= require_tree ./backbone/config
+//= require ./backbone/app
+//= require_tree ./backbone/apps
+
+$(function(){
+	$(document).on("click", "a[href^='/admin'], a:not(.external)", function(evt) {
+		evt.preventDefault();
+		Backbone.history.navigate($(this).attr("href").replace('/admin',''), true);
+	});
+});
