@@ -1,6 +1,9 @@
 require 'rails/all'
 require 'devise'
 
+require 'js-routes'
+require 'i18n-js'
+
 module Sap
 
   autoload :UserParameterSanitizer, 'user_parameter_sanitizer'

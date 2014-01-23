@@ -24,4 +24,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'devise'
   spec.add_dependency 'cancan'
+  spec.add_dependency 'js-routes'
+  spec.add_dependency 'i18n-js'
 end

@@ -2,7 +2,7 @@
 ================================================== */
 
 #top {
-  background: image-url('sap/backend/backgrounds/top.jpg') repeat-x 0 0;
+  background: image-url('sap_backend/backgrounds/top.jpg') repeat-x 0 0;
   height: 48px;
   display: block;
   width: 100%;
@@ -22,7 +22,7 @@
 }
 
 .topSearch input[type=submit], .userSearch input[type=submit] {
-  background: image-url('sap/backend/sprites/sprite.png');
+  background: image-url('sap_backend/sprites/sprite.png');
 }
 
 /*=== User navigation ===*/
@@ -55,25 +55,25 @@ ul.userNav {
       height: 28px;
       width: 28px;
       &.screen {
-        background: image-url('sap/backend/icons/usernav/screen.png') no-repeat 9px 9px;
+        background: image-url('sap_backend/icons/usernav/screen.png') no-repeat 9px 9px;
       }
       &.settings {
-        background: image-url('sap/backend/icons/usernav/settings.png') no-repeat 9px 9px;
+        background: image-url('sap_backend/icons/usernav/settings.png') no-repeat 9px 9px;
       }
       &.profile {
-        background: image-url('sap/backend/icons/usernav/profile.png') no-repeat 9px 9px;
+        background: image-url('sap_backend/icons/usernav/profile.png') no-repeat 9px 9px;
       }
       &.messages {
-        background: image-url('sap/backend/icons/usernav/messages.png') no-repeat 9px 10px;
+        background: image-url('sap_backend/icons/usernav/messages.png') no-repeat 9px 10px;
       }
       &.logout {
-        background: image-url('sap/backend/icons/usernav/logout.png') no-repeat 9px 9px;
+        background: image-url('sap_backend/icons/usernav/logout.png') no-repeat 9px 9px;
       }
       &.search {
-        background: image-url('sap/backend/icons/usernav/search.png') no-repeat 9px 9px;
+        background: image-url('sap_backend/icons/usernav/search.png') no-repeat 9px 9px;
       }
       &.sidebar {
-        background: image-url('sap/backend/icons/usernav/sidebar.png') no-repeat 9px 9px;
+        background: image-url('sap_backend/icons/usernav/sidebar.png') no-repeat 9px 9px;
       }
     }
   }
@@ -86,7 +86,7 @@ ul.userNav {
   display: none;
   right: 30px;
   top: 58px;
-  background: image-url('sap/backend/backgrounds/sidebar.jpg');
+  background: image-url('sap_backend/backgrounds/sidebar.jpg');
   padding: 10px;
   border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -122,7 +122,7 @@ ul.userNav {
 }
 
 .topDropArrow {
-  background: image-url('sap/backend/elements/other/dropTopArrow.png') no-repeat;
+  background: image-url('sap_backend/elements/other/dropTopArrow.png') no-repeat;
   width: 13px;
   height: 6px;
   position: absolute;

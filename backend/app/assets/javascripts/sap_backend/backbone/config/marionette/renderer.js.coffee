@@ -1,7 +1,7 @@
 do (Marionette) ->
   _.extend Marionette.Renderer,
 
-    lookups: ['sap/backend/backbone/apps/', 'sap/backend/backbone/components/']
+    lookups: ['sap_backend/backbone/apps/', 'sap_backend/backbone/components/']
 
     render: (template, data) ->
       return if template is false

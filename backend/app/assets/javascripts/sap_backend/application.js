@@ -1,3 +1,9 @@
+// Global -------------------------
+//---------------------------------
+//= require js-routes
+//= require i18n
+//= require i18n/translations
+
 // jQuery -------------------------
 //---------------------------------
 //= require lib/jquery

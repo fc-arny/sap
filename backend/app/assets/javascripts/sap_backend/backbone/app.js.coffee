@@ -3,16 +3,15 @@
 
   App.addRegions
     mainRegion: '#main-region'
-    breadcrumbs: '.breadLine'
-    pageHeader:  '.contentTop'
+    sideRegion: '#side-region'
 
   App.rootRoute = 'dashboard'
 
   App.reqres.setHandler 'default:region', ->
     App.mainRegion
 
-#  App.addInitializer ->
-#    App.module('Backend.IndexApp').start()
+  App.addInitializer ->
+    App.module('Backend.SidebarApp').start()
 
   App.commands.setHandler 'register:instance', (instance, id) ->
     App.register instance, id

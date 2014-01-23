@@ -3,7 +3,7 @@
 
 #sidebar {
   display: block;
-  background: image-url('sap/backend/backgrounds/side.jpg') repeat-y;
+  background: image-url('sap_backend/backgrounds/side.jpg') repeat-y;
   min-height: 100%;
   position: absolute;
   z-index: 999;
@@ -12,7 +12,7 @@
 
 .mainNav {
   width: 100px;
-  background: image-url('sap/backend/backgrounds/sidebar.jpg');
+  background: image-url('sap_backend/backgrounds/sidebar.jpg');
   float: left;
   padding-top: 15px;
   position: relative;
@@ -58,7 +58,7 @@
       position: absolute;
       left: 50%;
       margin-left: -21px;
-      background: #e6e6e6 image-url('sap/backend/div.png') no-repeat 50%;
+      background: #e6e6e6 image-url('sap_backend/div.png') no-repeat 50%;
       width: 36px;
       padding: 0 3px;
       height: 9px;
@@ -91,12 +91,12 @@
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   text-align: left;
-  background: image-url('sap/backend/elements/other/userArrow.png') 0 11px no-repeat;
+  background: image-url('sap_backend/elements/other/userArrow.png') 0 11px no-repeat;
   z-index: 1000;
   li {
     border-bottom: 1px solid #343434;
     border-top: 1px solid #545454;
-    background: image-url('sap/backend/backgrounds/sidebar.jpg');
+    background: image-url('sap_backend/backgrounds/sidebar.jpg');
     &:hover {
       background: #454545;
     }
@@ -115,16 +115,16 @@
       padding: 6px 5px 6px 34px;
       color: #c2c2c2;
       &.sProfile {
-        background: image-url('sap/backend/icons/usernav/profile.png') no-repeat 12px 12px;
+        background: image-url('sap_backend/icons/usernav/profile.png') no-repeat 12px 12px;
       }
       &.sMessages {
-        background: image-url('sap/backend/icons/usernav/messages.png') no-repeat 12px 13px;
+        background: image-url('sap_backend/icons/usernav/messages.png') no-repeat 12px 13px;
       }
       &.sSettings {
-        background: image-url('sap/backend/icons/usernav/settings.png') no-repeat 12px 12px;
+        background: image-url('sap_backend/icons/usernav/settings.png') no-repeat 12px 12px;
       }
       &.sLogout {
-        background: image-url('sap/backend/icons/usernav/logout.png') no-repeat 12px 12px;
+        background: image-url('sap_backend/icons/usernav/logout.png') no-repeat 12px 12px;
       }
     }
   }
@@ -149,7 +149,7 @@
         -moz-box-shadow: 0 1px 3px #1e1e1e;
       }
       span {
-        background: image-url('sap/backend/backgrounds/sidebar.jpg');
+        background: image-url('sap_backend/backgrounds/sidebar.jpg');
         padding: 0 2px 2px 2px;
         position: absolute;
         right: -2px;
@@ -274,12 +274,12 @@
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
       text-align: left;
-      background: image-url('sap/backend/elements/other/userArrow.png') 5px 11px no-repeat;
+      background: image-url('sap_backend/elements/other/userArrow.png') 5px 11px no-repeat;
       z-index: 1000;
       li {
         border-bottom: 1px solid #343434;
         border-top: 1px solid #545454;
-        background: image-url('sap/backend/backgrounds/sidebar.jpg');
+        background: image-url('sap_backend/backgrounds/sidebar.jpg');
         &:hover {
           background: #454545;
         }
@@ -329,7 +329,7 @@
           background: none;
           a {
             background: none;
-            background: image-url('sap/backend/elements/control/subnav_arrow.png') no-repeat 14px 16px;
+            background: image-url('sap_backend/elements/control/subnav_arrow.png') no-repeat 14px 16px;
             padding-left: 26px;
           }
         }
@@ -357,10 +357,10 @@
 
 .secTop {
   height: 64px;
-  background: image-url('sap/backend/backgrounds/contentTop.png') repeat-x;
+  background: image-url('sap_backend/backgrounds/contentTop.png') repeat-x;
   position: relative;
   [class^="triangle-"], [class*=" triangle-"] {
-    background: image-url('sap/backend/elements/ui/triangles.png') no-repeat;
+    background: image-url('sap_backend/elements/ui/triangles.png') no-repeat;
     width: 28px;
     height: 27px;
     display: block;
@@ -423,7 +423,7 @@
     box-shadow: 0 1px 0 #f6f6f6, 0 1px 0 #fff inset;
     -webkit-box-shadow: 0 1px 0 #f6f6f6, 0 1px 0 #fff inset;
     -moz-box-shadow: 0 1px 0 #f6f6f6, 0 1px 0 #fff inset;
-    background: image-url('sap/backend/backgrounds/breadcrumbs.png') repeat-x;
+    background: image-url('sap_backend/backgrounds/breadcrumbs.png') repeat-x;
     &:first-child a {
       border-left: none;
       margin-left: 0;
@@ -454,7 +454,7 @@
       -webkit-box-shadow: 0 1px 0px #eee inset, 0 1px 0 #ededed;
       -moz-box-shadow: 0 1px 0px #eee inset, 0 1px 0 #ededed;
       a {
-        background: image-url('sap/backend/backgrounds/subnav.jpg');
+        background: image-url('sap_backend/backgrounds/subnav.jpg');
         border-bottom: 1px solid #dadada;
       }
     }
@@ -547,18 +547,18 @@
           border-top: none;
         }
         a {
-          background: #fafafa image-url('sap/backend/elements/control/subnav_arrow.png') no-repeat 14px;
+          background: #fafafa image-url('sap_backend/elements/control/subnav_arrow.png') no-repeat 14px;
           padding-left: 30px;
           border: none;
           font-weight: normal;
           &:hover {
-            background: #fffffa image-url('sap/backend/elements/control/subnav_arrow.png') no-repeat 14px;
+            background: #fffffa image-url('sap_backend/elements/control/subnav_arrow.png') no-repeat 14px;
           }
         }
       }
     }
     a.this {
-      background: image-url('sap/backend/backgrounds/body.jpg');
+      background: image-url('sap_backend/backgrounds/body.jpg');
       margin-right: -1px;
       color: #a64949;
       filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -768,7 +768,7 @@
     &.this {
       margin-right: -1px;
       a {
-        background: image-url('sap/backend/backgrounds/body.jpg');
+        background: image-url('sap_backend/backgrounds/body.jpg');
         margin-right: -1px;
         border-top: 1px solid transparent;
       }
@@ -809,7 +809,7 @@
 .status_available, .status_away, .status_off {
   width: 7px;
   height: 7px;
-  background: image-url('sap/backend/elements/other/contact_status.png') no-repeat;
+  background: image-url('sap_backend/elements/other/contact_status.png') no-repeat;
   display: block;
   position: absolute;
   top: 50%;
@@ -875,7 +875,7 @@
   width: 7px;
   height: 8px;
   cursor: pointer;
-  background: image-url('sap/backend/elements/other/removeLi.png') no-repeat;
+  background: image-url('sap_backend/elements/other/removeLi.png') no-repeat;
 }
 
 .fileProcess strong {
@@ -903,17 +903,17 @@
 }
 
 .fileSuccess {
-  background: image-url('sap/backend/elements/other/fileSuccess.png') no-repeat;
+  background: image-url('sap_backend/elements/other/fileSuccess.png') no-repeat;
 }
 
 .fileError {
-  background: image-url('sap/backend/elements/other/fileError.png') no-repeat;
+  background: image-url('sap_backend/elements/other/fileError.png') no-repeat;
 }
 
 .fileQueue {
   width: 12px;
   height: 6px;
-  background: image-url('sap/backend/elements/other/taskPending.png') no-repeat;
+  background: image-url('sap_backend/elements/other/taskPending.png') no-repeat;
   display: block;
   float: left;
   margin: 8px 10px 0 0;
@@ -937,7 +937,7 @@
 }
 
 .dropFiles {
-  background: image-url('sap/backend/dropFiles.png') no-repeat;
+  background: image-url('sap_backend/dropFiles.png') no-repeat;
   display: block;
   width: 189px;
   height: 123px;
@@ -1107,7 +1107,7 @@
     width: 75px;
     float: left;
     a span.users {
-      background: image-url('sap/backend/icons/sidebarButtons/users.png') no-repeat 50%;
+      background: image-url('sap_backend/icons/sidebarButtons/users.png') no-repeat 50%;
       display: block;
       width: 100%;
       height: 100%;
@@ -1151,7 +1151,7 @@
   box-shadow: 0 1px 0 #fff, 0 1px 0 #fff inset;
   -webkit-box-shadow: 0 1px 0 #f2f2f2, 0 1px 0 #fff inset;
   -moz-box-shadow: 0 1px 0 #fff, 0 1px 0 #fff inset;
-  background: image-url('sap/backend/backgrounds/breadcrumbs.png') repeat-x;
+  background: image-url('sap_backend/backgrounds/breadcrumbs.png') repeat-x;
   border-top: 1px solid #c3c3c3;
   border-bottom: 1px solid #c3c3c3;
   font-size: 11px;

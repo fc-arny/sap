@@ -362,7 +362,7 @@ div.selector {
     color: #777;
     text-shadow: 0 1px #f5f5f5;
     padding: 0px 32px 0px 2px;
-    background: image-url('sap/backend/elements/forms/selectArrow.png') no-repeat 100%;
+    background: image-url('sap_backend/elements/forms/selectArrow.png') no-repeat 100%;
     cursor: pointer;
     font-size: 11px;
     height: 28px;
@@ -419,7 +419,7 @@ div {
       background: none;
     }
     span {
-      background: image-url('sap/backend/elements/forms/checkboxes.png') no-repeat 0 0;
+      background: image-url('sap_backend/elements/forms/checkboxes.png') no-repeat 0 0;
       height: 16px;
       width: 16px;
       display: -moz-inline-box;
@@ -450,7 +450,7 @@ div {
       background: none;
     }
     span {
-      background: image-url('sap/backend/elements/forms/radios.png') no-repeat 0 0;
+      background: image-url('sap_backend/elements/forms/radios.png') no-repeat 0 0;
       height: 17px;
       width: 16px;
       display: -moz-inline-box;
@@ -473,7 +473,7 @@ div {
     padding: 2px 2px 2px 8px;
     span.action {
       width: 22px;
-      background: white image-url('sap/backend/elements/forms/addFiles.png') no-repeat 0 0;
+      background: white image-url('sap_backend/elements/forms/addFiles.png') no-repeat 0 0;
       height: 22px;
       font-size: 11px;
       font-weight: bold;

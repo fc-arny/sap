@@ -26,7 +26,7 @@ table thead td {
     position: relative;
   }
   span {
-    background: image-url('sap/backend/tables/sort.png') no-repeat 0;
+    background: image-url('sap_backend/tables/sort.png') no-repeat 0;
     display: block;
     /*position: absolute; right: 3px; top: 3px; width: 16px*/
     width: 7px;
@@ -35,10 +35,10 @@ table thead td {
     height: 16px;
   }
   &.headerSortUp span {
-    background: image-url('sap/backend/tables/sortUp.png') no-repeat 0;
+    background: image-url('sap_backend/tables/sortUp.png') no-repeat 0;
   }
   &.headerSortDown span {
-    background: image-url('sap/backend/tables/sortDown.png') no-repeat 0;
+    background: image-url('sap_backend/tables/sortDown.png') no-repeat 0;
   }
 }
 
@@ -186,7 +186,7 @@ table thead td {
   thead td {
     text-align: center;
     padding: 7px 12px;
-    background: image-url('sap/backend/backgrounds/sidebar.jpg');
+    background: image-url('sap_backend/backgrounds/sidebar.jpg');
     font-weight: bold;
     color: #f5f5f5;
   }

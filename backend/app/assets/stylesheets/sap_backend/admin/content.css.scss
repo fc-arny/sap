@@ -13,7 +13,7 @@
     position: absolute;
     left: 50%;
     margin-left: -21px;
-    background: #eeeeee image-url('sap/backend/div.png') no-repeat 50%;
+    background: #eeeeee image-url('sap_backend/div.png') no-repeat 50%;
     width: 36px;
     padding: 0 3px;
     height: 9px;
@@ -33,7 +33,7 @@
     position: absolute;
     left: 50%;
     margin-left: -21px;
-    background: #eeeeee image-url('sap/backend/widgetDiv.png') no-repeat 50%;
+    background: #eeeeee image-url('sap_backend/widgetDiv.png') no-repeat 50%;
     width: 36px;
     padding: 0 3px;
     height: 9px;
@@ -52,7 +52,7 @@
     position: absolute;
     left: 50%;
     margin-left: -21px;
-    background: whitesmoke image-url('sap/backend/div.png') no-repeat 50%;
+    background: whitesmoke image-url('sap_backend/div.png') no-repeat 50%;
     width: 36px;
     padding: 0 3px;
     height: 9px;
@@ -123,7 +123,7 @@
 .contentTop {
   height: 64px;
   padding: 0 22px;
-  background: image-url('sap/backend/backgrounds/contentTop.png') repeat-x;
+  background: image-url('sap_backend/backgrounds/contentTop.png') repeat-x;
 }
 
 .pageTitle {
@@ -220,14 +220,14 @@
   box-shadow: 0 1px 0 #fff, 0 1px 0 #fff inset;
   -webkit-box-shadow: 0 1px 0 #fff, 0 1px 0 #fff inset;
   -moz-box-shadow: 0 1px 0 #fff, 0 1px 0 #fff inset;
-  background: image-url('sap/backend/backgrounds/breadcrumbs.png') repeat-x;
+  background: image-url('sap_backend/backgrounds/breadcrumbs.png') repeat-x;
   border-top: 1px solid #c3c3c3;
   border-bottom: 1px solid #c3c3c3;
   font-size: 11px;
   .hideArrow {
     width: 30px;
     float: left;
-    background: image-url('sap/backend/hideArrow.png') no-repeat;
+    background: image-url('sap_backend/hideArrow.png') no-repeat;
     background-position: 12px 10px;
     padding: 14px 0 14px 0;
     border-right: 1px solid #c3c3c3;
@@ -263,7 +263,7 @@ ul.breadcrumbs {
       text-decoration: none;
       padding: 3px 20px 3px 14px;
       display: block;
-      background: image-url('sap/backend/icons/breadsArrow.png') no-repeat 100% 10px;
+      background: image-url('sap_backend/icons/breadsArrow.png') no-repeat 100% 10px;
       height: 22px;
       line-height: 23px;
       &:hover {
@@ -279,7 +279,7 @@ ul.breadcrumbs {
     }
     ul {
       position: absolute;
-      background: image-url('sap/backend/subArrow.png') no-repeat 10px 5px;
+      background: image-url('sap_backend/subArrow.png') no-repeat 10px 5px;
       font-size: 11px;
       width: 160px;
       top: 28px;
@@ -291,7 +291,7 @@ ul.breadcrumbs {
         border-bottom: 1px solid #343434;
         text-align: left;
         border-top: 1px solid #545454;
-        background: image-url('sap/backend/backgrounds/sidebar.jpg');
+        background: image-url('sap_backend/backgrounds/sidebar.jpg');
         padding: 0;
         float: none;
         &:first-child {
@@ -313,7 +313,7 @@ ul.breadcrumbs {
           padding: 5px 14px 5px 24px;
           color: #CCCCCC !important;
           display: block;
-          background: image-url('sap/backend/elements/control/subnav_arrow.png') no-repeat 12px 13px;
+          background: image-url('sap_backend/elements/control/subnav_arrow.png') no-repeat 12px 13px;
           &:hover {
             background-color: #454545;
           }
@@ -322,7 +322,7 @@ ul.breadcrumbs {
     }
   }
   > li:first-child {
-    background: image-url('sap/backend/icons/breadsHome.png') no-repeat 2px 10px;
+    background: image-url('sap_backend/icons/breadsHome.png') no-repeat 2px 10px;
     > a {
       padding-left: 20px;
     }
@@ -356,7 +356,7 @@ ul.breadcrumbs {
       padding: 3px 12px 3px 12px;
       display: block;
       &.hasdd {
-        background: image-url('sap/backend/elements/control/hasddArrow.png') no-repeat 100%;
+        background: image-url('sap_backend/elements/control/hasddArrow.png') no-repeat 100%;
       }
       &:hover {
         background: #f8f8f8;
@@ -656,7 +656,7 @@ ul.breadcrumbs {
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
       text-shadow: 0 1px #606060;
-      background: image-url('sap/backend/backgrounds/sidebar.jpg');
+      background: image-url('sap_backend/backgrounds/sidebar.jpg');
     }
   }
 }
@@ -909,11 +909,11 @@ ul.breadcrumbs {
 }
 
 .srch {
-  background: image-url('sap/backend/tables/searchSmall.png') no-repeat 0 0;
+  background: image-url('sap_backend/tables/searchSmall.png') no-repeat 0 0;
 }
 
 .sbmt {
-  background: image-url('sap/backend/elements/control/headSubmit.png') no-repeat;
+  background: image-url('sap_backend/elements/control/headSubmit.png') no-repeat;
   right: 4px;
 }
 
@@ -1364,15 +1364,15 @@ ul.breadcrumbs {
 }
 
 .uDone {
-  background: image-url('sap/backend/elements/other/updateDone.png') no-repeat 0 4px;
+  background: image-url('sap_backend/elements/other/updateDone.png') no-repeat 0 4px;
 }
 
 .uAlert {
-  background: image-url('sap/backend/elements/other/updateWarning.png') no-repeat 0 4px;
+  background: image-url('sap_backend/elements/other/updateWarning.png') no-repeat 0 4px;
 }
 
 .uNotice {
-  background: image-url('sap/backend/elements/other/updateNotice.png') no-repeat 0 4px;
+  background: image-url('sap_backend/elements/other/updateNotice.png') no-repeat 0 4px;
 }
 
 /* === Grid === */
@@ -1616,7 +1616,7 @@ label.error {
     float: left;
     color: #599414;
     padding: 18px 14px 18px 32px;
-    background: image-url('sap/backend/icons/updateDone.png') no-repeat 14px;
+    background: image-url('sap_backend/icons/updateDone.png') no-repeat 14px;
     font-size: 11px;
   }
 }
@@ -1827,7 +1827,7 @@ label.error {
 }
 
 .barG, .barB, .barO, .barBl, .barGr, .barR {
-  background: image-url('sap/backend/elements/ui/progress.png') repeat-x;
+  background: image-url('sap_backend/elements/ui/progress.png') repeat-x;
   width: 0;
   margin: -1px 0 0 -1px;
   border: 1px solid;
@@ -1888,21 +1888,21 @@ label.error {
 /* ===== Task widget  ===== */
 
 .taskDone {
-  background: image-url('sap/backend/elements/other/taskDone.png') no-repeat;
+  background: image-url('sap_backend/elements/other/taskDone.png') no-repeat;
   display: block;
   width: 10px;
   height: 10px;
 }
 
 .taskPending {
-  background: image-url('sap/backend/elements/other/taskPending.png') no-repeat;
+  background: image-url('sap_backend/elements/other/taskPending.png') no-repeat;
   display: block;
   width: 12px;
   height: 6px;
 }
 
 .taskProgress {
-  background: image-url('sap/backend/elements/other/taskProgress.png') no-repeat;
+  background: image-url('sap_backend/elements/other/taskProgress.png') no-repeat;
   display: block;
   width: 10px;
   height: 10px;
@@ -1962,12 +1962,12 @@ label.error {
 }
 
 .statsPlus {
-  background: image-url('sap/backend/elements/other/grown.png') no-repeat 0 1px;
+  background: image-url('sap_backend/elements/other/grown.png') no-repeat 0 1px;
   color: #599414;
 }
 
 .statsMinus {
-  background: image-url('sap/backend/elements/other/dropped.png') no-repeat 0 1px;
+  background: image-url('sap_backend/elements/other/dropped.png') no-repeat 0 1px;
   color: #a73939;
 }
 
@@ -2062,7 +2062,7 @@ label.error {
     margin-left: -8px;
     width: 15px;
     height: 9px;
-    background: image-url('sap/backend/elements/control/resultsarrow.png') no-repeat;
+    background: image-url('sap_backend/elements/control/resultsarrow.png') no-repeat;
   }
   table {
     border: none;
@@ -2362,12 +2362,12 @@ ul.ruler {
   .attachLink {
     width: 12px;
     height: 12px;
-    background: image-url('sap/backend/elements/other/link.png') no-repeat;
+    background: image-url('sap_backend/elements/other/link.png') no-repeat;
   }
   .attachPhoto {
     width: 14px;
     height: 11px;
-    background: image-url('sap/backend/elements/other/photo.png') no-repeat;
+    background: image-url('sap_backend/elements/other/photo.png') no-repeat;
   }
   input[type=submit] {
     float: left;
