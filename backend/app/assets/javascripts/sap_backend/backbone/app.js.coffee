@@ -24,6 +24,6 @@
       root: '/admin'
     )
 
-    @navigate(@rootRoute, trigger: true) if @getCurrentRoute() is ''
+    @navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
 
   App
