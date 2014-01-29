@@ -1,4 +1,4 @@
-@Backend.module 'Backend.SidebarApp', (SidebarApp, App, Backbone, Marionette, $, _) ->
+@Backend.module 'SidebarApp', (SidebarApp, App, Backbone, Marionette, $, _) ->
   @startWithParent = false
 
   API =

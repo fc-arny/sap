@@ -11,7 +11,7 @@
     App.mainRegion
 
   App.addInitializer ->
-    App.module('Backend.SidebarApp').start()
+    App.module('SidebarApp').start()
 
   App.commands.setHandler 'register:instance', (instance, id) ->
     App.register instance, id
@@ -20,10 +20,7 @@
     App.unregister instance, id
 
   App.on 'initialize:after', (options) ->
-    Backbone.history.start(
-      root: '/admin'
-    )
-
+    @startHistory()
     @navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
 
   App

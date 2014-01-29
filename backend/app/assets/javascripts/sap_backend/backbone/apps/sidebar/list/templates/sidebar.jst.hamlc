@@ -1,10 +1,10 @@
 / Main nav
 %ul.nav
   %li
-    %a.active{href: '#'}
+    %a.active{href: '#dashboard'}
       %span= I18n.t('sap.backend.common.menu.dashboard')
   %li
-    %a{href: '#'}
+    %a{href: '#orders'}
       %span= I18n.t('sap.backend.common.menu.orders')
   %li
     %a{href: '#'}

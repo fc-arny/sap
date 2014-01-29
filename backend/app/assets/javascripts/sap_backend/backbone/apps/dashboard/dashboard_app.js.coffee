@@ -1,4 +1,4 @@
-@Backend.module 'Backend.DashboardApp', (DashboardApp, App, Backbone, Marionette, $, _) ->
+@Backend.module 'DashboardApp', (DashboardApp, App, Backbone, Marionette, $, _) ->
 
   class DashboardApp.Router extends Marionette.AppRouter
     appRoutes:

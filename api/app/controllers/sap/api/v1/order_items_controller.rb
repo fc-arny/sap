@@ -12,7 +12,7 @@ class Sap::Api::V1::OrderItemsController < Sap::Api::BaseController
     @order_item.update_attributes(order_item_params)
 
   rescue ActiveRecord::RecordNotFound
-    render_jsend :error => t('No this good in your basket')
+    #render_jsend :error => t('No this good in your basket')
   end
 
   # Add good to order

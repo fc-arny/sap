@@ -4,22 +4,11 @@ do (Marionette) ->
     lookups: ['sap_backend/backbone/apps/', 'sap_backend/backbone/components/']
 
     render: (template, data) ->
-      return if template is false
       path = @getTemplate(template)
-      throw 'Template #{template} not found!' unless path
+      throw "Template #{template} not found!" unless path
       path(data)
 
     getTemplate: (template) ->
-      for lookup in @lookups
-        ## inserts the template at the '-1' position of the template array
-        ## this allows to omit the word 'templates' from the view but still
-        ## store the templates in a directory outside of the view
-        ## example: 'users/list/layout' will become 'users/list/templates/layout'
-
-        for path in [template, @withTemplate(template)]
+      for path in [template, template.split("/").insertAt(-1, "templates").join("/")]
+        for lookup in @lookups
           return JST[lookup + path] if JST[lookup + path]
-
-    withTemplate: (string) ->
-      array = string.split('/')
-      array.splice(-1, 0, 'templates')
-      array.join('/')

@@ -13,6 +13,7 @@
       super
 
     show: (view, options = {}) ->
+      console.log view
       _.defaults options,
         loading: false
         region: @region
