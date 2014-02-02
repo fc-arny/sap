@@ -1,0 +1,6 @@
+%table.tDefault
+  %thead
+    %tr
+      %th ID
+      %th State
+  %tbody

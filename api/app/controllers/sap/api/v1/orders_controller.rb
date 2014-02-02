@@ -7,7 +7,7 @@ class Sap::Api::V1::OrdersController < Sap::Api::BaseController
   # GET /api/v1/orders
   def index
     # Fetch order by Id and Hash
-    @orders = Sap::Order.all()
+    @orders = Sap::Order.page(params[:page]).per(params[:per_page])
   end
 
   # POST /api/v1/orders

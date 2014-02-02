@@ -1,3 +1,3 @@
-json.orders @orders do |order|
-  json.array!( json.orders order.decorate.index_set )
+json.result @orders do |order|
+  json.array!( json.result order.decorate.index_set )
 end

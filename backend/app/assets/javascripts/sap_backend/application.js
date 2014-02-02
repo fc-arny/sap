@@ -16,6 +16,8 @@
 //= require lib/underscore
 //= require lib/backbone
 //= require lib/backbone/backbone.marionette
+//= require lib/backbone/backbone.pageable
+
 
 // Backbone Application -----------
 //---------------------------------
