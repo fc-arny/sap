@@ -5,8 +5,11 @@
 
   class Entities.OrderCollection extends App.Entities.Collection
     model: Entities.Order
-
     url: -> Routes.sap_api_v1_orders_path()
+    state:
+      pageSize: 15
+
+    mode: 'server'
 
   API =
     getOrders: ->

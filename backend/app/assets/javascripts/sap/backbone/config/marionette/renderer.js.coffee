@@ -1,7 +1,7 @@
 do (Marionette) ->
   _.extend Marionette.Renderer,
 
-    lookups: ['sap_backend/backbone/apps/', 'sap_backend/backbone/components/']
+    lookups: ['sap/backbone/apps/', 'sap/backbone/components/']
 
     render: (template, data) ->
       path = @getTemplate(template)

@@ -2,8 +2,8 @@
   App = new Marionette.Application
 
   App.addRegions
-    mainRegion: '#main-region'
-    sideRegion: '#side-region'
+    mainRegion    : '#main-region'
+    sideRegion    : '#side-region'
 
   App.rootRoute = 'dashboard'
 
@@ -22,5 +22,8 @@
   App.on 'initialize:after', (options) ->
     @startHistory()
     @navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
+
+  pageTitle: (title) ->
+    $('.pageTitle').html title
 
   App

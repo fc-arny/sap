@@ -3,4 +3,8 @@
     %tr
       %th ID
       %th State
+      %th Address
+      %th Comment
+      %th Sum
+      %th UserID
   %tbody

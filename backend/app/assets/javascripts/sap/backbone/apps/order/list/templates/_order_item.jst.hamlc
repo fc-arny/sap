@@ -1,0 +1,6 @@
+%td= @id
+%td= @state
+%td= @address
+%td= @comment
+%td= @sum
+%td= @user_id

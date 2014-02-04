@@ -3,9 +3,8 @@
   class List.Controller extends App.Controllers.Base
     initialize: ->
       orders = App.request 'order:entities'
-
+#      pageTitle I18n.t('orders')
       App.execute "when:fetched", orders, =>
-        console.log orders
         @layout = @getLayoutView orders
 
         @listenTo @layout, 'show', =>
@@ -15,9 +14,15 @@
 
     ordersRegion: (orders) ->
       ordersView = @getOrdersView orders
-      console.log '222'
-      console.log orders
-      @layout.tableRegion.show ordersView
+      @layout.tableRegion.show(new Backgrid.Grid(columns: @getColumns(), collection: orders))
+
+    getColumns: ->
+      [
+        {name: 'id', label: 'ID', cell: 'integer' },
+        {name: 'state', label: 'State', cell: 'string'},
+        {name: 'address', label: 'Address', cell: 'string'},
+        {name: 'sum', label: 'SUM', cell: 'number'}
+      ]
 
     getOrdersView: (orders) ->
       new List.Orders

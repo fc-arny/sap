@@ -6,8 +6,9 @@ class Sap::Api::V1::OrdersController < Sap::Api::BaseController
   # Get list of orders
   # GET /api/v1/orders
   def index
+    order_by = params[:sort_by] ? [params[:sort_by], params[:order]].join(' ') : 'id DESC'
     # Fetch order by Id and Hash
-    @orders = Sap::Order.page(params[:page]).per(params[:per_page])
+    @orders = Sap::Order.order(order_by).page(params[:page]).per(params[:per_page])
   end
 
   # POST /api/v1/orders

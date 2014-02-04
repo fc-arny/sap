@@ -17,7 +17,7 @@
 //= require lib/backbone
 //= require lib/backbone/backbone.marionette
 //= require lib/backbone/backbone.pageable
-
+//= require lib/backbone/backbone.backgrid
 
 // Backbone Application -----------
 //---------------------------------
@@ -28,10 +28,3 @@
 //= require_tree ./backbone/entities
 //= require_tree ./backbone/components
 //= require_tree ./backbone/apps
-
-$(function(){
-//	$(document).on("click", "a[href^='/admin'], a:not(.external)", function(evt) {
-//		evt.preventDefault();
-//		Backbone.history.navigate($(this).attr("href").replace('/admin',''), true);
-//	});
-});

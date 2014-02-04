@@ -13,5 +13,6 @@
  *= require 'sap_backend/admin/content'
  *= require 'sap_backend/admin/forms'
  *= require 'sap_backend/admin/tables'
+ *= require 'lib/backgrid'
  *= require_self
  */
