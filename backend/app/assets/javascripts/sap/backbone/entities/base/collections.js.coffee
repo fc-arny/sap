@@ -2,8 +2,15 @@
 
   class Entities.Collection extends Backbone.PageableCollection
 
-    parse: (response)->
+    parse: (response, options) ->
       if response.status is 'success'
-        response.data.result
+        super(response, options)
       else
         throw new Error(response.message)
+
+    parseState: (resp, queryParams, state, options) ->
+      totalRecords: resp.data.total_count
+
+    parseRecords: (resp, options) ->
+      resp.data.result
+

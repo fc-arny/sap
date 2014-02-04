@@ -1,6 +1,4 @@
 require 'sap/core'
-
-# Single page application
 require 'haml_coffee_assets'
 
 module Sap

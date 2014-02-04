@@ -17,7 +17,8 @@
 //= require lib/backbone
 //= require lib/backbone/backbone.marionette
 //= require lib/backbone/backbone.pageable
-//= require lib/backbone/backbone.backgrid
+//= require lib/backbone/backgrid
+//= require lib/backbone/backgrid.paginator
 
 // Backbone Application -----------
 //---------------------------------

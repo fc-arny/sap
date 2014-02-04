@@ -15,6 +15,8 @@
     ordersRegion: (orders) ->
       ordersView = @getOrdersView orders
       @layout.tableRegion.show(new Backgrid.Grid(columns: @getColumns(), collection: orders))
+      @layout.paginationRegion.show(new Backgrid.Extension.Paginator(collection: orders))
+
 
     getColumns: ->
       [
