@@ -2,8 +2,8 @@
 
   class OrderApp.Router extends Marionette.AppRouter
     appRoutes:
-      'orders/:id/edit' : 'edit'
-      'orders'          : 'list'
+      'orders/:id/edit'     : 'edit'
+      'orders(/page/:page)' : 'list'
 
   API =
     list: ->

@@ -59,11 +59,15 @@
 
 .backgrid thead th {
   vertical-align: bottom;
-  background-color: #f9f9f9;
+  /*background-color: #f9f9f9;*/
 }
 
 .backgrid thead th a {
   display: block;
+}
+
+.backgrid thead a {
+    color: white;
 }
 
 .backgrid.backgrid-striped tbody tr:nth-child(even) {
@@ -145,21 +149,21 @@
   width: 0;
   height: 0;
   margin-left: 0.3em;
-  border: 0;
+  border: 4px solid transparent;
   content: "";
 }
 
 .backgrid .ascending .sort-caret {
-  vertical-align: baseline;
+  vertical-align: middle;
   border-top: none;
   border-right: 4px solid transparent;
-  border-bottom: 4px solid #000000;
+  border-bottom: 4px solid #ffffff;
   border-left: 4px solid transparent;
 }
 
 .backgrid .descending .sort-caret {
-  vertical-align: super;
-  border-top: 4px solid #000000;
+  vertical-align: middle;
+  border-top: 4px solid #ffffff;
   border-right: 4px solid transparent;
   border-bottom: none;
   border-left: 4px solid transparent;

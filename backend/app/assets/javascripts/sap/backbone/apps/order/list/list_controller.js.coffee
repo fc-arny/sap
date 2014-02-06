@@ -3,18 +3,21 @@
   class List.Controller extends App.Controllers.Base
     initialize: ->
       orders = App.request 'order:entities'
-#      pageTitle I18n.t('orders')
+
       App.execute "when:fetched", orders, =>
-        @layout = @getLayoutView orders
+        @layout = @getLayoutView()
 
         @listenTo @layout, 'show', =>
-          @ordersRegion orders
+          @tableRegion orders
 
         @show @layout
 
-    ordersRegion: (orders) ->
-      ordersView = @getOrdersView orders
-      @layout.tableRegion.show(new Backgrid.Grid(columns: @getColumns(), collection: orders))
+    tableRegion: (orders) ->
+      table = new App.Views.Grid
+        collection: orders
+        columns:    @getColumns()
+
+      @layout.tableRegion.show(table)
       @layout.paginationRegion.show(new Backgrid.Extension.Paginator(collection: orders))
 
 
@@ -26,10 +29,5 @@
         {name: 'sum', label: 'SUM', cell: 'number'}
       ]
 
-    getOrdersView: (orders) ->
-      new List.Orders
-        collection: orders
-
-    getLayoutView: (orders) ->
+    getLayoutView: ->
       new List.Layout
-        collection: orders
