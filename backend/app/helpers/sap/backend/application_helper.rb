@@ -6,12 +6,12 @@ module Sap::Backend::ApplicationHelper
 
   # Quick statistic
   def backend_quick_stat
-    render 'sap/backend/common/stat'
+    render 'sap/backend/shared/stat'
   end
 
   # Bread crumbs 
   def backend_breadcrumbs
-    render 'sap/backend/common/breadcrumbs'
+    render 'sap/backend/shared/breadcrumbs'
   end
 end
 

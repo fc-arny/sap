@@ -13,11 +13,10 @@
   %body.admin
     #top
       .wrapper
-        %a.logo{href: admin_path}
+        %a.logo{href: ''}
           = image_tag('/assets/sap_backend/logo.png')
-        = render partial: '/sap/backend/common/menu/top'
-        = #backend_sidebar('responsitive')
-    = render 'sap/backend/common/sidebar'
+        = render partial: '/sap/backend/shared/menu/top'
+    = render 'sap/backend/shared/sidebar'
 
     #content
       .contentTop

@@ -1,2 +1,2 @@
 translations:
-  - file: 'app/assets/javascripts/sap/backend/i18n/translations.js'
+  - file: 'app/assets/javascripts/sap/i18n/backend.js'

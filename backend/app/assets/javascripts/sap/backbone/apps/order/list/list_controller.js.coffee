@@ -26,7 +26,8 @@
         {name: 'id', label: 'ID', cell: 'integer' },
         {name: 'state', label: 'State', cell: 'string'},
         {name: 'address', label: 'Address', cell: 'string'},
-        {name: 'sum', label: 'SUM', cell: 'number'}
+        {name: 'sum', label: 'SUM', cell: 'number'},
+        {name: 'id', label: '', cell: App.Views.Grid.ActionsCell}
       ]
 
     getLayoutView: ->

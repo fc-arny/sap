@@ -4,11 +4,11 @@
     %a.redImg{href: admin_users_path}
       %img{src:'/assets/sap_backend/icons/quickstats/user.png'}/
     .floatR
-      %strong.blue 4658
+      %strong.blue= Sap::User.count
       %span= t('sap.backend.views.layout.stat.users')
   %li
     %a.greenImg{href: admin_orders_path}
       %img{src: '/assets/sap_backend/icons/quickstats/money.png'}/
     .floatR
-      %strong.blue 1289
+      %strong.blue= Sap::Order.count
       %span= t('sap.backend.views.layout.stat.orders')
