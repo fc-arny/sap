@@ -12,9 +12,4 @@ RailsAdmin.config do |config|
 
 
   config.excluded_models = [Sap::Measure, Sap::Address::Subject]
-  #config.audit_with :paper_trail, 'Sap::User', 'PaperTrail::Version'
-  #c.authenticate_with {}
-  #c.current_user_method { User.first }
-  #c.authorize_with :cancan
-  #c.audit_with :history, User
 end
