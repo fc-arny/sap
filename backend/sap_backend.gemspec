@@ -22,4 +22,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rails-backbone'
   spec.add_dependency 'marionette-rails'
   spec.add_dependency 'haml_coffee_assets'
+  spec.add_dependency 'rails_admin'
+  spec.add_dependency 'cancan'
 end
