@@ -33,4 +33,6 @@ module Sap
       end
     end
   end
+  module I18n
+  end
 end

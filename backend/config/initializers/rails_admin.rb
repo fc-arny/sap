@@ -1,6 +1,5 @@
 RailsAdmin.config do |config|
-  config.main_app_name = %W(Globo Backend)
-  config.main_app_name = Proc.new { |controller| [ 'GloboMarket', "Backend - #{controller.params[:action].try(:titleize)}" ] }
+  config.main_app_name = %W(GloboMarket Backend)
 
   # Auth
   config.authenticate_with do
@@ -11,5 +10,5 @@ RailsAdmin.config do |config|
   config.authorize_with :cancan, Sap::Backend::Ability
 
 
-  config.excluded_models = [Sap::Measure, Sap::Address::Subject]
+  config.excluded_models = [Sap::Measure, Sap::Address::Subject, Rack::MiniProfiler]
 end
