@@ -7,14 +7,14 @@ RailsAdmin.config do |config|
   end
   config.current_user_method &:current_user
   config.authorize_with :cancan, Sap::Backend::Ability
-  config.included_models += [Sap::User, Sap::Order, Sap::Good]
+  config.included_models += [Sap::Store, Sap::User, Sap::Order, Sap::Good]
   config.audit_with :paper_trail, 'Sap::User', 'PaperTrail::Version'
 
   # Actions
   config.actions do
     # root actions
     dashboard
-    root :habr
+    #root :habr
 
     # collection actions
     index
