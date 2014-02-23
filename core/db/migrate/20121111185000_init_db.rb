@@ -31,6 +31,13 @@ class InitDb < ActiveRecord::Migration
     # Foreign keys
     add_foreign_key 'sap.stores', 'sap.regions', :column => :region_id
 
+    create_table :'sap.measures' do |t|
+      t.string  :name, null: false
+      t.integer :step, null: false
+      t.integer :value_in_parent
+      t.integer :parent_id
+    end
+
     # Create goods table
     create_table :'sap.goods', comment: 'All goods from all stores' do |t|
 
@@ -47,6 +54,9 @@ class InitDb < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_foreign_key 'sap.measures', 'sap.measures', column: :parent_id
+    add_foreign_key 'sap.goods', 'sap.measures', column: :measure_id
 
     # Create category table
     create_table :'sap.categories', comment: 'Goods categories' do |t|
@@ -187,20 +197,6 @@ class InitDb < ActiveRecord::Migration
     # Foreign keys
     add_foreign_key 'sap.order_items', 'sap.orders', :column => :order_id
     add_foreign_key 'sap.order_items', 'sap.good_items',  :column => :good_item_id
-
-
-    create_table 'sap.measures' do |t|
-      t.string  :name, null: false
-      t.integer :step, null: false
-      t.integer :value_in_parent
-      t.integer :parent_id
-    end
-
-    add_foreign_key 'sap.measures', 'sap.measures', column: :parent_id
-    add_foreign_key 'sap.goods', 'sap.measures', column: :measure_id
-
-    Sap::Measure.create :id => 1, :name => 'gram', :step => 100
-    Sap::Measure.create :id => 3, :name => 'piece', :step => 1
 
     # Sms, status, date
     create_table 'sap.sms' do |t|

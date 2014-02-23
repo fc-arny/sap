@@ -24,8 +24,11 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'devise'
   spec.add_dependency 'cancan'
-  spec.add_dependency 'js-routes'
-  spec.add_dependency 'i18n-js'
+
+  spec.add_dependency 'js-routes'             # Url helpers in js
+  spec.add_dependency 'i18n-js'               # I18n for js
+
   spec.add_dependency 'carrierwave'           # Image unloader
+  spec.add_dependency 'seedbank'              # Data for any envivonment
 
 end

@@ -1,5 +1,6 @@
 ## encoding: UTF-8
 require File.expand_path('../../app/models/sap', __FILE__)
+return
 
 ## Clear DB
 Sap::OrderItem.delete_all
@@ -32,31 +33,6 @@ Sap::Store.create([
 		{id:3,  name: 'Аллые Паруса', order_pos: 3, url: 'allie-parusa',  region_id: 1, system_name: 'parusa'},
 		{id:4,  name: 'Глобус Гурме', order_pos: 4, url: 'globus-gurme',  region_id: 1, system_name: 'globus'},
     {id:5,  name: 'Перекресток',  order_pos: 5, url: 'perekrestok',   region_id: 1, system_name: 'perekrestok'},
-])
-
-# Categories
-Sap::Category.create([
-    {id:1, name: 'Алкогольные напитки', url: 'alcohol'},
-      {id:2, name: 'Пиво',                url: 'bear',                  parent_id: 1},
-      {id:3, name: 'Вино',                url: 'wine',                  parent_id: 1},
-      {id:4, name: 'Крепкие напитки',     url: 'strong',                parent_id: 1},
-    {id:5, name: 'Овощи и Фрукты',      url: 'vegetables-and-fruits'},
-      {id:6, name: 'Овощи',               url: 'vegetables',            parent_id: 5},
-      {id:7, name: 'Фрукты',              url: 'fruits',                parent_id: 5},
-      {id:8, name: 'Орехи',               url: 'nuts',                  parent_id: 5},
-      {id:9, name: 'Сухофрукты',          url: 'dried-fruit',           parent_id: 5},
-    {id:10,name: 'Мясо и Рыба',         url: 'meat-and-fish'},
-      {id:11,name: 'Колбаса и соиски',    url: 'sausages',              parent_id: 10},
-      {id:12,name: 'Рыба и море пр-кты',  url: 'sea-foods',             parent_id: 10},
-      {id:13,name: 'Икра',                url: 'caviar',                parent_id: 10},
-      {id:14,name: 'Мясные закуски',      url: 'meat',                  parent_id: 10},
-    {id:15,name: 'Сладкое',             url: 'sweets'},
-      {id:16,name: 'Шоколад',             url: 'chokolate',             parent_id: 15},
-      {id:17,name: 'Конфеты',             url: 'candy',                 parent_id: 15},
-    {id:20,name: 'Молочные',            url: 'milky'},
-      {id:21,name: 'Молоко',              url: 'milk',                  parent_id: 20},
-      {id:22,name: 'Кисло-Молочные',      url: 'kislomilk',             parent_id: 20},
-
 ])
 
 # Goods

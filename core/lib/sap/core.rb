@@ -4,6 +4,8 @@ require 'devise'
 require 'js-routes'
 require 'i18n-js'
 
+require 'seedbank'
+
 module Sap
 
   autoload :UserParameterSanitizer, 'user_parameter_sanitizer'
