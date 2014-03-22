@@ -24,8 +24,8 @@ class Sap::Api::BaseController < Sap::BaseController
   # Error handler
   def render_error(exception)
     self.response_body = nil
-    msg = exception.message + "\nTrace:\n\t" + exception.backtrace.join("\n\t    ")
-    render_jsend :error => msg, :status => 500, :data => nil
+    @error = exception.message + "\nTrace:\n\t" + exception.backtrace.join("\n\t    ")
+    @status = 500
     logger.error(exception)
     #notify_airbrake(exception)
   end
