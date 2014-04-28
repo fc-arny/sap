@@ -5,12 +5,12 @@ Gem::Specification.new do |spec|
   spec.name          = 'sap'
   spec.version       = version
   spec.description   = 'Full-stack platform for e-commerce'
-  spec.summary       = 'SAP is a platform for multistore ecommerce application'
+  spec.summary       = 'SAP is a platform for multistores ecommerce application'
   spec.license       = 'FSF'
 
-  spec.authors       = ['Arthur Shcheglov']
+  spec.authors       = ['Arthur Shcheglov(fc_arny)']
   spec.email         = ['arthur.shcheglov@gmail.com']
-  spec.homepage      = 'http://martsoft.ru/sap'
+  spec.homepage      = 'http://martsoft.ru/lab/sap'
 
   spec.files         = Dir['README.md', 'lib/**/*']
   spec.require_paths = ['lib']
