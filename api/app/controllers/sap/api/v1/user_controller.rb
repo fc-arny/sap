@@ -15,7 +15,7 @@ class Sap::Api::V1::UserController < Devise::RegistrationsController
         sign_up(resource_name, resource)
         flash[:success] = t('sap.api.user.message.success_register')
       else
-        @errors = resource.errors.messages
+        @errors = {user: resource.errors.messages}
         @status = :fail
 
         clean_up_passwords resource
