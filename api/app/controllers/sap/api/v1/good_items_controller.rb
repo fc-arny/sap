@@ -6,7 +6,6 @@ class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
   # List of good items
   # GET /api/v1/good/items
   def index
-
     @goods = Sap::GoodItem.filter(params[:filter], params[:sort])
 
     @count  = @goods.count.to_i

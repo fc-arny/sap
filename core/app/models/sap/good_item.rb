@@ -36,7 +36,7 @@ class Sap::GoodItem < ActiveRecord::Base
           scope.where(:store_id => value)
         when :category
           # Find good that belogs to many categories at sametime
-          scope.where(:sap_category_good => {category_id: value})
+          scope.where(category_good: {category_id: value})
         when :order
           # Get only goods from basket
           scope.includes(:order_items).where(:sap_order_items => {order_id: value})

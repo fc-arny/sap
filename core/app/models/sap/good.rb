@@ -28,8 +28,8 @@ class Sap::Good < ActiveRecord::Base
   #attr_accessible :description, :id, :is_approved, :name, :status, :measure_id, :value
 
   # Associations
-  has_many :good_items, :class_name => 'Sap::GoodItem'
-  has_and_belongs_to_many :categories, :join_table => 'sap_category_good'
+  has_many :good_items, class_name: 'Sap::GoodItem'
+  has_and_belongs_to_many :categories, join_table: 'category_good'
 
   #belongs_to :vandor, :class_name => 'Sap::Vendor'
 
