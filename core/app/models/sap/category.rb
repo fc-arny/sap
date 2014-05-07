@@ -16,6 +16,8 @@ class Sap::Category < ActiveRecord::Base
 
   # Association
   has_and_belongs_to_many :goods, join_table: 'category_good'
+  belongs_to :parent, class: Sap::Category
+  # has_many :chil
 
   class << self
     # Fetch categories by parent_id and deep
