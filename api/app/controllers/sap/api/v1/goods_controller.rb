@@ -4,7 +4,7 @@
 class Sap::Api::V1::GoodsController < Sap::Api::BaseController
 
   # Good items' list
-  def list
+  def index
     category   = Sap::Category.where(url: params[:url]).first
     categories = category.children
     @goods = Sap::GoodItem.filter(params[:filter], params[:sort])

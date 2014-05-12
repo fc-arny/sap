@@ -13,13 +13,18 @@ class Sap::Api::BaseController < Sap::BaseController
 
   prepend_before_filter :fetch_auth_token
 
-  before_filter :skip_trackable
+  before_filter :skip_trackable, :default_response_format
+
 
 
   # Catch all exceptions
   rescue_from Exception, :with => :render_error
 
   protected
+
+  def default_response_format
+    request.format = :json
+  end
 
   # Error handler
   def render_error(exception)

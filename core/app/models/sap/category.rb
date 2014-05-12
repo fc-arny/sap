@@ -15,7 +15,8 @@ class Sap::Category < ActiveRecord::Base
   scope :menu, -> { where(show_in_menu: true) }
 
   # Association
-  has_and_belongs_to_many :goods, join_table: 'category_good'
+  has_many :category_goods, class_name: 'Sap::CategoryGood'
+  has_many :goods, through: :category_goods
   belongs_to :parent, class: Sap::Category
   # has_many :chil
 
