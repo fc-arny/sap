@@ -4,8 +4,8 @@ json.limit  @limit
 json.offset @offset
 
 # Goods
-json.goodItems @goods do |good|
-  json.array!(json.goodItems good.decorate.list_set)
+json.result @goods do |good|
+  json.array!(json.result good.decorate.list_set)
 end
 
 
