@@ -9,8 +9,8 @@ class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
     @goods = Sap::GoodItem.filter(params[:filter] || {}, params[:sort])
 
     @count  = @goods.count.to_i
+    @limit  = (params[:limit] || 10).to_i
     @offset = (params[:offset] || 0).to_i
-    @limit  = (params[:limit] || @count - @offset).to_i
 
     @goods = @goods.limit(@limit).offset(@offset)
   end
