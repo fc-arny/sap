@@ -23,7 +23,7 @@ class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
       includes(:good).
       find(params[:id])
 
-    @prices = Sap::GoodItem.where(:good_id => @good_item.good_id)
+    @prices = Sap::GoodItem.where(good_id: @good_item.good_id)
   end
 end
 
