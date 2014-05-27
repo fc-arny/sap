@@ -1,0 +1,12 @@
+ru:
+  activerecord:
+    models:
+      sap/user:
+        one: Пользователь
+        few: Пользователя
+        many: Пользователей
+        other: Пользователи
+    attributes:
+      sap/user:
+        login: Логин
+

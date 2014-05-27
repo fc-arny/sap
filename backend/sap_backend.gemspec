@@ -19,9 +19,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'sap_core', version
   spec.add_dependency 'sap_api', version
 
-  spec.add_dependency 'rails-backbone'
-  spec.add_dependency 'marionette-rails'
-  spec.add_dependency 'haml_coffee_assets'
   spec.add_dependency 'rails_admin'
   spec.add_dependency 'cancan'
   spec.add_dependency 'paper_trail', '~> 3.0.0'
