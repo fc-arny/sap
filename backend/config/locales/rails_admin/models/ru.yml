@@ -6,6 +6,26 @@ ru:
         few: Пользователя
         many: Пользователей
         other: Пользователи
+      sap/category:
+        one: Категория
+        few: Категории
+        many: Категорий
+        other: Категории
+      sap/good:
+        one: Товар
+        few: Товара
+        many: Товаров
+        other: Товары
+      sap/order:
+        one: Заказ
+        few: Заказа
+        many: Заказов
+        other: Заказы
+      sap/store:
+        one: Магазин
+        few: Магазина
+        many: Магазинов
+        other: Магазины
     attributes:
       sap/user:
         login: Логин

@@ -46,7 +46,7 @@ ru:
         menu: "Панель"
         breadcrumb: "Панель"
       index:
-        title: "Список %{model_label_plural}"
+        title: "%{model_label_plural}"
         menu: "Список"
         breadcrumb: "%{model_label_plural}"
       show:
@@ -62,16 +62,16 @@ ru:
         link: "Добавить новый %{model_label}"
         done: "создано"
       edit:
-        title: "Редактировение %{model_label} '%{object_label}'"
+        title: "%{model_label} «%{object_label}»"
         menu: "Редактирование"
-        breadcrumb: "редактирование"
+        breadcrumb: "Редактирование"
         link: "Редактировать %{model_label}"
         done: "сохранено"
       delete:
-        title: "Удаление %{model_label} '%{object_label}'"
+        title: "%{model_label} «%{object_label}»"
         menu: "Удаление"
-        breadcrumb: "удаление"
-        link: "Удалить '%{object_label}'"
+        breadcrumb: "Удаление"
+        link: "Удалить «%{object_label}»"
         done: "удалено"
       bulk_delete:
         title: "Удалить много %{model_label_plural}"
