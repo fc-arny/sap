@@ -12,10 +12,15 @@ ru:
         many: Категорий
         other: Категории
       sap/good:
-        one: Товар
-        few: Товара
-        many: Товаров
-        other: Товары
+        one: Продукт
+        few: Продукта
+        many: Продуктов
+        other: Продукты
+      sap/good_item:
+        one: Цена
+        few: Цены
+        many: Цен
+        other: Цены
       sap/order:
         one: Заказ
         few: Заказа
@@ -29,4 +34,9 @@ ru:
     attributes:
       sap/user:
         login: Логин
+      sap/good:
+        name: Название
+        description: Описание
+        good_items: Цены
+
 

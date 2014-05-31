@@ -29,7 +29,7 @@ ru:
       successful: "%{name} был %{action}"
       error: "Не получилось %{action} %{name}"
       noaction: "Никаких изменений не выполнено"
-      model_not_found: "Модель '%{model}' не найден"
+      model_not_found: "Модель «%{model}» не найден"
       object_not_found: "Объект %{model} с id '%{id}' не найден"
     table_headers:
       model_name: "Название модели"
@@ -45,27 +45,31 @@ ru:
         title: "Управление сайтом"
         menu: "Панель"
         breadcrumb: "Панель"
+      manage:
+        title: "Управление"
+        menu: "Управление"
+        breadcrumb: "Управление"
       index:
         title: "%{model_label_plural}"
         menu: "Список"
         breadcrumb: "%{model_label_plural}"
       show:
-        title: "Детали %{model_label} '%{object_label}'"
+        title: "Детали %{model_label} «%{object_label}»"
         menu: "Просмотр"
         breadcrumb: "%{object_label}"
       show_in_app:
         menu: "Показать в приложении"
       new:
-        title: "Новый %{model_label}"
+        title: "%{model_label}: Создание"
         menu: "Создание"
-        breadcrumb: "новый"
-        link: "Добавить новый %{model_label}"
+        breadcrumb: "Создание"
+        link: "Добавить" # новый %{model_label}
         done: "создано"
       edit:
         title: "%{model_label} «%{object_label}»"
         menu: "Редактирование"
         breadcrumb: "Редактирование"
-        link: "Редактировать %{model_label}"
+        link: "Редактировать" # %{model_label}
         done: "сохранено"
       delete:
         title: "%{model_label} «%{object_label}»"
@@ -90,7 +94,7 @@ ru:
         menu: "История"
         breadcrumb: "история"
       history_show:
-        title: "История для %{model_label} '%{object_label}'"
+        title: "История для %{model_label} «%{object_label}»"
         menu: "История"
         breadcrumb: "история"
     form:
@@ -102,7 +106,7 @@ ru:
       char_length_up_to: "длина не более"
       char_length_of: "длина"
       save: "Сохранить"
-      save_and_add_another: "Сохранить и новый"
+      save_and_add_another: "Сохранить и создать новый"
       save_and_edit: "Сохранить и редактировать"
       all_of_the_following_related_items_will_be_deleted: "Следующие объекты будут удалены:"
       are_you_sure_you_want_to_delete_the_object: "Вы уверены что хотите удалить %{model_name}"

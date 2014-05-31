@@ -33,7 +33,7 @@ class InitDb < ActiveRecord::Migration
 
     create_table :'sap.measures' do |t|
       t.string  :name, null: false
-      t.integer :step, null: false
+      t.integer :step, null: false # TODO: Need decimal
       t.integer :value_in_parent
       t.integer :parent_id
     end
@@ -47,7 +47,7 @@ class InitDb < ActiveRecord::Migration
       t.integer :value, null: false,            comment: 'How many gram or priece in one item'
       t.references :measure,                    comment: 'Good\'s measure: kilo, pack, bar etc'
 
-      t.boolean :is_approved, default: true,    comment: 'Is good blocked by admin'
+      # t.boolean :is_approved, default: true,    comment: 'Is good blocked by admin' # TODO: Do we need this field?
       t.boolean :is_group, default: false,      comment: 'Group of same product in defferent packs'
 
       t.integer :group_id, default: nil,       comment: 'Reference to group'

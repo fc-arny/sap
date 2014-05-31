@@ -3,8 +3,14 @@
     %li{:class => "#{action.action_name}_root_link"}= link_to wording_for(:menu, action), { :action => action.action_name, :controller => 'rails_admin/main' }, :class => "pjax"
   - if main_app_root_path = (main_app.root_path rescue false)
     %li= link_to t('admin.home.name').capitalize, main_app_root_path
+    %li
+      .btn-group
+        %a.btn.dropdown-toggle{data: {toggle: 'dropdown'}, href: '#'}
+          = t('admin.actions.manage.title')
+          %span.caret
+        %ul.dropdown-menu{role: 'menu'}
+          = main_navigation
+          = static_navigation
   - if _current_user
-    - if user_link = edit_user_link
-      %li= user_link
     - if logout_path.present?
-      %li= link_to content_tag('span', t('admin.misc.log_out'), :class => 'label label-important'), logout_path, :method => Devise.sign_out_via
+      %li= link_to content_tag('span', t('admin.misc.log_out'), class: 'label label-important'), logout_path, method: Devise.sign_out_via
