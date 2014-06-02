@@ -45,6 +45,14 @@ ru:
         system_name: Системное имя
         active: Активен?
         timetable: Режим работы
+      sap/category:
+        id: ID
+        name: Название
+        url: URL
+        position: Порядок
+        show_in_menu: В меню?
+        parent_id: Родительская
+
 
 
 

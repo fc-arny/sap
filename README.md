@@ -18,7 +18,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Add new store
+1. Add images for select6 main page etc in folder /assets/images/stores/%{system_name}/%{section}.png
+Where system_name must be set in Admin Panel. 
+2. Add record to stores model (/admin/sap~store)
 
 ## Contributing
 
