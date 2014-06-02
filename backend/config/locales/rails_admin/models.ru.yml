@@ -40,7 +40,7 @@ ru:
         good_items: Цены
       sap/store:
         name: Название
-        order_pos: Порядок
+        position: Порядок
         url: Слаг
         system_name: Системное имя
         active: Активен?

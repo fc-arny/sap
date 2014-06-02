@@ -63,7 +63,7 @@ class InitDb < ActiveRecord::Migration
 
       t.string  :name, null: false,         comment: 'Category name'
       t.string  :url, null: false,          comment: 'Category url segment'
-      t.integer :order_pos, default: 0,     comment: 'Sorting value'
+      t.integer :position, default: 0,     comment: 'Sorting value'
       t.boolean :show_in_menu, default: true, comment: 'Category like tag. If show_in menu os true'
       t.integer :parent_id, default: nil,   comment: 'Parent category'
 
@@ -123,7 +123,7 @@ class InitDb < ActiveRecord::Migration
       t.decimal    :price, null: false, precision: 8, scale: 2,  comment: 'Price in the store'
       t.references :store, null: false,                   comment: 'Store ID'
       t.boolean    :is_available, default: true,          comment: 'Does store have this good'
-      t.integer    :order_pos, default: nil,              comment: 'Sorting value'
+      t.integer    :position, default: nil,              comment: 'Sorting value'
 
       t.timestamps
     end
