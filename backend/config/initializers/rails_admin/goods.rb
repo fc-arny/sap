@@ -5,7 +5,7 @@ RailsAdmin.config do |config|
       field :measure do
         label 'Measure'
         formatted_value do
-          'sdsd'
+
         end
       end
       field :value

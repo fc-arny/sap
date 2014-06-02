@@ -18,7 +18,7 @@ class InitDb < ActiveRecord::Migration
     # Create table for store
     create_table :'sap.stores' do |t|
       t.string      :name, null: false,     comment: 'Store\'s name'
-      t.integer     :order_pos, default: 0, comment: 'Value for sorting stores'
+      t.integer     :position, default: 0,  comment: 'Value for sorting stores'
       t.string      :url, null: false,      comment: 'Url segment'
       t.string      :system_name,           comment: 'Internal name of store'
       t.boolean     :active, default: false,comment: 'Work with this store or not'
@@ -29,7 +29,7 @@ class InitDb < ActiveRecord::Migration
     end
 
     # Foreign keys
-    add_foreign_key 'sap.stores', 'sap.regions', :column => :region_id
+    add_foreign_key 'sap.stores', 'sap.regions', column: :region_id
 
     create_table :'sap.measures' do |t|
       t.string  :name, null: false
@@ -123,7 +123,7 @@ class InitDb < ActiveRecord::Migration
       t.decimal    :price, null: false, precision: 8, scale: 2,  comment: 'Price in the store'
       t.references :store, null: false,                   comment: 'Store ID'
       t.boolean    :is_available, default: true,          comment: 'Does store have this good'
-      t.integer    :order_pos, default: nil,              content: 'Sorting value'
+      t.integer    :order_pos, default: nil,              comment: 'Sorting value'
 
       t.timestamps
     end

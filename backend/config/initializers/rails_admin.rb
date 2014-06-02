@@ -28,5 +28,12 @@ RailsAdmin.config do |config|
     edit
     delete
     history_show
+    #show_in_app
+
+    nestable do
+      visible do
+        [Sap::Store].include? bindings[:abstract_model].model
+      end
+    end
   end
 end

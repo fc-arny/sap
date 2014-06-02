@@ -12,17 +12,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #
-
-# -------------------------------------------------------------
-# Contain base information about business-clients (for example "Azbuka Vkusa", "Allye Parusa")
-# -------------------------------------------------------------
-# =Fields:
-#  order_pos    - position in store list
-#  url          - name in latin for links
-#  is_disables  - don't work with the client
-#  region_id    - link to region
-#  work_time_from, work_time_to - work period, ex.: 10.00 - 23.00, if null then round-the-clock
-# -------------------------------------------------------------
 class Sap::Store < ActiveRecord::Base
-  scope :active, -> {where(active: true).order('order_pos')}
+  scope :active, -> { where(active: true).order('position') }
+  belongs_to :region
 end

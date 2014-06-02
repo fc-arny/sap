@@ -41,6 +41,11 @@ ru:
       item: "Элемент"
       message: "Сообщение"
     actions:
+      nestable:
+        menu: "Сортировка"
+        title: "Сортировка"
+        breadcrumbs: "Сортировка"
+        success: "Отсортировано"
       dashboard:
         title: "Управление сайтом"
         menu: "Панель"

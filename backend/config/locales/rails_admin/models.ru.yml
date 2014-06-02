@@ -38,5 +38,15 @@ ru:
         name: Название
         description: Описание
         good_items: Цены
+      sap/store:
+        name: Название
+        order_pos: Порядок
+        url: Слаг
+        system_name: Системное имя
+        active: Активен?
+        timetable: Режим работы
+
+
+
 
 
