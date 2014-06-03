@@ -61,15 +61,18 @@ class InitDb < ActiveRecord::Migration
     # Create category table
     create_table :'sap.categories', comment: 'Goods categories' do |t|
 
-      t.string  :name, null: false,         comment: 'Category name'
-      t.string  :url, null: false,          comment: 'Category url segment'
-      t.integer :position, default: 0,     comment: 'Sorting value'
+      t.string  :name, null: false,           comment: 'Category name'
+      t.string  :url, null: false,            comment: 'Category url segment'
+      t.integer :position, default: 0,        comment: 'Sorting value'
       t.boolean :show_in_menu, default: true, comment: 'Category like tag. If show_in menu os true'
-      t.integer :parent_id, default: nil,   comment: 'Parent category'
+      # t.integer :parent_id, default: nil,     comment: 'Parent category'
+      t.string  :ancestry,                    comment: 'Ancestry gem\'s field for TREE view'
 
       t.timestamps
-
     end
+
+
+    add_index :'sap.categories', :ancestry
 
     # Joining table
     create_table :'sap.category_goods', id: false, comment: 'Joining table' do |t|

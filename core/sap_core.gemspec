@@ -30,5 +30,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'carrierwave'           # Image unloader
   spec.add_dependency 'seedbank'              # Data for any envivonment
-
+  spec.add_dependency 'ancestry'              # Tree presentation for category
 end

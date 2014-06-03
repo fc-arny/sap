@@ -44,7 +44,7 @@ ru:
       nestable:
         menu: "Сортировка"
         title: "Сортировка"
-        breadcrumbs: "Сортировка"
+        breadcrumb: "Сортировка"
         success: "Отсортировано"
       dashboard:
         title: "Управление сайтом"

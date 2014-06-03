@@ -11,14 +11,15 @@
 #  updated_at :datetime
 # -------------------------------------------------------------
 class Sap::Category < ActiveRecord::Base
-  # Scopes
-  scope :menu, -> { where(show_in_menu: true) }
+  # Includes
+  has_ancestry
 
   # Association
   has_many :category_goods, class_name: 'Sap::CategoryGood'
   has_many :goods, through: :category_goods
-  belongs_to :parent, class: Sap::Category
-  # has_many :chil
+
+  # Scopes
+  scope :menu, -> { where(show_in_menu: true) }
 
   class << self
     # Fetch categories by parent_id and deep

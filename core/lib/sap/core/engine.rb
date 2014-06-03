@@ -1,3 +1,5 @@
+require 'ancestry'
+
 module Sap
   module Core
     class Engine < ::Rails::Engine

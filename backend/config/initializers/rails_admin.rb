@@ -32,7 +32,7 @@ RailsAdmin.config do |config|
 
     nestable do
       visible do
-        [Sap::Store].include? bindings[:abstract_model].model
+        [Sap::Store, Sap::Category].include? bindings[:abstract_model].model
       end
     end
   end
