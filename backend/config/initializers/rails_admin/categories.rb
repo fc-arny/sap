@@ -26,11 +26,12 @@ RailsAdmin.config do |config|
       field :id
       field :name
       field :url
-      field :position
-      field :show_in_menu
-      field :parent, :enum do
-        Sap::Category.all.map { |c| [c.id] }
+      field :parent_id, :enum do
+        enum_method do
+          :parent_enum
+        end
       end
+      field :show_in_menu
     end
   end
 end

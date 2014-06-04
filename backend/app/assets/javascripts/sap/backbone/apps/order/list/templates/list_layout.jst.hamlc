@@ -1,5 +1,0 @@
-.widget
-  .whead
-    %h6= I18n.t('orders')
-  #table-region
-  #pagination-region

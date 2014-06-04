@@ -6,7 +6,6 @@
 #  name       :string(255)      not null
 #  url        :string(255)      not null
 #  order_pos  :integer          default(0)
-#  parent_id  :integer
 #  created_at :datetime
 #  updated_at :datetime
 # -------------------------------------------------------------
@@ -46,28 +45,9 @@ class Sap::Category < ActiveRecord::Base
     end
   end
 
-  def children
-    categories = []
-    _children  = self.class.where(parent_id: self.id)
-
-    _children.each do |cat|
-      categories << cat
-      categories += cat.children
+  def parent_enum
+    self.class.where.not(id: id).map do |c|
+      ["#{'--'*c.depth} #{c.name}", c.id]
     end
-
-    categories
-  end
-
-
-  def parents
-    categories  = []
-    _parent_id  = self.parent_id
-
-    while _parent_id && _category = self.class.find(_parent_id)
-      categories << _category
-      _parent_id =  cat.parent_id
-    end
-
-    categories
   end
 end
