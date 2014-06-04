@@ -46,8 +46,10 @@ class Sap::Category < ActiveRecord::Base
   end
 
   def parent_enum
-    self.class.where.not(id: id).map do |c|
+    result = self.class.sort_by_ancestry(self.class.where.not(id: id))
+    result.map do |c|
       ["#{'--'*c.depth} #{c.name}", c.id]
     end
+
   end
 end

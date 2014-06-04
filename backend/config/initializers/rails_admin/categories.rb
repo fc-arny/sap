@@ -1,8 +1,7 @@
 RailsAdmin.config do |config|
   config.model Sap::Category do
     nestable_tree({
-      position_field: :position,
-      max_depth: 3
+      position_field: :position
     })
 
     list do
