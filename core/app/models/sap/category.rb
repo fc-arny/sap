@@ -20,6 +20,9 @@ class Sap::Category < ActiveRecord::Base
   # Scopes
   scope :menu, -> { where(show_in_menu: true) }
 
+  # Callbacks
+  after_commit :flush_cache
+
   class << self
     # Fetch categories by parent_id and deep
     def children_categories(parent_id = nil, deep = 0, show_in_menu = true)
@@ -50,6 +53,12 @@ class Sap::Category < ActiveRecord::Base
     result.map do |c|
       ["#{'--'*c.depth} #{c.name}", c.id]
     end
+  end
 
+  private
+
+  def flush_cache
+    Rails.cache.delete([:header, :categories])
+    Rails.cache.delete([:header, :subcategories])
   end
 end
