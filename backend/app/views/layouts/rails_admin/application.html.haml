@@ -4,12 +4,8 @@
     %meta{content: 'text/html; charset=utf-8', 'http-equiv' => 'Content-Type'}
     %meta{content: 'NONE,NOARCHIVE', name: 'robots'}
     = csrf_meta_tag
-    = stylesheet_link_tag 'rails_admin/rails_admin.css', media: :all
     = stylesheet_link_tag :rails_admin, media: :all
-    = stylesheet_link_tag :image_thread, media: :all
-
-    = javascript_include_tag 'rails_admin/rails_admin.js'
-    = javascript_include_tag :image_thread
+    = javascript_include_tag :rails_admin
     -# Initialize JS simple i18n
     :javascript
       RailsAdmin.I18n.init(JSON.parse("#{j I18n.t('admin.js').to_json}"))
