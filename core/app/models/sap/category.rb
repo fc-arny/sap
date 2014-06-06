@@ -12,6 +12,7 @@
 class Sap::Category < ActiveRecord::Base
   # Includes
   has_ancestry
+  has_image_thread :images
 
   # Association
   has_many :category_goods, class_name: 'Sap::CategoryGood'

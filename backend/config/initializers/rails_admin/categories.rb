@@ -31,6 +31,7 @@ RailsAdmin.config do |config|
         end
       end
       field :show_in_menu
+      field :images, :image_thread
     end
   end
 end
