@@ -2,7 +2,7 @@ RailsAdmin.config do |config|
   config.model Sap::Good do
     list do
       field :name
-      field :rating
+      field :par
       # field :images do
       #
       # end
@@ -16,9 +16,14 @@ RailsAdmin.config do |config|
       field :name
       field :description
       field :is_group
-      field :measure, :measure
+
+      field :value, :hidden
+      field :measure_id, :hidden
+      field :par, :measure
+
+
       group :images do
-        label 'Images'
+        label I18n.t('activerecord.groups.sap/good.images')
       end
       field :image_thread, :image_thread do
         group :images

@@ -24,7 +24,7 @@ class Sap::Good < ActiveRecord::Base
   belongs_to :measure, class_name: Sap::Measure
 
   #belongs_to :vendor, :class_name => 'Sap::Vendor'
-  def rating
+  def par
     "#{value} #{measure.name}" unless is_group
   end
 end

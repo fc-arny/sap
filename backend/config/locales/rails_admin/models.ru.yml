@@ -41,6 +41,7 @@ ru:
         rating: Номинал
         image_thread: Изображения
         is_group: Группа?
+        par: Номинал
       sap/store:
         name: Название
         position: Порядок
@@ -56,6 +57,9 @@ ru:
         show_in_menu: В меню?
         parent_id: Родительская
         parent: Род. категория
+        images: Загрузить
+    groups:
+      sap/good:
         images: Изображения
 
 
