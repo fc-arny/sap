@@ -12,12 +12,12 @@
 #  updated_at       :datetime
 # -------------------------------------------------------------
 class Sap::GoodItem < ActiveRecord::Base
-  # Fields
-  #attr_accessible :id, :good_id, :price, :store_id, :store_gid, :order_pos
+  # Includes
+  has_image_thread :image_thread
 
   # Relationships
-  belongs_to :good, :class_name => 'Sap::Good'
-  belongs_to :store, :class_name => 'Sap::Store'
+  belongs_to :good, class_name: Sap::Good.to_s
+  belongs_to :store, class_name: Sap::Store.to_s
 
   # Geting filtred
   def self.filter(attributes, sort = nil)

@@ -38,6 +38,9 @@ ru:
         name: Название
         description: Описание
         good_items: Цены
+        rating: Номинал
+        image_thread: Изображения
+        is_group: Группа?
       sap/store:
         name: Название
         position: Порядок

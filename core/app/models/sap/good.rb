@@ -13,29 +13,18 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #
-
-# -------------------------------------------------------------
-# Common good list for all stores
-# -------------------------------------------------------------
-# ==Fields:
-# is_approved - new item entered by a store manager isn't show by default
-# status      - state of object (:deleted, :fake and etc)
-# vendor_id   - product vendor
-# -------------------------------------------------------------
 class Sap::Good < ActiveRecord::Base
-
-  # Fields
-  #attr_accessible :description, :id, :is_approved, :name, :status, :measure_id, :value
+  # Includes
+  has_image_thread :image_thread
 
   # Associations
-  has_many :good_items, class_name: 'Sap::GoodItem'
-  has_many :category_goods, class_name: 'Sap::CategoryGood'
-  has_many :categories, through: :category_goods
+  has_many :good_items, class_name: Sap::GoodItem.to_s
+  has_and_belongs_to_many :categories, class_name: Sap::Category.to_s, join_table: 'sap.category_goods'
 
-  #belongs_to :vandor, :class_name => 'Sap::Vendor'
+  belongs_to :measure, class_name: Sap::Measure
 
-  # Get list of goods by store
-  def get_good_list(store = nil, category = nil)
-     self.find_all
+  #belongs_to :vendor, :class_name => 'Sap::Vendor'
+  def rating
+    "#{value} #{measure.name}" unless is_group
   end
 end

@@ -9,3 +9,4 @@ module Sap
 end
 
 require 'sap/backend/engine'
+require 'sap/rails_admin'

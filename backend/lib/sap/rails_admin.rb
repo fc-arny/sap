@@ -1,0 +1,1 @@
+require 'sap/rails_admin/fields/measure'

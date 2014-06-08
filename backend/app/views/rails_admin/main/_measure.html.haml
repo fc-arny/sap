@@ -1,0 +1,3 @@
+.input-group
+  = form.text_field :value, class: 'form-control', style: 'text-align: right; width: 50px'
+  = form.select :measure_id, Sap::Measure.all.collect { |p| [p.name, p.id] }, {}, class: 'selectpicker', style: 'width: 50px'

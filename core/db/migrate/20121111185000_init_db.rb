@@ -47,10 +47,9 @@ class InitDb < ActiveRecord::Migration
       t.integer :value, null: false,            comment: 'How many gram or priece in one item'
       t.references :measure,                    comment: 'Good\'s measure: kilo, pack, bar etc'
 
-      # t.boolean :is_approved, default: true,    comment: 'Is good blocked by admin' # TODO: Do we need this field?
       t.boolean :is_group, default: false,      comment: 'Group of same product in defferent packs'
-
-      t.integer :group_id, default: nil,       comment: 'Reference to group'
+      t.integer :group_id, default: nil,        comment: 'Reference to group'
+      t.reference :image_thread,                comment: 'Reference to images\' album'
 
       t.timestamps
     end
@@ -60,12 +59,11 @@ class InitDb < ActiveRecord::Migration
 
     # Create category table
     create_table :'sap.categories', comment: 'Goods categories' do |t|
-
       t.string  :name, null: false,           comment: 'Category name'
       t.string  :url, null: false,            comment: 'Category url segment'
       t.integer :position, default: 0,        comment: 'Sorting value'
       t.boolean :show_in_menu, default: true, comment: 'Category like tag. If show_in menu os true'
-      t.integer :images_id,                   comment: 'Link to image thread'
+      t.integer :images_id,                   comment: 'Reference to images\' album'
       t.string  :ancestry,                    comment: 'Ancestry gem\'s field for TREE view'
 
       t.timestamps
@@ -84,7 +82,6 @@ class InitDb < ActiveRecord::Migration
 
     # Parent category
     add_foreign_key :'sap.goods', :'sap.goods', :column => :group_id
-    add_foreign_key :'sap.categories', :'sap.categories', :column => :parent_id
 
     # Joining table
     add_index :'sap.category_goods', [:category_id, :good_id], :unique => true
@@ -128,8 +125,8 @@ class InitDb < ActiveRecord::Migration
       t.decimal    :price, null: false, precision: 8, scale: 2,  comment: 'Price in the store'
       t.references :store, null: false,                   comment: 'Store ID'
       t.boolean    :is_available, default: true,          comment: 'Does store have this good'
-      t.integer    :position, default: nil,              comment: 'Sorting value'
-
+      t.integer    :position, default: nil,               comment: 'Sorting value'
+      t.reference  :image_thread,                         comment: 'Reference to images\' album'
       t.timestamps
     end
 
