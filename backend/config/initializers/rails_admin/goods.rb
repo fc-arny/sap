@@ -17,8 +17,6 @@ RailsAdmin.config do |config|
       field :description
       field :is_group
 
-      field :value, :hidden
-      field :measure_id, :hidden
       field :par, :measure
 
 
