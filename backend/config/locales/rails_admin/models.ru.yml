@@ -42,6 +42,7 @@ ru:
         image_thread: Изображения
         is_group: Группа?
         par: Номинал
+        has_images?: Есть изображения?
       sap/store:
         name: Название
         position: Порядок

@@ -3,8 +3,9 @@ RailsAdmin.config do |config|
     list do
       field :name
       field :par
-      # field :is_group
+      field :has_images?, :boolean
       # field :group_id
+      field :is_group
       # field :created_at
       # field :updated_at
     end
