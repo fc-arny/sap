@@ -27,4 +27,8 @@ class Sap::Good < ActiveRecord::Base
   def par
     "#{value} #{measure.name}" unless is_group
   end
+
+  def has_images?
+    image_thread.blank? || image_thread.images.count == 0 ? false : true
+  end
 end

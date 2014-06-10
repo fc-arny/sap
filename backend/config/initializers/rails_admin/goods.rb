@@ -3,9 +3,6 @@ RailsAdmin.config do |config|
     list do
       field :name
       field :par
-      # field :images do
-      #
-      # end
       # field :is_group
       # field :group_id
       # field :created_at
@@ -23,8 +20,13 @@ RailsAdmin.config do |config|
       group :images do
         label I18n.t('activerecord.groups.sap/good.images')
       end
+
       field :image_thread, :image_thread do
         group :images
+      end
+
+      group :good_items do
+        label I18n.t('activerecord.groups.sap/good.good_items')
       end
     end
   end

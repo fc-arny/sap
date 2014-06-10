@@ -11,6 +11,10 @@ module Sap
           parent.field(:measure_id, :hidden)
         end
 
+        register_instance_option :allowed_methods do
+          [method_name, :measure_id, :value].compact
+        end
+
         register_instance_option :partial do
           :measure
         end
