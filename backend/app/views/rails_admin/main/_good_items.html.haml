@@ -1,0 +1,22 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Store
+      %th Price
+  %tbody
+    - field.bindings[:object].good_items.each do |i|
+      %tr
+        %td= i.store.name
+        %td= i.price
+        %td
+          %a.btn.btn-info.update.false{href: "/admin/sap~good_item/#{i.id}/edit"}
+            %i.icon-pencil.icon-white
+            Edit
+          -#data-link="/admin/sap~store/__ID__/edit?modal=true" href="#" style="margin-left:10px">
+          -#<i class="icon-pencil icon-white"></i> Редактировать</a>
+  %tfoot
+    %tr
+      %td{colspan: 2}
+        %a.btn.btn-info.create{href: '/admin/sap~good_item/new'}
+          %i.icon-plus.icon-white
+          Add

@@ -17,7 +17,7 @@ RailsAdmin.config do |config|
 
       field :par, :measure
 
-
+      # Images
       group :images do
         label I18n.t('activerecord.groups.sap/good.images')
       end
@@ -26,8 +26,15 @@ RailsAdmin.config do |config|
         group :images
       end
 
-      group :good_items do
+      # GoodItems
+      group :items do
         label I18n.t('activerecord.groups.sap/good.good_items')
+      end
+
+      field :good_items do
+        label false
+        group :items
+        partial 'good_items', locals: {field: self}
       end
     end
   end

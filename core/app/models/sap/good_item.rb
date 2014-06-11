@@ -19,6 +19,10 @@ class Sap::GoodItem < ActiveRecord::Base
   belongs_to :good, class_name: Sap::Good.to_s
   belongs_to :store, class_name: Sap::Store.to_s
 
+  def name
+    "##{id}: #{good.name} (#{store.name})" unless new_record?
+  end
+
   # Geting filtred
   def self.filter(attributes, sort = nil)
     relation = self.includes(:good => :categories)
