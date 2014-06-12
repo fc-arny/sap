@@ -16,6 +16,11 @@ ru:
         few: Продукта
         many: Продуктов
         other: Продукты
+      sap/gooditem:
+        one: Цена
+        few: Цены
+        many: Цен
+        other: Цены
       sap/good_item:
         one: Цена
         few: Цены
@@ -43,6 +48,16 @@ ru:
         is_group: Группа?
         par: Номинал
         has_images?: Есть изображения?
+        good_item:
+          store: Магазин
+          price: Цена
+      sap/good_item:
+        good: Товар
+        store_gid: GID
+        price: Цена
+        store: Магазин
+        updated_at: Обновлено
+        created_at: Создано
       sap/store:
         name: Название
         position: Порядок
@@ -63,9 +78,3 @@ ru:
       sap/good:
         images: Изображения
         good_items: Цены
-
-
-
-
-
-

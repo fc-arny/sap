@@ -13,9 +13,8 @@ RailsAdmin.config do |config|
     edit do
       field :name
       field :description
-      field :is_group
-
       field :par, :measure
+      field :is_group
 
       # Images
       group :images do
@@ -32,8 +31,10 @@ RailsAdmin.config do |config|
       end
 
       field :good_items do
-        label false
+        help ''
+        # label false
         group :items
+
         partial 'good_items', locals: {field: self}
       end
     end

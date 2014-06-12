@@ -7,3 +7,19 @@
   max-height: 250px;
   overflow-y: scroll;
 }
+
+// Sap::Good
+@mixin right-text-align { text-align: right; }
+.sap_good_item_row { .price_field { @include right-text-align; } }
+.header.price_field { @include right-text-align; }
+
+.table.good_items {
+  width: 400px;
+  .actions {
+    width: 50px;
+  }
+  .price {
+    width: 100px;
+    text-align: right;
+  }
+}

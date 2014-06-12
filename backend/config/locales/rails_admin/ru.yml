@@ -59,25 +59,25 @@ ru:
         menu: "Список"
         breadcrumb: "%{model_label_plural}"
       show:
-        title: "Детали %{model_label} «%{object_label}»"
+        title: "%{model_label} «%{object_label}» → Просмотр"
         menu: "Просмотр"
         breadcrumb: "%{object_label}"
       show_in_app:
         menu: "Показать в приложении"
       new:
-        title: "%{model_label}: Создание"
+        title: "%{model_label} → Создание"
         menu: "Создание"
         breadcrumb: "Создание"
         link: "Добавить" # новый %{model_label}
         done: "создано"
       edit:
-        title: "%{model_label} «%{object_label}»"
+        title: "%{model_label} «%{object_label}» → Редактирование"
         menu: "Редактирование"
         breadcrumb: "Редактирование"
         link: "Редактировать" # %{model_label}
         done: "сохранено"
       delete:
-        title: "%{model_label} «%{object_label}»"
+        title: "%{model_label} «%{object_label}» → Удаление"
         menu: "Удаление"
         breadcrumb: "Удаление"
         link: "Удалить «%{object_label}»"
