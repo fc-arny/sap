@@ -13,7 +13,7 @@
 # -------------------------------------------------------------
 class Sap::GoodItem < ActiveRecord::Base
   # Includes
-  has_image_thread :image_thread
+  # has_image_thread :image_thread
 
   # Relationships
   belongs_to :good, class_name: Sap::Good.to_s
