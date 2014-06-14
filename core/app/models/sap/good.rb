@@ -1,18 +1,20 @@
 # == Schema Information
 #
-# Table name: sap_goods
+# Table name: sap.goods
 #
-#  id            :integer          not null, primary key
-#  name          :string(255)      not null
-#  measure_id    :integer          not null
-#  measure_value :integer          not null
-#  measure_step  :integer          default(1), not null
-#  description   :text
-#  is_approved   :boolean          default(FALSE)
-#  order_pos     :integer          default(0)
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id              :integer          not null, primary key
+#  name            :string(255)      not null
+#  description     :text
+#  value           :integer          not null
+#  measure_id      :integer
+#  is_approved     :boolean          default(TRUE)
+#  is_group        :boolean          default(FALSE)
+#  group_id        :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#  image_thread_id :integer
 #
+
 class Sap::Good < ActiveRecord::Base
   # Includes
   has_image_thread :image_thread

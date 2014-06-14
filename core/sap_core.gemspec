@@ -32,4 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'seedbank'              # Data for any envivonment
   spec.add_dependency 'ancestry'              # Tree presentation for category
   spec.add_dependency 'foreigner'             # Foreign key
+  spec.add_dependency 'annotate'              # Annotate models
 end

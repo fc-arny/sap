@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: sap.blog_posts
+#
+#  id             :integer          not null, primary key
+#  title          :string(255)      not null
+#  body           :text             not null
+#  category_id    :integer
+#  published      :boolean          default(FALSE)
+#  published_date :datetime
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
 # -------------------------------------------------------------
 # Blog posts model
 # -------------------------------------------------------------

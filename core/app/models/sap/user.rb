@@ -1,3 +1,27 @@
+# == Schema Information
+#
+# Table name: sap.users
+#
+#  id                     :integer          not null, primary key
+#  name                   :string(255)
+#  login                  :string(255)      not null
+#  email                  :string(255)
+#  phone                  :string(255)      not null
+#  role                   :string(255)
+#  encrypted_password     :string(255)      not null
+#  is_temporary           :boolean          default(FALSE)
+#  authentication_token   :string(255)
+#  remember_created_at    :datetime
+#  reset_password_token   :string(255)
+#  reset_password_code    :string(255)
+#  reset_password_sent_at :datetime
+#  reset_phone_new        :string(255)
+#  reset_phone_code       :string(255)
+#  reset_phone_sent_at    :datetime
+#  created_at             :datetime
+#  updated_at             :datetime
+#
+
 # -------------------------------------------------------------
 # Base model for users
 # Auth by login.
@@ -10,7 +34,7 @@
 # end
 # -------------------------------------------------------------
 class Sap::User < ActiveRecord::Base
-  ROLES = %w[admin salesman developer]
+  # ROLES = %w[admin salesman developer]
 
   # Relationships
   include Sap::Addressable

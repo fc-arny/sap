@@ -1,11 +1,11 @@
 # == Schema Information
 #
-# Table name: sap_regions
+# Table name: sap.regions
 #
 #  id          :integer          not null, primary key
-#  name        :string(255)
-#  state       :string(255)
+#  name        :string(255)      not null
 #  description :string(255)
+#  parent_id   :integer
 #  created_at  :datetime
 #  updated_at  :datetime
 #

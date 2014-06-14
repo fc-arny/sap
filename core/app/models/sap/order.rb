@@ -1,25 +1,27 @@
 # == Schema Information
 #
-# Table name: sap_orders
+# Table name: sap.orders
 #
 #  id         :integer          not null, primary key
-#  state      :string(255)
-#  hash_str   :string(255)
-#  sum        :decimal(, )
+#  state      :string(255)      not null
+#  hash_str   :string(255)      not null
+#  sum        :integer
 #  user_id    :integer
-#  phone_id   :integer                                # Link to phone
-#  address    :string(255)                            # Address string: area, street, house number and etc
+#  phone      :string(255)
+#  address    :string(255)
+#  comment    :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-# -------------------------------------------------------------
+#
+
 class Sap::Order < ActiveRecord::Base
   # TODO: Обдумать статусы заказа
   # Order states
-  ST_NEW       = 'new'
-  ST_PAID      = 'paid'
-  ST_PACK      = 'pack'
-  ST_DELIVERY   = 'delivery'
-  ST_FINISHED  = 'finished'
+  # ST_NEW       = 'new'
+  # ST_PAID      = 'paid'
+  # ST_PACK      = 'pack'
+  # ST_DELIVERY   = 'delivery'
+  # ST_FINISHED  = 'finished'
 
   # Fields
   #attr_accessible :id, :state, :sum, :user_id, :hash_str, :created_at, :updated_at

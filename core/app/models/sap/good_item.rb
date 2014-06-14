@@ -1,16 +1,19 @@
 # == Schema Information
 #
-# Table name: sap_good_items # Object contained link to good object and good's price in the store
+# Table name: sap.good_items
 #
-#  id               :integer          not null, primary key # Object contained link to good object and good's price in the store
-#  good_id          :integer          not null              # Link to real good
-#  good_id_in_store :string(255)      not null              # Store inside good's ID for sync list
-#  price            :decimal(, )      not null              # Price in the store
-#  store_id         :integer          not null              # The store
-#  order_pos        :integer
-#  created_at       :datetime
-#  updated_at       :datetime
-# -------------------------------------------------------------
+#  id              :integer          not null, primary key
+#  good_id         :integer          not null
+#  store_gid       :string(255)      not null
+#  price           :decimal(8, 2)    not null
+#  store_id        :integer          not null
+#  is_available    :boolean          default(TRUE)
+#  order_pos       :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#  image_thread_id :integer
+#
+
 class Sap::GoodItem < ActiveRecord::Base
   # Includes
   # include Sap::Filterable
@@ -23,7 +26,7 @@ class Sap::GoodItem < ActiveRecord::Base
     "##{id}: #{good.name} (#{store.name})" unless new_record?
   end
 
-  # Geting filtred
+  # Getting filtered
   def self.filter(attributes, sort = nil)
     relation = self.includes(:good => :categories)
 

@@ -1,14 +1,18 @@
 # == Schema Information
 #
-# Table name: sap_categories
+# Table name: sap.categories
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)      not null
-#  url        :string(255)      not null
-#  order_pos  :integer          default(0)
-#  created_at :datetime
-#  updated_at :datetime
-# -------------------------------------------------------------
+#  id           :integer          not null, primary key
+#  name         :string(255)      not null
+#  url          :string(255)      not null
+#  position     :integer          default(0)
+#  show_in_menu :boolean          default(TRUE)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  ancestry     :string
+#  images_id    :integer
+#
+
 class Sap::Category < ActiveRecord::Base
   # Includes
   has_ancestry

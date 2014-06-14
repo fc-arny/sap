@@ -1,14 +1,15 @@
 # == Schema Information
 #
-# Table name: sap_order_items
+# Table name: sap.order_items
 #
-#  id           :integer          not null, primary key
-#  order_id     :integer
-#  good_item_id :integer
-#  count        :integer
+#  order_id     :integer          not null
+#  good_item_id :integer          not null
+#  value        :integer          not null
+#  price        :decimal(8, 2)
 #  created_at   :datetime
 #  updated_at   :datetime
-# -------------------------------------------------------------
+#
+
 class Sap::OrderItem < ActiveRecord::Base   # TODO: move this table to redis or delete id column
   # Fields
   #attr_accessible :good_item_id, :store_id, :value, :price, :order_id
