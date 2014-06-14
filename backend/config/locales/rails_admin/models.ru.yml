@@ -48,6 +48,7 @@ ru:
         is_group: Группа?
         par: Номинал
         has_images?: Есть изображения?
+        categories: Категории
         good_item:
           store: Магазин
           price: Цена

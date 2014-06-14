@@ -14,6 +14,7 @@ RailsAdmin.config do |config|
       field :name
       field :description
       field :par, :measure
+      field :categories
       field :is_group
 
       # Images

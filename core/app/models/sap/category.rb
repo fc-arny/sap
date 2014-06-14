@@ -15,10 +15,11 @@ class Sap::Category < ActiveRecord::Base
   has_image_thread :images
 
   # Association
-  has_and_belongs_to_many :goods, class_name: Sap::Good.to_s, join_table: 'category_goods'
+  has_and_belongs_to_many :goods, class_name: Sap::Good.to_s, join_table: 'sap.category_goods'
 
   # Scopes
   scope :menu, -> { where(show_in_menu: true) }
+  scope :by_url, -> (url) { where(url: url).first }
 
   # Callbacks
   after_commit :flush_cache
