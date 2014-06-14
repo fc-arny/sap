@@ -13,7 +13,7 @@
 # -------------------------------------------------------------
 class Sap::GoodItem < ActiveRecord::Base
   # Includes
-  # has_image_thread :image_thread
+  # include Sap::Filterable
 
   # Relationships
   belongs_to :good, class_name: Sap::Good.to_s
@@ -32,15 +32,15 @@ class Sap::GoodItem < ActiveRecord::Base
     end
 
 
-    attributes.inject(relation) do |scope,(key,value)|
-      return scope if value.empty?
+    attributes.inject(relation) do |scope, (key,value)|
+      return scope if value.blank?
 
       case key.to_sym
         when :store
           scope.where(:store_id => value)
         when :category
-          # Find good that belogs to many categories at sametime
-          # scope.where(category_goods: {category_id: value})
+          # Find good that belongs to many categories at same time
+          scope.where(category_goods: {category_id: value})
         when :order
           # Get only goods from basket
           scope.includes(:order_items).where(:sap_order_items => {order_id: value})
