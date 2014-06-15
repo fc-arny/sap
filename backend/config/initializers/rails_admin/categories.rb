@@ -1,7 +1,10 @@
 RailsAdmin.config do |config|
   config.model Sap::Category do
     nestable_tree({
-      position_field: :position
+      position_field: :position,
+      enable_callback: true,
+      live_update: :only,
+      max_depth: 4
     })
 
     list do
