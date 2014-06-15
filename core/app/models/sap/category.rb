@@ -28,31 +28,6 @@ class Sap::Category < ActiveRecord::Base
   # Callbacks
   after_commit :flush_cache
 
-  class << self
-    # Fetch categories by parent_id and deep
-    def children_categories(parent_id = nil, deep = 0, show_in_menu = true)
-      categories = []
-
-      begin
-        children = self.where(parent_id: parent_id, show_in_menu: show_in_menu).to_a
-
-        # If no categories then break
-        break if children.empty?
-
-        parent_id = []
-        # Put children to result array and fetch their children
-        children.each do |category|
-          categories << category
-          parent_id << category.id
-        end
-
-        deep -= 1
-      end while deep >= 0
-
-      categories
-    end
-  end
-
   def parent_enum
     result = self.class.sort_by_ancestry(self.class.where.not(id: id))
     result.map do |c|
