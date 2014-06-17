@@ -22,7 +22,7 @@ class Sap::Category < ActiveRecord::Base
   has_and_belongs_to_many :goods, class_name: Sap::Good.to_s, join_table: 'sap.category_goods'
 
   # Scopes
-  scope :menu, -> { where(show_in_menu: true) }
+  scope :menu, -> { where(show_in_menu: true).order(:position) }
   scope :by_url, -> (url) { where(url: url).first }
 
   # Callbacks
