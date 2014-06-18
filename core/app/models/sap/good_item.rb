@@ -28,7 +28,7 @@ class Sap::GoodItem < ActiveRecord::Base
 
   # Getting filtered
   def self.filter(attributes, sort = nil)
-    relation = self.includes(:good => :categories)
+    relation = self.includes(:good => :category)
 
     unless sort.nil?
       relation.order! sprintf('sap_%<col>s %<dir>s', col: sort[:col], dir: sort[:dir])
@@ -40,10 +40,11 @@ class Sap::GoodItem < ActiveRecord::Base
 
       case key.to_sym
         when :store
-          scope.where(:store_id => value)
+          scope.where(store_id: value)
         when :category
           # Find good that belongs to many categories at same time
-          scope.where(category_goods: {category_id: value})
+          category = Sap::Category.find value
+          scope.where(goods: {category_id: category.subtree_ids})
         when :order
           # Get only goods from basket
           scope.includes(:order_items).where(:sap_order_items => {order_id: value})

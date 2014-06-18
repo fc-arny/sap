@@ -6,6 +6,7 @@ RailsAdmin.config do |config|
       field :has_images?, :boolean
       # field :group_id
       field :is_group
+      field :category
       # field :created_at
       # field :updated_at
     end
@@ -14,7 +15,9 @@ RailsAdmin.config do |config|
       field :name
       field :description
       field :par, :measure
-      field :categories
+      field :category_id, :enum do
+        enum_method do :category_enum end
+      end
       field :is_group
 
       # Images

@@ -21,9 +21,10 @@ class Sap::Good < ActiveRecord::Base
 
   # Associations
   has_many :good_items, class_name: Sap::GoodItem.to_s
-  has_and_belongs_to_many :categories, class_name: Sap::Category.to_s, join_table: 'sap.category_goods'
+  # has_and_belongs_to_many :categories, class_name: Sap::Category.to_s, join_table: 'sap.category_goods'
 
-  belongs_to :measure, class_name: Sap::Measure
+  belongs_to :measure, class_name: Sap::Measure.to_s
+  belongs_to :category, class_name: Sap::Category.to_s
 
   #belongs_to :vendor, :class_name => 'Sap::Vendor'
   def par
@@ -32,5 +33,12 @@ class Sap::Good < ActiveRecord::Base
 
   def has_images?
     image_thread.blank? || image_thread.images.count == 0 ? false : true
+  end
+
+  def category_enum
+    result = Sap::Category.sort_by_ancestry(Sap::Category.where.not(id: id))
+    result.map do |c|
+      ["#{'--'*c.depth} #{c.name}", c.id]
+    end
   end
 end

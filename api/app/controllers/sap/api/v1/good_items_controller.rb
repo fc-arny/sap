@@ -28,11 +28,6 @@ class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
   private
 
   def filter_params
-    if params[:category]
-      category_id = params[:category].to_i > 0 ? params[:category] : Sap::Category.by_url(params[:category]).id
-      params[:filter] = {category: category_id}
-    end
-
     params[:filter] || {}
   end
 

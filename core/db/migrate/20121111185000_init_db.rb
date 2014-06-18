@@ -38,25 +38,6 @@ class InitDb < ActiveRecord::Migration
       t.integer :parent_id
     end
 
-    # Create goods table
-    create_table :'sap.goods', comment: 'All goods from all stores' do |t|
-
-      t.string  :name, null: false,             comment: 'Goods name'
-      t.text    :description,                   comment: 'Goods\'s description'
-
-      t.integer :value, null: false,            comment: 'How many gram or priece in one item'
-      t.references :measure,                    comment: 'Good\'s measure: kilo, pack, bar etc'
-
-      t.boolean :is_group, default: false,      comment: 'Group of same product in defferent packs'
-      t.integer :group_id, default: nil,        comment: 'Reference to group'
-      t.reference :image_thread,                comment: 'Reference to images\' album'
-
-      t.timestamps
-    end
-
-    add_foreign_key 'sap.measures', 'sap.measures', column: :parent_id
-    add_foreign_key 'sap.goods', 'sap.measures', column: :measure_id
-
     # Create category table
     create_table :'sap.categories', comment: 'Goods categories' do |t|
       t.string  :name, null: false,           comment: 'Category name'
@@ -69,10 +50,30 @@ class InitDb < ActiveRecord::Migration
       t.timestamps
     end
 
-
-    add_index :'sap.categories', :ancestry
-    add_index :'sap.categories', :images_id
+    add_index 'sap.categories', :ancestry
+    add_index 'sap.categories', :images_id
     add_foreign_key(:'sap.categories', :image_threads, column: :images_id)
+
+    # Create goods table
+    create_table :'sap.goods', comment: 'All goods from all stores' do |t|
+
+      t.string  :name, null: false,             comment: 'Goods name'
+      t.text    :description,                   comment: 'Goods\'s description'
+
+      t.integer :value, null: false,            comment: 'How many gram or priece in one item'
+      t.references :measure,                    comment: 'Good\'s measure: kilo, pack, bar etc'
+      t.references :category,                   comment: 'Good\'s category'
+
+      t.boolean :is_group, default: false,      comment: 'Group of same product in defferent packs'
+      t.integer :group_id, default: nil,        comment: 'Reference to group'
+      t.reference :image_thread,                comment: 'Reference to images\' album'
+
+      t.timestamps
+    end
+
+    add_foreign_key 'sap.measures', 'sap.measures', column: :parent_id
+    add_foreign_key 'sap.goods', 'sap.measures', column: :measure_id
+    add_foreign_key 'sap.goods', 'sap.categories', column: :category_id
 
     # Joining table
     create_table :'sap.category_goods', id: false, comment: 'Joining table' do |t|
