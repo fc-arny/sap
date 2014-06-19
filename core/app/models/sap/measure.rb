@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.measures
+# Table name: sp_measures
 #
 #  id              :integer          not null, primary key
 #  name            :string(255)      not null

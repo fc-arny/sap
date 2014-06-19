@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap_admins
+# Table name: sp_admins
 #
 #  id         :integer          not null, primary key
 #  city_id    :integer

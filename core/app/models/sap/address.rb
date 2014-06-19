@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.addresses
+# Table name: sp_addresses
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)

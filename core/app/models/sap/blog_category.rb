@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.blog_categories
+# Table name: sp_blog_categories
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)      not null

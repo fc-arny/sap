@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap_customers
+# Table name: sp_customers
 #
 #  id         :integer          not null, primary key
 #  phone      :string(255)      not null

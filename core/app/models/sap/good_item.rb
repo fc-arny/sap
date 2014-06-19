@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.good_items
+# Table name: sp_good_items
 #
 #  id              :integer          not null, primary key
 #  good_id         :integer          not null
@@ -31,7 +31,7 @@ class Sap::GoodItem < ActiveRecord::Base
     relation = self.includes(:good => :category)
 
     unless sort.nil?
-      relation.order! sprintf('sap_%<col>s %<dir>s', col: sort[:col], dir: sort[:dir])
+      relation.order! sprintf('sp_%<col>s %<dir>s', col: sort[:col], dir: sort[:dir])
     end
 
 
@@ -47,7 +47,7 @@ class Sap::GoodItem < ActiveRecord::Base
           scope.where(goods: {category_id: category.subtree_ids})
         when :order
           # Get only goods from basket
-          scope.includes(:order_items).where(:sap_order_items => {order_id: value})
+          scope.includes(:order_items).where(:sp_order_items => {order_id: value})
         else
           scope
       end

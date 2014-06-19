@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.goods
+# Table name: sp_goods
 #
 #  id              :integer          not null, primary key
 #  name            :string(255)      not null
@@ -21,7 +21,7 @@ class Sap::Good < ActiveRecord::Base
 
   # Associations
   has_many :good_items, class_name: Sap::GoodItem.to_s
-  # has_and_belongs_to_many :categories, class_name: Sap::Category.to_s, join_table: 'sap.category_goods'
+  # has_and_belongs_to_many :categories, class_name: Sap::Category.to_s, join_table: 'sp_category_goods'
 
   belongs_to :measure, class_name: Sap::Measure.to_s
   belongs_to :category, class_name: Sap::Category.to_s

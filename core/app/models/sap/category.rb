@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.categories
+# Table name: sp_categories
 #
 #  id           :integer          not null, primary key
 #  name         :string(255)      not null
@@ -20,7 +20,7 @@ class Sap::Category < ActiveRecord::Base
 
   # Association
   has_many :goods, class_name: Sap::Good.to_s
-  # has_and_belongs_to_many :goods, class_name: Sap::Good.to_s, join_table: 'sap.category_goods'
+  # has_and_belongs_to_many :goods, class_name: Sap::Good.to_s, join_table: 'sp_category_goods'
 
   # Scopes
   scope :menu, -> { where(show_in_menu: true).order(:position) }

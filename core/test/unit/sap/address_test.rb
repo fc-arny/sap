@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap_addresses
+# Table name: sp_addresses
 #
 #  id         :integer          not null, primary key
 #  region_id  :integer

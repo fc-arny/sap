@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.sms
+# Table name: sp_sms
 #
 #  id         :integer          not null, primary key
 #  number     :integer

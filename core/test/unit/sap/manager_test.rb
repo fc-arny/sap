@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap_managers
+# Table name: sp_managers
 #
 #  id         :integer          not null, primary key
 #  store_id   :integer          not null

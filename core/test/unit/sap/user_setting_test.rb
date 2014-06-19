@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.user_settings
+# Table name: sp_user_settings
 #
 #  id      :integer          not null, primary key
 #  user_id :integer          not null

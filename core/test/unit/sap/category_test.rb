@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap_categories
+# Table name: sp_categories
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)      not null

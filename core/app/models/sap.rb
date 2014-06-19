@@ -1,6 +1,6 @@
 module Sap
-  # Table prefix 
+  # # Table prefix
   def self.table_name_prefix
-    'sap.'
+    'sp_'
   end
 end

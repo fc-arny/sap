@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap_order_items
+# Table name: sp_order_items
 #
 #  id           :integer          not null, primary key
 #  order_id     :integer

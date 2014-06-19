@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap_category_good
+# Table name: sp_category_good
 #
 #  id          :integer          not null, primary key
 #  category_id :integer

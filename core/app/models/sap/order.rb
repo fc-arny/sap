@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.orders
+# Table name: sp_orders
 #
 #  id         :integer          not null, primary key
 #  state      :string(255)      not null

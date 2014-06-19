@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.vendors
+# Table name: sp_vendors
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.order_items
+# Table name: sp_order_items
 #
 #  order_id     :integer          not null
 #  good_item_id :integer          not null
@@ -29,7 +29,7 @@ class Sap::OrderItem < ActiveRecord::Base   # TODO: move this table to redis or 
         when :order
           scope.where(:order_id => value)
         when :store
-          scope.where(:sap_good_items => {store_id: value})
+          scope.where(:sp_good_items => {store_id: value})
         else
           scope
       end

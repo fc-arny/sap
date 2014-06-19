@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap_stores # List of stores
+# Table name: sp_stores # List of stores
 #
 #  id             :integer          not null, primary key # List of stores
 #  name           :string(255)      not null              # Store's name

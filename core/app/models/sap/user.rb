@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sap.users
+# Table name: sp_users
 #
 #  id                     :integer          not null, primary key
 #  name                   :string(255)
