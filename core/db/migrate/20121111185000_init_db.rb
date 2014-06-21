@@ -4,7 +4,7 @@
 class InitDb < ActiveRecord::Migration
   def change
     # Regions table
-    create_table :'sp_regions', comment: 'Regions.ex Moscow(chld: Reutov, Rublevo, Lyubertsy etc)' do |t|
+    create_table :sp_regions, comment: 'Regions.ex Moscow(chld: Reutov, Rublevo, Lyubertsy etc)' do |t|
 
       t.string  :name, null: false,         comment: 'Region name'
       t.string  :description,               comment: 'Description for region'
@@ -12,11 +12,8 @@ class InitDb < ActiveRecord::Migration
       t.timestamps
     end
 
-    # Parent region
-    add_foreign_key :sp_regions, :sp_regions, column: :parent_id
-
     # Create table for store
-    create_table :'sp_stores' do |t|
+    create_table :sp_stores do |t|
       t.string      :name, null: false,     comment: 'Store\'s name'
       t.integer     :position, default: 0,  comment: 'Value for sorting stores'
       t.string      :url, null: false,      comment: 'Url segment'
@@ -28,13 +25,12 @@ class InitDb < ActiveRecord::Migration
       t.timestamps
     end
 
-    # Foreign keys
-    add_foreign_key 'sp_stores', 'sp_regions', column: :region_id
-
-    create_table :'sp_measures' do |t|
-      t.string  :name, null: false
-      t.integer :step, null: false # TODO: Need decimal
-      t.integer :value_in_parent
+    # Measures
+    create_table :sp_measures do |t|
+      t.string  :name, null: false                          # Unit short name
+      t.string  :full_name, null: false                     # Unit full name
+      t.decimal :step, null: false, precision: 8, scale: 3  # Default change step
+      t.integer :value_in_parent, default: 1000             #
       t.integer :parent_id
     end
 
@@ -50,12 +46,8 @@ class InitDb < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index 'sp_categories', :ancestry
-    add_index 'sp_categories', :images_id
-    add_foreign_key(:'sp_categories', :image_thread_threads, column: :images_id)
-
     # Create goods table
-    create_table :'sp_goods', comment: 'All goods from all stores' do |t|
+    create_table :sp_goods, comment: 'All goods from all stores' do |t|
 
       t.string  :name, null: false,             comment: 'Goods name'
       t.text    :description,                   comment: 'Goods\'s description'
@@ -71,21 +63,11 @@ class InitDb < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_foreign_key 'sp_measures', 'sp_measures', column: :parent_id
-    add_foreign_key 'sp_goods', 'sp_measures', column: :measure_id
-    add_foreign_key 'sp_goods', 'sp_categories', column: :category_id
-
     # Joining table
     create_table :'sp_category_goods', id: false, comment: 'Joining table' do |t|
       t.references :category
       t.references :good
     end
-
-    # Parent category
-    add_foreign_key :'sp_goods', :'sp_goods', :column => :group_id
-
-    # Joining table
-    add_index :'sp_category_goods', [:category_id, :good_id], :unique => true
 
     # Base table for users
     create_table :'sp_users', :comment => 'Base model for all users' do |t|
