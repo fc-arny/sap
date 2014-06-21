@@ -44,7 +44,7 @@ class Sap::GoodItem < ActiveRecord::Base
         when :category
           # Find good that belongs to many categories at same time
           category = Sap::Category.find value
-          scope.where(goods: {category_id: category.subtree_ids})
+          scope.where(sp_goods: {category_id: category.subtree_ids})
         when :order
           # Get only goods from basket
           scope.includes(:order_items).where(:sp_order_items => {order_id: value})
