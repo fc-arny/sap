@@ -28,9 +28,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'js-routes'             # Url helpers in js
   spec.add_dependency 'i18n-js'               # I18n for js
 
-  spec.add_dependency 'carrierwave'           # Image unloader
-  spec.add_dependency 'seedbank'              # Data for any envivonment
+  spec.add_dependency 'carrierwave'           # Image uploader
+  spec.add_dependency 'seedbank'              # Data for any environment
   spec.add_dependency 'ancestry'              # Tree presentation for category
   spec.add_dependency 'foreigner'             # Foreign key
   spec.add_dependency 'annotate'              # Annotate models
+  spec.add_dependency 'oj'                    # Fast json
+  spec.add_dependency 'oj_mimic_json'
 end
