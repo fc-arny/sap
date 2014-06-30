@@ -30,8 +30,14 @@ class Sap::GoodItem < ActiveRecord::Base
   def self.filter(attributes, sort = nil)
     relation = self.includes(:good => :category)
 
-    unless sort.nil?
-      relation.order! sprintf('sp_%<col>s %<dir>s', col: sort[:col], dir: sort[:dir])
+    if !sort.blank? && !sort[:field].blank?
+      field_name =  case sort[:field].to_sym
+                      when :name
+                        "sp_goods.#{sort[:field]}"
+                      else
+                        "sp_good_items.#{sort[:field]}"
+                    end
+      relation.order! sprintf('%<field>s %<dir>s', field: field_name, dir: sort[:dir])
     end
 
 
