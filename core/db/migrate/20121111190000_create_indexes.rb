@@ -1,4 +1,4 @@
-class InitDb < ActiveRecord::Migration
+class CreateIndexes < ActiveRecord::Migration
   def change
     # Region
     add_foreign_key :sp_regions, :sp_regions, column: :parent_id
