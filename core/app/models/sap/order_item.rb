@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_order_items
+# Table name: sap_order_items
 #
 #  order_id     :integer          not null
 #  good_item_id :integer          not null
@@ -10,7 +10,7 @@
 #  updated_at   :datetime
 #
 
-class Sap::OrderItem < ActiveRecord::Base   # TODO: move this table to redis or delete id column
+class Sap::OrderItem < Sap::Base   # TODO: move this table to redis or delete id column
   # Fields
   #attr_accessible :good_item_id, :store_id, :value, :price, :order_id
 
@@ -29,7 +29,7 @@ class Sap::OrderItem < ActiveRecord::Base   # TODO: move this table to redis or 
         when :order
           scope.where(:order_id => value)
         when :store
-          scope.where(:sp_good_items => {store_id: value})
+          scope.where(:sap_good_items => {store_id: value})
         else
           scope
       end

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_sms
+# Table name: sap_sms
 #
 #  id         :integer          not null, primary key
 #  number     :integer
@@ -11,5 +11,5 @@
 #  updated_at :datetime
 #
 
-class Sap::Sms < ActiveRecord::Base
+class Sap::Sms < Sap::Base
 end

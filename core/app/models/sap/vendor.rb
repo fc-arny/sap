@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_vendors
+# Table name: sap_vendors
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
@@ -14,6 +14,6 @@
 # ==Fields:
 # name      - name of vendor with country (ex.: Danone (Russia))
 # -------------------------------------------------------------
-class Sap::Vendor < ActiveRecord::Base
+class Sap::Vendor < Sap::Base
   #attr_accessible :id, :name
 end

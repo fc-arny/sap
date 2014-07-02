@@ -1,6 +1,6 @@
 # -------------------------------------------------------------
 # Join table Subject -> Address
 # -------------------------------------------------------------
-class Sap::Address::Subject < ActiveRecord::Base
+class Sap::Address::Subject < Sap::Base
 
 end

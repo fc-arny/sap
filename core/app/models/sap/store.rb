@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_stores
+# Table name: sap_stores
 #
 #  id             :integer          not null, primary key
 #  name           :string(255)      not null
@@ -15,7 +15,7 @@
 #  updated_at     :datetime
 #
 
-class Sap::Store < ActiveRecord::Base
+class Sap::Store < Sap::Base
   scope :active, -> { where(active: true).order('position') }
   belongs_to :region
 end

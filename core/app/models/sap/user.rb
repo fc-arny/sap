@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_users
+# Table name: sap_users
 #
 #  id                     :integer          not null, primary key
 #  name                   :string(255)
@@ -33,7 +33,7 @@
 #   login -> just string
 # end
 # -------------------------------------------------------------
-class Sap::User < ActiveRecord::Base
+class Sap::User < Sap::Base
   # ROLES = %w[admin salesman developer]
 
   # Relationships

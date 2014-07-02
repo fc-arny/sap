@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_blog_posts
+# Table name: sap_blog_posts
 #
 #  id             :integer          not null, primary key
 #  title          :string(255)      not null
@@ -15,7 +15,7 @@
 # -------------------------------------------------------------
 # Blog posts model
 # -------------------------------------------------------------
-class Sap::BlogPost < ActiveRecord::Base
+class Sap::BlogPost < Sap::Base
 
   # Relationships
   belongs_to :category, class_name: 'Sap::BlogCategory'
@@ -24,7 +24,7 @@ class Sap::BlogPost < ActiveRecord::Base
   scope :recent, ->{ published.order('published_date DESC') }
   scope :published, ->{ where(published: true) }
   scope :last_posts, ->(category){
-    joins(:category).where('sp_blog_categories.url = :url', url: category)
+    joins(:category).where('sap_blog_categories.url = :url', url: category)
   }
 
   # Triggers

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_addresses
+# Table name: sap_addresses
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
@@ -16,7 +16,7 @@
 # -------------------------------------------------------------
 # Adresses for any entity
 # -------------------------------------------------------------
-class Sap::Address < ActiveRecord::Base
+class Sap::Address < Sap::Base
 
   # Relationships
   belongs_to :owner, polymorphic: true

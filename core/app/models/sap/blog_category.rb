@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_blog_categories
+# Table name: sap_blog_categories
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)      not null
@@ -12,6 +12,6 @@
 # -------------------------------------------------------------
 # Blog categories model (ex.: news, updates etc)
 # -------------------------------------------------------------
-class Sap::BlogCategory < ActiveRecord::Base
+class Sap::BlogCategory < Sap::Base
 
 end

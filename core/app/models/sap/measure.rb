@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_measures
+# Table name: sap_measures
 #
 #  id              :integer          not null, primary key
 #  name            :string(255)      not null
@@ -9,6 +9,6 @@
 #  parent_id       :integer
 #
 
-class Sap::Measure < ActiveRecord::Base
+class Sap::Measure < Sap::Base
   #attr_accessible :id, :name, :parent_id, :step, :value_in_parent
 end

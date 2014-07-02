@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_regions
+# Table name: sap_regions
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)      not null
@@ -19,6 +19,6 @@
 # description - some notes
 # -------------------------------------------------------------
 
-class Sap::Region < ActiveRecord::Base
+class Sap::Region < Sap::Base
   #attr_accessible :id, :name, :state, :description
 end

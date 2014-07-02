@@ -4,7 +4,7 @@
 class InitDb < ActiveRecord::Migration
   def change
     # Regions table
-    create_table :sp_regions, comment: 'Regions.ex Moscow(chld: Reutov, Rublevo, Lyubertsy etc)' do |t|
+    create_table :sap_regions, comment: 'Regions.ex Moscow(chld: Reutov, Rublevo, Lyubertsy etc)' do |t|
 
       t.string  :name, null: false,         comment: 'Region name'
       t.string  :description,               comment: 'Description for region'
@@ -13,7 +13,7 @@ class InitDb < ActiveRecord::Migration
     end
 
     # Create table for store
-    create_table :sp_stores do |t|
+    create_table :sap_stores do |t|
       t.string      :name, null: false,     comment: 'Store\'s name'
       t.integer     :position, default: 0,  comment: 'Value for sorting stores'
       t.string      :url, null: false,      comment: 'Url segment'
@@ -26,7 +26,7 @@ class InitDb < ActiveRecord::Migration
     end
 
     # Measures
-    create_table :sp_measures do |t|
+    create_table :sap_measures do |t|
       t.string  :name, null: false                          # Unit short name
       t.string  :full_name, null: false                     # Unit full name
       t.decimal :step, null: false, precision: 8, scale: 3  # Default change step
@@ -35,7 +35,7 @@ class InitDb < ActiveRecord::Migration
     end
 
     # Create category table
-    create_table :'sp_categories', comment: 'Goods categories' do |t|
+    create_table :'sap_categories', comment: 'Goods categories' do |t|
       t.string  :name, null: false,           comment: 'Category name'
       t.string  :url, null: false,            comment: 'Category url segment'
       t.integer :position, default: 0,        comment: 'Sorting value'
@@ -47,7 +47,7 @@ class InitDb < ActiveRecord::Migration
     end
 
     # Create goods table
-    create_table :sp_goods, comment: 'All goods from all stores' do |t|
+    create_table :sap_goods, comment: 'All goods from all stores' do |t|
 
       t.string  :name, null: false,             comment: 'Goods name'
       t.text    :description,                   comment: 'Goods\'s description'
@@ -64,13 +64,13 @@ class InitDb < ActiveRecord::Migration
     end
 
     # Joining table
-    create_table :'sp_category_goods', id: false, comment: 'Joining table' do |t|
+    create_table :'sap_category_goods', id: false, comment: 'Joining table' do |t|
       t.references :category
       t.references :good
     end
 
     # Base table for users
-    create_table :'sp_users', :comment => 'Base model for all users' do |t|
+    create_table :'sap_users', :comment => 'Base model for all users' do |t|
       t.string     :name,                           comment: 'All users should have name. Generated name'
       t.string     :login, null:false,              comment: 'User login'
       t.string     :email,                          comment: 'User email'
@@ -95,13 +95,13 @@ class InitDb < ActiveRecord::Migration
     end
 
     # Indexes
-    add_index :'sp_users', :login,                 :unique => true
-    add_index :'sp_users', :email,                 :unique => true
-    add_index :'sp_users', :authentication_token,  :unique => true
-    add_index :'sp_users', :phone,                 :unique => true
+    add_index :'sap_users', :login,                 :unique => true
+    add_index :'sap_users', :email,                 :unique => true
+    add_index :'sap_users', :authentication_token,  :unique => true
+    add_index :'sap_users', :phone,                 :unique => true
 
     # Goods of store
-    create_table 'sp_good_items', comment: 'Goods of store' do |t|
+    create_table 'sap_good_items', comment: 'Goods of store' do |t|
 
       t.references :good, null: false,                    comment: 'Real good ID'
       t.string     :store_gid, null: false,               comment: 'Store inside good\'s ID for sync list'
@@ -114,16 +114,16 @@ class InitDb < ActiveRecord::Migration
     end
 
     # Indexes
-    add_index 'sp_good_items', :store_id
-    add_index 'sp_good_items', :good_id
-    add_index 'sp_good_items', [:store_gid, :store_id], :unique => true
+    add_index 'sap_good_items', :store_id
+    add_index 'sap_good_items', :good_id
+    add_index 'sap_good_items', [:store_gid, :store_id], :unique => true
 
     # Foreign keys
-    add_foreign_key 'sp_good_items', 'sp_goods',  :column => :good_id
-    add_foreign_key 'sp_good_items', 'sp_stores', :column => :store_id
+    add_foreign_key 'sap_good_items', 'sap_goods',  :column => :good_id
+    add_foreign_key 'sap_good_items', 'sap_stores', :column => :store_id
 
     # TODO: create vendor model
-    create_table 'sp_vendors' do |t|
+    create_table 'sap_vendors' do |t|
 
       t.string :name
 
@@ -131,7 +131,7 @@ class InitDb < ActiveRecord::Migration
     end
 
     # Addressees for any entire
-    create_table 'sp_addresses', comment: 'Addresses table' do |t|
+    create_table 'sap_addresses', comment: 'Addresses table' do |t|
 
       t.string      :name,                        comment: 'Address title.Ex.: home, offece, manny etc'
       t.string      :street, null: false,         comment: 'Street, house number etc'
@@ -143,11 +143,11 @@ class InitDb < ActiveRecord::Migration
     end
 
     # Foreign keys
-    add_foreign_key 'sp_addresses', 'sp_regions', :column => :region_id
+    add_foreign_key 'sap_addresses', 'sap_regions', :column => :region_id
 
 
     # Orders model
-    create_table 'sp_orders', comment: 'Order model' do |t|
+    create_table 'sap_orders', comment: 'Order model' do |t|
 
       t.string :state, null: false,     comment: 'Order state - new, payed etc'
       t.string :hash_str, null: false,  comment: 'Hash for order access'
@@ -162,10 +162,10 @@ class InitDb < ActiveRecord::Migration
     # Indexes
 
     # Foreign keys
-    add_foreign_key 'sp_orders', 'sp_users', :column => :user_id
+    add_foreign_key 'sap_orders', 'sap_users', :column => :user_id
 
     # GoodList of order
-    create_table 'sp_order_items', :id => false, :comment => 'GoodList of order' do |t|
+    create_table 'sap_order_items', :id => false, :comment => 'GoodList of order' do |t|
 
       t.references :order, null: false,                       comment: 'Order ID'
       t.references :good_item, null: false,                   comment: 'Good(item) ID'
@@ -176,15 +176,15 @@ class InitDb < ActiveRecord::Migration
     end
 
     # Indexes
-    add_index 'sp_order_items', [:order_id, :good_item_id], :unique => true
-    add_index 'sp_order_items', :order_id
+    add_index 'sap_order_items', [:order_id, :good_item_id], :unique => true
+    add_index 'sap_order_items', :order_id
 
     # Foreign keys
-    add_foreign_key 'sp_order_items', 'sp_orders', :column => :order_id
-    add_foreign_key 'sp_order_items', 'sp_good_items',  :column => :good_item_id
+    add_foreign_key 'sap_order_items', 'sap_orders', :column => :order_id
+    add_foreign_key 'sap_order_items', 'sap_good_items',  :column => :good_item_id
 
     # Sms, status, date
-    create_table 'sp_sms' do |t|
+    create_table 'sap_sms' do |t|
       t.integer :number
       t.string :message
       t.datetime :created
@@ -195,16 +195,16 @@ class InitDb < ActiveRecord::Migration
 
     # Blog
 
-    create_table :'sp_blog_categories', comment: 'Blog categories' do |t|
+    create_table :'sap_blog_categories', comment: 'Blog categories' do |t|
       t.string :name, null: false
       t.string :url, null: false
 
       t.timestamps
     end
 
-    add_index :'sp_blog_categories', :url, unique: true
+    add_index :'sap_blog_categories', :url, unique: true
 
-    create_table :'sp_blog_posts', comment: 'Blog posts' do |t|
+    create_table :'sap_blog_posts', comment: 'Blog posts' do |t|
       t.string :title, null: false
       t.text :body, null: false
       t.references :category
@@ -215,6 +215,6 @@ class InitDb < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_foreign_key 'sp_blog_posts', 'sp_blog_categories', :column => :category_id
+    add_foreign_key 'sap_blog_posts', 'sap_blog_categories', :column => :category_id
   end
 end

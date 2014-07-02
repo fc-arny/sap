@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_good_items
+# Table name: sap_good_items
 #
 #  id              :integer          not null, primary key
 #  good_id         :integer          not null
@@ -14,7 +14,7 @@
 #  image_thread_id :integer
 #
 
-class Sap::GoodItem < ActiveRecord::Base
+class Sap::GoodItem < Sap::Base
   # Includes
   # include Sap::Filterable
 
@@ -33,9 +33,9 @@ class Sap::GoodItem < ActiveRecord::Base
     if !sort.blank? && !sort[:field].blank?
       field_name =  case sort[:field].to_sym
                       when :name
-                        "sp_goods.#{sort[:field]}"
+                        "sap_goods.#{sort[:field]}"
                       else
-                        "sp_good_items.#{sort[:field]}"
+                        "sap_good_items.#{sort[:field]}"
                     end
       relation.order! sprintf('%<field>s %<dir>s', field: field_name, dir: sort[:dir])
     end
@@ -50,10 +50,10 @@ class Sap::GoodItem < ActiveRecord::Base
         when :category
           # Find good that belongs to many categories at same time
           category = Sap::Category.find value
-          scope.where(sp_goods: {category_id: category.subtree_ids})
+          scope.where(sap_goods: {category_id: category.subtree_ids})
         when :order
           # Get only goods from basket
-          scope.includes(:order_items).where(:sp_order_items => {order_id: value})
+          scope.includes(:order_items).where(:sap_order_items => {order_id: value})
         else
           scope
       end

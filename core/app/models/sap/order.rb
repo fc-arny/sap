@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_orders
+# Table name: sap_orders
 #
 #  id         :integer          not null, primary key
 #  state      :string(255)      not null
@@ -14,7 +14,7 @@
 #  updated_at :datetime
 #
 
-class Sap::Order < ActiveRecord::Base
+class Sap::Order < Sap::Base
   # TODO: Обдумать статусы заказа
   # Order states
   # ST_NEW       = 'new'

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sp_categories
+# Table name: sap_categories
 #
 #  id           :integer          not null, primary key
 #  name         :string(255)      not null
@@ -13,14 +13,14 @@
 #  images_id    :integer
 #
 
-class Sap::Category < ActiveRecord::Base
+class Sap::Category < Sap::Base
   # Includes
   has_ancestry
   has_image_thread :images
 
   # Association
   has_many :goods, class_name: Sap::Good.to_s
-  # has_and_belongs_to_many :goods, class_name: Sap::Good.to_s, join_table: 'sp_category_goods'
+  # has_and_belongs_to_many :goods, class_name: Sap::Good.to_s, join_table: 'sap_category_goods'
 
   # Scopes
   scope :menu, -> { where(show_in_menu: true).order(:position) }
