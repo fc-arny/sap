@@ -20,4 +20,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'sap_core', version
   spec.add_dependency 'sap_api', version
   spec.add_dependency 'sap_backend', version
+
+  spec.add_development_dependency 'rspec', '~> 3.0'
 end
