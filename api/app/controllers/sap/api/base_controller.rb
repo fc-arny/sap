@@ -22,6 +22,10 @@ class Sap::Api::BaseController < Sap::BaseController
 
   protected
 
+  def current_order
+    session[:order_id]
+  end
+
   def default_response_format
     request.format = :json
   end

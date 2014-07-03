@@ -37,11 +37,13 @@ class Sap::Api::V1::OrdersController < Sap::Api::BaseController
   # Show order
   # GET /api/v1/order/:id
   def show
-    @order = Sap::Order.find(params[:id])
+    @order = Sap::Order.find(session[:order_id].blank? ? nil : params[:id]  )
 
     filter = params[:filter] || {}
     filter[:order] = params[:id]
 
     @order_items = Sap::OrderItem.filter(filter)
   end
+
+
 end

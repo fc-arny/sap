@@ -1,6 +1,8 @@
 require 'rails/all'
 require 'devise'
 
+require 'aasm'
+
 require 'js-routes'
 require 'i18n-js'
 

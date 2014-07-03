@@ -12,23 +12,57 @@
 #  comment    :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#
-
+# ============================
 class Sap::Order < Sap::Base
-  # TODO: Обдумать статусы заказа
-  # Order states
-  # ST_NEW       = 'new'
-  # ST_PAID      = 'paid'
-  # ST_PACK      = 'pack'
-  # ST_DELIVERY   = 'delivery'
-  # ST_FINISHED  = 'finished'
+  include AASM
 
-  # Fields
-  #attr_accessible :id, :state, :sum, :user_id, :hash_str, :created_at, :updated_at
+  has_many :order_items, class_name: Sap::OrderItem.to_s
 
-  # Relationships
-  has_many :order_items, :class_name => 'Sap::OrderItem'
 
+  aasm column: :state do
+    state :new, initial: true
+    state :issued
+    state :paid
+    state :processing
+    state :closed
+    state :canceled
+
+    all = states.map(&:name)
+
+    event :cancel do
+      transitions from: all - [:cancel], to: :canceled
+    end
+
+    event :issue do
+      transitions from: [:new], to: :issued
+    end
+
+    event :payment do
+      transitions from: [:executed], to: :paid
+    end
+
+    event :close do
+      transitions fromm: :processing, to: :closed
+    end
+
+    event :process do
+      transitions from: [:issued, :paid], to: :closed
+    end
+    #              | new         | issued      | paid        | processing  | closed      | canceled    |
+    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
+    # | new        |      *      |  Y          |             |             |             |  Y          |
+    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
+    # | issued     |             |             |  Y          |  Y          |             |  Y          |
+    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
+    # | paid       |             |             |             |  Y          |             |  Y          |
+    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
+    # | processing |             |             |             |             |  Y          |  Y          |
+    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
+    # | closed     |             |             |             |             |             |  Y          |
+    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
+    # | canceled   |  N          |  N          |  N          |  N          |  N          |  N          |
+    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
+  end
 
   class << self
     # -------------------------------------------------------------
