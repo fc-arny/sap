@@ -6,7 +6,7 @@ class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
   # List of good items
   # GET /api/v1/good/items
   def index
-    @goods = Sap::GoodItem.filter(filter_params, sort_params)
+    @goods = Sap::GoodItem.with_order_items(current_order.id).filter(filter_params, sort_params)
 
     @count  = @goods.count.to_i
     @limit  = (params[:limit] || 10).to_i

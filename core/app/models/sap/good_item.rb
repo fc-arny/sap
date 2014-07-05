@@ -12,15 +12,12 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  image_thread_id :integer
-#
-
+# =============================
 class Sap::GoodItem < Sap::Base
-  # Includes
-  # include Sap::Filterable
+  belongs_to :good, class_name: 'Sap::Good'
+  belongs_to :store, class_name: 'Sap::Store'
 
-  # Relationships
-  belongs_to :good, class_name: Sap::Good.to_s
-  belongs_to :store, class_name: Sap::Store.to_s
+  scope :with_order_items, -> (order_id) { joins('LEFT JOIN sap_order_items ON sap_order_items.order_id = ?', order_id) unless order_id.blank? }
 
   def name
     "##{id}: #{good.name} (#{store.name})" unless new_record?

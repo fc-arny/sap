@@ -8,22 +8,20 @@ class Sap::Api::BaseController < Sap::BaseController
 
   layout '/sap/layouts/api'
 
-  # Only JSON response
   respond_to :json
 
   prepend_before_filter :fetch_auth_token
 
   before_filter :skip_trackable, :default_response_format
 
-
-
   # Catch all exceptions
-  rescue_from Exception, :with => :render_error
+  rescue_from Exception, with: :render_error
 
   protected
 
   def current_order
-    session[:order_id]
+    order = Sap::Order.where('id = ? AND state = ?', session[:order_id], :new).first if session[:order_id].blank?
+    order.blank? ? Sap::Order.new : order
   end
 
   def default_response_format

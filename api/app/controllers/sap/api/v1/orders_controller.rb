@@ -3,16 +3,14 @@
 # -------------------------------------------------------------
 class Sap::Api::V1::OrdersController < Sap::Api::BaseController
 
-  # Get list of orders
-  # GET /api/v1/orders
+  # GET /api/v1/orders - Get list of orders
   def index
     order_by = params[:sort_by] ? [params[:sort_by], params[:order]].join(' ') : 'id DESC'
     # Fetch order by Id and Hash
     @orders = Sap::Order.order(order_by).page(params[:page]).per(params[:per_page])
   end
 
-  # POST /api/v1/orders
-  # Create order
+  # POST /api/v1/orders - Create order
   def create
     order = Sap::Order.new
     order.state = Sap::Order::ST_NEW
@@ -24,8 +22,7 @@ class Sap::Api::V1::OrdersController < Sap::Api::BaseController
     @id = order.id
   end
 
-  # Update order model
-  # PATCH/PUT /api/v1/orders/:id
+  # PATCH/PUT /api/v1/orders/:id - Update order model
   def update
     @order = Sap::Order.find(params[:id]) or raise ActiveRecord::RecordNotFound
   rescue ActiveRecord::RecordNotFound
@@ -35,15 +32,9 @@ class Sap::Api::V1::OrdersController < Sap::Api::BaseController
 
 
   # Show order
-  # GET /api/v1/order/:id
+  # GET /api/v1/orders/:id
   def show
-    @order = Sap::Order.find(session[:order_id].blank? ? nil : params[:id]  )
-
-    filter = params[:filter] || {}
-    filter[:order] = params[:id]
-
-    @order_items = Sap::OrderItem.filter(filter)
+    @order = params[:id] == 'basket' ? current_order :  Sap::Order.find(params[:id]) # TODO: order: Auth
+    @order = Sap::Order.first
   end
-
-
 end

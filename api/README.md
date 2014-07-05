@@ -1,6 +1,16 @@
-# SapApi
+# Sap::Api
 
-TODO: Write a gem description
+## Responding JSON format
+
+        status: (error | fail | success), # Error - unexpected, fail - caught error, form data or etc, success - OK
+        errors: [],                       # Error messages (ex.: Wrong login or password)
+        data: {
+            param1: value1,               # ................
+            param2: value2,               # Meta params    .
+            param2: value3,               # ................
+            ...
+            result: ([...] | {...})       # Model object or objects 
+        }
 
 ## Installation
 

@@ -16,8 +16,9 @@
 class Sap::Order < Sap::Base
   include AASM
 
-  has_many :order_items, class_name: Sap::OrderItem.to_s
+  has_many :items, foreign_key: :order_id, class_name: 'Sap::OrderItem'
 
+  # scope :
 
   aasm column: :state do
     state :new, initial: true
@@ -48,27 +49,11 @@ class Sap::Order < Sap::Base
     event :process do
       transitions from: [:issued, :paid], to: :closed
     end
-    #              | new         | issued      | paid        | processing  | closed      | canceled    |
-    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
-    # | new        |      *      |  Y          |             |             |             |  Y          |
-    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
-    # | issued     |             |             |  Y          |  Y          |             |  Y          |
-    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
-    # | paid       |             |             |             |  Y          |             |  Y          |
-    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
-    # | processing |             |             |             |             |  Y          |  Y          |
-    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
-    # | closed     |             |             |             |             |             |  Y          |
-    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
-    # | canceled   |  N          |  N          |  N          |  N          |  N          |  N          |
-    #  ----------- * ----------- * ----------- * ----------- * ----------- * ----------- * ----------- *
   end
 
   class << self
-    # -------------------------------------------------------------
     # Fetch order by id and hash
     # Hash has the format: ID + 'x' + HASH_STR
-    # -------------------------------------------------------------
     def get_by_hash(hash)
       id, hash_str = hash.split(/x/,2)
       self.where(
@@ -78,29 +63,33 @@ class Sap::Order < Sap::Base
     end
   end
 
-  def as_json(options={})
-
-    # Good's settings
-    good_setting = [
-        :good => {:only => [:id, :name]}
-    ]
-
-    # GoodItem's settings
-    good_item_setting = [
-        :good_item => {
-            :only => [:id,:price,:store_id],
-            :include => good_setting
-        }
-    ]
-
-    # OrderItem's settings
-    order_item_setting = [
-        :order_items => {
-            :only => [:id, :count],
-            :include => good_item_setting
-        }
-    ]
-
-    order = super(options.merge( :include => order_item_setting ))
+  def total
+    [:paid, :closed, :processing, :cancel].include?(state) ? sum : items.inject { |total, i| total + i.value * i.price }
   end
+
+  # def as_json(options={})
+  #
+  #   # Good's settings
+  #   good_setting = [
+  #       :good => {:only => [:id, :name]}
+  #   ]
+  #
+  #   # GoodItem's settings
+  #   good_item_setting = [
+  #       :good_item => {
+  #           :only => [:id,:price,:store_id],
+  #           :include => good_setting
+  #       }
+  #   ]
+  #
+  #   # OrderItem's settings
+  #   order_item_setting = [
+  #       :order_items => {
+  #           :only => [:id, :count],
+  #           :include => good_item_setting
+  #       }
+  #   ]
+  #
+  #   order = super(options.merge( :include => order_item_setting ))
+  # end
 end
