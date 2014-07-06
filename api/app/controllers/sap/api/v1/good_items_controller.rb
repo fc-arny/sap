@@ -6,13 +6,17 @@ class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
   # List of good items
   # GET /api/v1/good/items
   def index
-    @goods = Sap::GoodItem.with_order_items(current_order.id).filter(filter_params, sort_params)
+    goods = Sap::GoodItem.filter(filter_params, sort_params)
 
-    @count  = @goods.count.to_i
-    @limit  = (params[:limit] || 10).to_i
-    @offset = (params[:offset] || 0).to_i
+    @meta = {
+      count: goods.count.to_i,
+      limit: (params[:limit] || 10).to_i,
+      offset:(params[:offset] || 0).to_i
+    }
 
-    @goods = @goods.limit(@limit).offset(@offset)
+    @goods = goods.limit(@limit).offset(@offset)
+    @ordered = current_order.blank? ? [] : Sap::OrderItem.ordered(current_order.id, @goods.pluck(:id)).index_by(&:good_item_id)
+    # @ordered = Sap::OrderItem.ordered(2, @goods.pluck(:id)).index_by(&:good_item_id)
   end
 
   # View good item

@@ -17,8 +17,6 @@ class Sap::GoodItem < Sap::Base
   belongs_to :good, class_name: 'Sap::Good'
   belongs_to :store, class_name: 'Sap::Store'
 
-  scope :with_order_items, -> (order_id) { joins("LEFT JOIN sap_order_items ON sap_order_items.order_id = #{order_id.to_i}") unless order_id.blank? }
-
   def name
     "##{id}: #{good.name} (#{store.name})" unless new_record?
   end

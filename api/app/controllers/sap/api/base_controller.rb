@@ -21,7 +21,7 @@ class Sap::Api::BaseController < Sap::BaseController
 
   def current_order
     order = Sap::Order.where('id = ? AND state = ?', session[:order_id], :new).first if session[:order_id].blank?
-    order.blank? ? Sap::Order.new : order
+    order.blank? ? nil : order
   end
 
   def default_response_format

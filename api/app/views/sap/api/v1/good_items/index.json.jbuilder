@@ -1,28 +1,17 @@
 # Additional information
-json.count  @count
-json.limit  @limit
-json.offset @offset
+json.count  @meta[:count]
+json.limit  @meta[:limit]
+json.offset @meta[:offset]
 
-# Goods
-json.result @goods do |good|
-  json.array!(json.result good.decorate.list_set)
+json.result @goods do |good_item|
+  json.(good_item, :id, :price, :store_id)
+
+  # Good fields
+  json.good do
+    json.(good_item.good, :id, :name, :description, :value)
+  end
+
+  json.ordered @ordered[good_item.id], :order_id, :value, :price unless @ordered[good_item.id].blank?
 end
-
-
-
-#json.goodItems do
-#
-#  json.child! { json.art 'art-val' }
-#
-#  #@goods.each do |good|
-#  #
-#  #end
-#end
-#json.goodItems @goods do |good|
-#  json.child! do
-#    good.decorate.list_set
-#  end
-#end
-
 
 # TODO: Add images, formats (base64 or link)

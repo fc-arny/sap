@@ -12,4 +12,6 @@
 class Sap::OrderItem < Sap::Base   # TODO: move this table to redis or delete id column
   belongs_to :order, class_name: 'Sap::Order'
   belongs_to :good_item, class_name: 'Sap::GoodItem'
+
+  scope :ordered, -> (order_id, good_items) { where('order_id = ? AND good_item_id IN (?)', order_id, good_items)}
 end
