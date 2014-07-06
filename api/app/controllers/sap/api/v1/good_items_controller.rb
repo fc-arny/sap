@@ -14,7 +14,7 @@ class Sap::Api::V1::GoodItemsController < Sap::Api::BaseController
       offset:(params[:offset] || 0).to_i
     }
 
-    @goods = goods.limit(@limit).offset(@offset)
+    @goods = goods.limit(@meta[:limit]).offset(@meta[:offset])
     @ordered = current_order.blank? ? [] : Sap::OrderItem.ordered(current_order.id, @goods.pluck(:id)).index_by(&:good_item_id)
     # @ordered = Sap::OrderItem.ordered(2, @goods.pluck(:id)).index_by(&:good_item_id)
   end
