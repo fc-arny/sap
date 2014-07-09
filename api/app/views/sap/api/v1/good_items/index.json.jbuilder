@@ -12,6 +12,10 @@ json.result @goods do |good_item|
   end
 
   json.ordered @ordered[good_item.id], :order_id, :value, :price unless @ordered[good_item.id].blank?
+
+  json.measure do
+    json.(good_item.measure, :id, :name)
+  end
 end
 
 # TODO: Add images, formats (base64 or link)

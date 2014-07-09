@@ -27,11 +27,8 @@ class InitDb < ActiveRecord::Migration
 
     # Measures
     create_table :sap_measures do |t|
-      t.string  :name, null: false                          # Unit short name
-      t.string  :full_name, null: false                     # Unit full name
-      t.decimal :step, null: false, precision: 8, scale: 3  # Default change step
-      t.integer :value_in_parent, default: 1000             #
-      t.integer :parent_id
+      t.string  :name, null: false                   # Unit short name
+      t.string  :sys_name, null: false               # Unit full name
     end
 
     # Create category table

@@ -17,6 +17,8 @@ class Sap::GoodItem < Sap::Base
   belongs_to :good, class_name: 'Sap::Good'
   belongs_to :store, class_name: 'Sap::Store'
 
+  delegate :measure, to: :good
+
   def name
     "##{id}: #{good.name} (#{store.name})" unless new_record?
   end
