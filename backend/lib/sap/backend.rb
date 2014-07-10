@@ -1,4 +1,5 @@
 require 'sap/core'
+
 require 'rails_admin'
 require 'cancan'
 require 'paper_trail'

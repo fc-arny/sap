@@ -22,6 +22,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rails_admin'
   spec.add_dependency 'cancan'
   spec.add_dependency 'paper_trail', '~> 3.0.0'
-
-  spec.add_dependency 'image_thread'
 end

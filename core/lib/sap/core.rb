@@ -31,3 +31,4 @@ require 'sap/core/version'
 require 'sap/core/engine'
 
 require 'sap/i18n'
+require 'image_thread'

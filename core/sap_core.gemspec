@@ -35,4 +35,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'annotate'              # Annotate models
   spec.add_dependency 'oj'                    # Fast json
   spec.add_dependency 'oj_mimic_json'
+
+  spec.add_dependency 'image_thread', '~> 0.1.0'
 end
