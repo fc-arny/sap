@@ -16,17 +16,15 @@
 #
 
 class Sap::Good < Sap::Base
-  # Includes
   has_image_thread :image_thread
 
-  # Associations
-  has_many :good_items, class_name: Sap::GoodItem.to_s
-  # has_and_belongs_to_many :categories, class_name: Sap::Category.to_s, join_table: 'sap_category_goods'
+  has_many :good_items, class_name: 'Sap::GoodItem'
 
-  belongs_to :measure, class_name: Sap::Measure.to_s
-  belongs_to :category, class_name: Sap::Category.to_s
+  belongs_to :measure, class_name: 'Sap::Measure'
+  belongs_to :category, class_name: 'Sap::Category'
 
-  #belongs_to :vendor, :class_name => 'Sap::Vendor'
+  delegate :images, to: :image_thread, allow_nil: true
+
   def par
     "#{value} #{measure.name}" unless is_group
   end

@@ -18,6 +18,7 @@ class Sap::GoodItem < Sap::Base
   belongs_to :store, class_name: 'Sap::Store'
 
   delegate :measure, to: :good
+  delegate :images, to: :good, allow_nil: true
 
   def name
     "##{id}: #{good.name} (#{store.name})" unless new_record?
