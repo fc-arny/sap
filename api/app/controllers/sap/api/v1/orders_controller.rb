@@ -34,7 +34,6 @@ class Sap::Api::V1::OrdersController < Sap::Api::BaseController
   # Show order
   # GET /api/v1/orders/:id
   def show
-    @order = params[:id] == 'basket' ? current_order :  Sap::Order.find(params[:id]) # TODO: order: Auth
-    @order = Sap::Order.first
+    @order = params[:id] == 'current' ? current_order :  Sap::Order.find(params[:id]) # TODO: order: Auth
   end
 end
