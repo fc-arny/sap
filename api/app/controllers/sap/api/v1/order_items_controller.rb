@@ -19,14 +19,7 @@ class Sap::Api::V1::OrderItemsController < Sap::Api::BaseController
   # POST /api/v1/order/items/
   def create
     @order_item = current_order.items.where('good_item_id = ?', params[:good_item_id]).first_or_initialize
-
-    unless @order_item.id
-      @order_item.update_attributes(order_item_params)
-      @order_item.save()
-    else
-      @status = :fail
-      @message = t('This item already in the basket')
-    end
+    order_item_params[:value] > 0 ? @order_item.update_attributes(order_item_params) : @order_item.destroy
   end
 
   private
