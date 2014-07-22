@@ -20,9 +20,9 @@ Sap::Core::Engine.routes.draw do
       end
 
       # Order
-      resources :orders do
-        resources :items, :controller => 'order_items'
-      end
+      resources :order_items
+      resources :orders
+
 
       #devise_scope :user do
       #  post '/password/recover' => 'user_passwords#create', :as => :reset_password
