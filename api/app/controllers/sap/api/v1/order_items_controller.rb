@@ -19,7 +19,7 @@ class Sap::Api::V1::OrderItemsController < Sap::Api::BaseController
   # POST /api/v1/order/items/
   def create
     @order_item = current_order.items.where('good_item_id = ?', params[:good_item_id]).first_or_initialize
-    order_item_params[:value] > 0 ? @order_item.update_attributes(order_item_params) : @order_item.destroy
+    order_item_params[:value].to_f > 0 ? @order_item.update_attributes(order_item_params) : @order_item.destroy
   end
 
   private
