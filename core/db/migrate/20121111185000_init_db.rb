@@ -125,7 +125,6 @@ class InitDb < ActiveRecord::Migration
 
     # Orders model
     create_table :sap_orders, comment: 'Order model' do |t|
-
       t.string :state, null: false,     comment: 'Order state - new, payed etc'
       t.string :hash_str, null: false,  comment: 'Hash for order access'
       t.decimal :sum, precision: 8, scale: 2
@@ -133,6 +132,11 @@ class InitDb < ActiveRecord::Migration
       t.string :phone,                  comment: 'Phone string'
       t.string :address,                comment: 'Address string'
       t.string :comment,                comment: 'Order comment'
+
+      t.date    :delivery_date,         comment: 'Delivery date'
+      t.string  :delivery_interval,     comment: 'Delivery time interval(ex.: 18:00-01:00)'
+      t.decimal :delivery_price, precision: 8, scale: 2, comment: 'Price for delivery'
+
       t.timestamps
     end
 
