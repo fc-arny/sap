@@ -21,7 +21,7 @@ class CreateIndexes < ActiveRecord::Migration
     add_index :sap_good_items, [:store_gid, :store_id], unique: true
 
     # Measures
-    add_foreign_key :sap_measures, :sap_measures, column: :parent_id
+    # add_foreign_key :sap_measures, :sap_measures, column: :parent_id
     add_foreign_key :sap_goods, :sap_measures, column: :measure_id
 
     # Order
